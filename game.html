@@ -295,14 +295,14 @@ function render(){
   st.history.slice().reverse().forEach(x=>{const p=document.createElement("p");p.textContent="· "+x;hist.appendChild(p)});
 }
 function randomEvent(){
-  if(st.n<3||st.n%4!==0)return null;
+  if(st.n<3||st.n%4!==0||st.flags["event_"+st.n])return null;
   const pool=[
     {text:"一名士卒把自己的半块饼塞给旁边的新兵。军心 +2。",apply:()=>st.stats.morale=clamp(st.stats.morale+2)},
     {text:"一匹驮粮的军马倒下。粮草 -2。",apply:()=>st.stats.grain=clamp(st.stats.grain-2)},
     {text:"城里有人认出了你的军旗。民望 +2。",apply:()=>st.stats.people=clamp(st.stats.people+2)},
     {text:"一封没有署名的信被塞进军帐。疑心 +2。",apply:()=>st.stats.suspicion=clamp(st.stats.suspicion+2)}
   ];
-  const ev=pool[Math.floor((st.n/4)%pool.length)];ev.apply();persist();return ev;
+  const ev=pool[Math.floor((st.n/4)%pool.length)];st.flags["event_"+st.n]=true;ev.apply();persist();return ev;
 }
 function applyEffects(e){
   if(!e)return;
