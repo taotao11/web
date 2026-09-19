@@ -337,7 +337,7 @@ function applyEffects(e){
   if(e.flag)for(const f of e.flag)st.flags[f]=true;
 }
 function choose(c){
-  const [label,next,effect]=c;
+  const [label,plannedNext,effect]=c;\n  let next=plannedNext;
   applyEffects(effect);
   if(next==="END"){st.history.push("完成第一章：《黄袍之前》——"+label);persist();showModal("第一章完成",endingSummary()+"\\n\\n存档已保留。下一章可以继续扩展显德二年至陈桥。");return}
   if(next==="REWIND"){st=readAuto();render();return}
