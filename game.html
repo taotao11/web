@@ -17,7 +17,7 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
 <aside>
   <div class="seal">乱世</div>
   <div class="brand">黄袍之前</div>
-  <div class="sub">赵匡胤 · 五代十国互动史诗<br>第一章：饥火 → 高平 → 开封</div>
+  <div class="sub">赵匡胤 · 五代十国互动史诗<br>第一章：饥火 → 高平 → 开封 → 陈桥 → 新秩序</div>
   <div class="rule"></div>
   <div class="stat-title">当前状态</div>
   <div class="stat"><span>军心</span><b id="morale">50</b><div class="bar"><i id="moraleBar"></i></div></div>
@@ -32,7 +32,7 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
   <div class="people"><b>柴荣</b><br><span id="chR">谨慎观察</span></div>
   <div class="people"><b>赵普</b><br><span id="puR">尚未结识</span></div>
   <div class="people"><b>韩通</b><br><span id="htR">军中中立</span></div>
-  <div class="people"><b>老卒石守信</b><br><span id="ssR">尚未建立信任</span></div><div class="people" id="capitalRelation" style="display:none"><b>开封局势</b><br><span id="capitalR">尚未进入朝局</span></div>
+  <div class="people"><b>老卒石守信</b><br><span id="ssR">尚未建立信任</span></div><div class="people" id="capitalRelation" style="display:none"><b>开封局势</b><br><span id="capitalR">尚未进入朝局</span></div><div id="nationStats" style="display:none"><div class="rule"></div><div class="stat-title">开国 · 天下</div><div class="stat"><span>国库</span><b id="treasury">35</b><div class="bar"><i id="treasuryBar"></i></div></div><div class="stat"><span>稳定</span><b id="stability">50</b><div class="bar"><i id="stabilityBar"></i></div></div><div class="stat"><span>制度</span><b id="reform">0</b><div class="bar"><i id="reformBar"></i></div></div><div class="stat"><span>疆土</span><b id="territory">0</b><div class="bar"><i id="territoryBar"></i></div></div></div>
   <div class="rule"></div>
   <div class="side-actions">
     <button onclick="manualSave(1)">存档Ⅰ</button><button onclick="manualLoad(1)">读档Ⅰ</button>
@@ -40,7 +40,7 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
     <button onclick="manualSave(3)">存档Ⅲ</button><button onclick="manualLoad(3)">读档Ⅲ</button>
     <button onclick="restart()">重新开始</button><button onclick="showHelp()">玩法说明</button>
   </div>
-  <div class="hint">自动存档：开启<br>版本：0.3 · 第一章 + 第二章<br>存档损坏时会自动回退到安全检查点。</div>
+  <div class="hint">自动存档：开启<br>版本：0.4 · 第一章—开国篇<br>存档损坏时会自动回退到安全检查点。</div>
 </aside>
 
 <main>
@@ -63,8 +63,8 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
 <div class="modal" id="modal"><div class="modal-card"><h2 id="modalTitle">存档</h2><p id="modalText"></p><button onclick="closeModal()">知道了</button></div></div>
 
 <script>
-const VERSION=3, AUTO_KEY="zhaohuang-auto-v3", CHECK_KEY="zhaohuang-safe-v3";
-const BASE={version:VERSION,scene:"s01",n:0,chapter:1,flags:{},rel:{chai:15,pu:0,han:0,shi:0},stats:{morale:50,prestige:20,grain:35,people:10,suspicion:5,trust:15,wounds:0,command:0,court:0,armyInfluence:0,month:1,actionPoints:3,chenqiao:0},history:[],dead:false};
+const VERSION=4, AUTO_KEY="zhaohuang-auto-v4", CHECK_KEY="zhaohuang-safe-v4";
+const BASE={version:VERSION,scene:"s01",n:0,chapter:1,flags:{},rel:{chai:15,pu:0,han:0,shi:0},stats:{morale:50,prestige:20,grain:35,people:10,suspicion:5,trust:15,wounds:0,command:0,court:0,armyInfluence:0,month:1,actionPoints:3,chenqiao:0,stability:50,treasury:35,territory:0,casualties:0,reform:0},history:[],dead:false};
 
 const SCENES={
 s01:{date:"显德元年 · 春",chapter:"第一章 · 饥火",loc:"后周军营",title:"火还没有烧到城门",text:"天刚亮，风从北面压下来。\n\n营地里没有炊烟。不是今日不做饭，而是已经没有什么可煮的了。\n\n昨夜，三个新兵偷了军粮。老卒把他们按在泥地里，其中一个已经没了气。\n\n亲兵递来一只空木碗。\n\n“赵都头，西仓说还够两日。”\n他顿了顿。\n“西仓的人说，最多一日。”",tags:["饥荒","军营","第一次抉择"],choices:[
@@ -1134,6 +1134,20 @@ function renderDialogue(sc){
   if(st.scene==="s176") line="“从来没人叫你夺权。可有人已经替你把路铺好了。”";
   if(st.scene==="s177") line="“如果朕不在了，你会怎么做？”";
   if(st.scene==="s181") line="“陛下崩了。赵将军，现在所有人都在等。”";
+  if(st.scene==="s245") line="“坐上去以后，最难处理的不是敌人，而是曾经让你成功的军队。”";
+  if(st.scene==="s246") line="“拒绝黄袍之后，你仍然必须回答一个问题：谁来约束掌兵的人？”";
+  if(st.scene==="s247") line="“黄袍可以烧掉。可军中的记忆，不会跟着火一起消失。”";
+  if(st.scene==="s248") line="“旧功若能成为免罪的凭证，军法就只剩给陌生人看的牌子。”";
+  if(st.scene==="s250") line="“军报不会告诉你一斗粮能让多少人今晚睡得安稳。”";
+  if(st.scene==="s252") line="“如果军令只能靠你的威望维持，那你死后，它也会一起死。”";
+  if(st.scene==="s254") line="“每一座城后面都有粮仓、老人、孩子和等人回家的门。”";
+  if(st.scene==="s259") line="“真正的制度，是连皇帝觉得麻烦的时候，也必须继续有效。”";
+  if(st.scene==="s261") line="“把一个死去士卒的名字写进册子，不会让他活过来，但至少不会让他的死亡变成一个数字。”";
+  if(st.scene==="s268") line="“你已经拥有足够大的国家了。现在真正的问题，是它能不能在没有你的时候继续运转。”";
+  if(st.scene==="s271") line="“你当年从军营里走出来。现在军营里的人正在学你的路。”";
+  if(st.scene==="s274") line="“别只写朕赢了什么。把那些没回来的人也写进去。”";
+  if(st.scene==="s282") line="“最后要交出去的不是刀，是不经过制度就能调兵的权力。”";
+
   document.getElementById("speaker").textContent=d[0];
   document.getElementById("speakerRole").textContent=d[1];
   document.getElementById("portrait").textContent=d[2];
@@ -1204,12 +1218,12 @@ function capitalAction(i){
 }
 function render(){
   const sc=SCENES[st.scene]||SCENES.s01;
-  const inCapital=st.chapter>=2 || /^s(100|10[1-9]|11[0-9]|12[0-9]|13[0-1])$/.test(st.scene);
+  const inCapital=st.chapter>=2 && st.chapter<7 || /^s(100|10[1-9]|11[0-9]|12[0-9]|13[0-1])$/.test(st.scene);
   st.chapter=inCapital?Math.max(2,st.chapter):st.chapter;
   document.getElementById("chapter2Stats").style.display=inCapital?"block":"none";
   document.getElementById("capitalRelation").style.display=inCapital?"block":"none";
   document.getElementById("actionInfo").style.display=inCapital?"inline":"none";
-  document.getElementById("capitalPanel").classList.toggle("show",inCapital);
+  document.getElementById("capitalPanel").classList.toggle("show",inCapital);\n  const nation=st.chapter>=7;document.getElementById("nationStats").style.display=nation?"block":"none";clampNation();
   if(inCapital){
     document.getElementById("actionInfo").textContent="行动点 "+st.stats.actionPoints+" / 3 · 显德二年第 "+st.stats.month+" 月";
     document.getElementById("capitalMonth").textContent="显德二年 · 第 "+st.stats.month+" 月";
@@ -1266,15 +1280,17 @@ function choose(c){
   const [label,plannedNext,effect]=c;
   let next=plannedNext;
   applyEffects(effect);
-  if(next==="END"){next="s100";}
+  if(next==="END"){st.flags.finished=true;persist();showFinal();return;}
   if(next==="REWIND"){st=readAuto();render();return}
   if(next==="DEAD"){st.dead=true;persist();showModal("赵匡胤卒","这条时间线已经终止。你的自动安全检查点仍然保留，可以返回继续。");return}
+  if(next==="s206"||next==="s207"||next==="s208"){next=resolveChenqiaoEnding();}
   if(!SCENES[next])return;
+  clampNation();
   if(/^s(100|10[1-9]|11[0-9]|12[0-9]|13[0-1])$/.test(next)){st.chapter=2;st.stats.actionPoints=Math.max(0,st.stats.actionPoints-1);if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
   if(/^s(132|13[3-9]|14[0-9]|15[0-9]|16[0-9])$/.test(next)){st.chapter=3;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
   if(/^s(17[0-9]|18[0-9]|19[0-9]|200)$/.test(next)){st.chapter=4;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
   if(/^s(181|182|183|184|185|186|187|188|189|190)$/.test(next)){st.chapter=5;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
-  if(/^s(191|192|193|194|195|196|197|198|199|200|201|202|203|204|205|206|207|208|209|210|211|212|213|214|215|216|217|218|219|220|221|222|223|224|225|226|227|228|229|230|231|232|233|234|235|236|237|238|239|240|241|242|243|244)$/.test(next)){st.chapter=6;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
+  if(/^s(191|192|193|194|195|196|197|198|199|200|201|202|203|204|205|206|207|208|209|210|211|212|213|214|215|216|217|218|219|220|221|222|223|224|225|226|227|228|229|230|231|232|233|234|235|236|237|238|239|240|241|242|243|244)$/.test(next)){st.chapter=6;if(/^s(245|246|247|248|249|250|251|252|253|254|255|256|257|258|259|260|261|262|263|264|265|266|267|268|269|270|271|272|273|274|275|276|277|278|279|280|281|282|283|284|285|286|287|288|289)$/.test(next)){st.chapter=7;st.stats.actionPoints=3;}if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
   next=battleCheck(next,label);
   next=aftermathRoute(next);
   st.scene=next;st.n++;
@@ -1285,6 +1301,43 @@ function choose(c){
   if(st.stats.wounds>=100){st.dead=true;persist();showModal("战场重伤","你的时间线在高平提前结束。自动安全检查点仍保留。");return}
   persist();render();scrollTo({top:0,behavior:"smooth"});
 }
+
+function clampNation(){
+  st.stats.stability=Math.max(0,Math.min(100,Number(st.stats.stability)||0));
+  st.stats.treasury=Math.max(0,Math.min(100,Number(st.stats.treasury)||0));
+  st.stats.territory=Math.max(0,Math.min(100,Number(st.stats.territory)||0));
+  st.stats.casualties=Math.max(0,Number(st.stats.casualties)||0);
+  st.stats.reform=Math.max(0,Math.min(100,Number(st.stats.reform)||0));
+}
+function resolveChenqiaoEnding(){
+  clampNation();
+  const s=st.stats;
+  if(s.armyInfluence>=75 && s.stability<35){st.flags.endingAmbition=true;return "s247";}
+  if(s.chenqiao>=35 && s.armyInfluence>=60){st.flags.endingStrongArmy=true;return "s245";}
+  if(s.court>=55 && s.reform>=20){st.flags.endingInstitution=true;return "s245";}
+  if(s.people>=55 && s.stability>=55){st.flags.endingPeople=true;return "s250";}
+  if(s.chenqiao<15 && s.armyInfluence<45){st.flags.endingNoCrown=true;return "s246";}
+  return "s245";
+}
+function finalVerdict(){
+  clampNation();
+  const s=st.stats,r=st.rel;
+  let title="《乱世赵匡胤》· 终局记录",body=[];
+  if(s.reform>=65 && s.stability>=70){title="制度之宋";body.push("你留下的不是最响亮的传奇，而是一套可以在你离开之后继续运行的规则。");}
+  else if(s.people>=65 && s.stability>=60){title="先让人活下来";body.push("你记得战争之外还有粮价、伤兵、逃户和没有名字的人。");}
+  else if(s.territory>=45 && s.prestige>=65){title="武功之宋";body.push("你的疆域与军功留下了鲜明痕迹，但伤亡册也同样厚重。");}
+  else if(s.armyInfluence>=70 && s.stability<45){title="黄袍的回声";body.push("你曾经靠军队改变历史，也因此必须一生防备军队再次改变历史。");}
+  else{title="没有唯一答案";body.push("你的路线没有被简单地写成胜负。它留下了制度、战争、民生和人的代价。");}
+  body.push("军心 "+s.morale+" · 威望 "+s.prestige+" · 民望 "+s.people);
+  body.push("朝廷评价 "+s.court+" · 军中影响 "+s.armyInfluence+" · 稳定 "+s.stability);
+  body.push("制度 "+s.reform+" · 国库 "+s.treasury+" · 疆土 "+s.territory+" · 战争伤亡指数 "+s.casualties);
+  if(r.shi>=60)body.push("石守信：你们最终没有把旧日的兄弟情完全变成权力。");
+  if(r.pu>=50)body.push("赵普：他见证了你从将领走向制度设计者。");
+  if(s.people>=60)body.push("民间记录：有人记得你曾经打开过粮仓。");
+  return {title,body};
+}
+function showFinal(){const v=finalVerdict();showModal(v.title,v.body.join("\\n\\n"));}
+
 function endingSummary(){
   const s=st.stats, r=st.rel;
   const traits=[];
