@@ -259,6 +259,26 @@ s34:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"高平战�
 ["把功劳写进军报","s36",{rel:{shi:10},morale:5,prestige:3}],
 ["让他不要张扬","s35",{rel:{shi:5},suspicion:-1}]
 ]},
+s44:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"柴荣中军帐",title:"柴荣没有让你退下",text:"帐外仍有人在喊伤兵的名字。\n\n你以为柴荣会先问战果。他却把军报推到一旁。\n\n“你今日救了多少人，我已经知道。”\n\n他抬眼看你。\n\n“我现在要知道的是，若我再给你三百人，你会拿他们去换什么？”\n\n这不是嘉奖。是第一次真正的托付。",tags:["柴荣","信任分支","兵权"],choices:[
+["答：换一个能活着回来的结果","s36",{trust:8,prestige:3,flag:["chaiEntrusts"]}],
+["答：换一场足够大的胜仗","s35",{trust:2,prestige:8,suspicion:2}],
+["不接兵权，请柴荣先救伤兵","s36",{trust:10,people:4,morale:3}]
+]},
+s45:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"军帐外",title:"有人开始记你的名字",text:"你刚走出军帐，就发现有人在看你。\n\n不是士卒的目光。\n\n几个军中小校压低声音：“这个赵匡胤，今日是不是太快了？”\n\n另一边，赵普站在阴影里，没有靠近。\n\n你第一次意识到：一个武将开始有名望以后，功劳和危险会一起长出来。",tags:["名望","疑心","赵普"],choices:[
+["主动找赵普谈","s35",{rel:{pu:8},suspicion:-4,prestige:3,flag:["talkedPu"]}],
+["把功劳推给柴荣","s36",{trust:4,suspicion:-5,prestige:1}],
+["接受所有赞誉","s35",{prestige:8,suspicion:6}]
+]},
+s46:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"石守信营地",title:"石守信问了一个很简单的问题",text:"石守信坐在火边处理伤口。\n\n他没有问你升不升官。\n\n“都头，”他说，“今日若我没回来，你会不会继续追？”\n\n你沉默了一会儿。\n\n乱世里，最难回答的问题往往不是该不该赢，而是谁值得你停下来。",tags:["石守信","兄弟","战后"],choices:[
+["说：我会等你","s36",{rel:{shi:10},morale:4,people:2}],
+["说：战场不会等任何人","s35",{prestige:6,rel:{shi:-3},suspicion:2}],
+["什么也不说，只替他包扎伤口","s36",{rel:{shi:12},people:3,morale:3}]
+]},
+s47:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"伤兵营",title:"胜利之后，还有另一场仗",text:"伤兵营里没有庆功的声音。\n\n有人失去了一条腿，有人还在喊着家乡的名字。军医把最后一卷布撕开，分给三个伤口。\n\n你终于明白：战场上的胜负只决定谁站着，战后的处置才决定这些人还能不能活下去。\n\n有人把你的名字告诉了伤兵。\n\n他们没有欢呼，只是点了点头。",tags:["伤兵","民望","战后"],choices:[
+["把军功换成药材","s36",{people:10,morale:5,prestige:-2,trust:3,flag:["spentMerit"]}],
+["优先把重伤者送回城","s36",{people:8,morale:3,grain:-4}],
+["留下来帮军医","s36",{people:12,morale:2,prestige:1}]
+]},
 s35:{date:"显德二年 · 夏",chapter:"第一章 · 尾声",loc:"后周军营",title:"你被记住了",text:"高平之后，禁军开始重新整顿。\n\n你得到新的位置，也得到新的目光。有人开始向你靠拢，有人开始记你的名字。\n\n赵普提醒你：“一个人有了名望以后，别人看到的就不再是他做了什么，而是他们希望他做什么。”\n\n这不是结局。只是第一道门。\n\n多年以后，黄袍会落在谁的肩上，没人知道。至少现在，赵匡胤还只是赵匡胤。",tags:["章节完成","新的道路"],choices:[
 ["保存并结束第一章","END",{flag:["chapter1Done"]}],
 ["回到安全检查点重玩","REWIND"]
@@ -269,6 +289,23 @@ s36:{date:"显德二年 · 夏",chapter:"第一章 · 尾声",loc:"后周军营"
 ]}
 };
 
+function aftermathRoute(next){
+  if(next==="s30"){
+    if(st.rel.chai>=55||st.stats.trust>=55)return "s44";
+    if(st.stats.suspicion>=30)return "s45";
+    if(st.rel.shi>=30)return "s46";
+    return "s45";
+  }
+  if(next==="s31"){
+    if(st.stats.people>=45)return "s47";
+    if(st.rel.shi>=30)return "s46";
+    return "s45";
+  }
+  if(next==="s32")return "s44";
+  if(next==="s33")return "s45";
+  if(next==="s34")return "s46";
+  return next;
+}
 function battleCheck(next, choiceLabel){
   if(st.scene!=="s23") return next;
   const strength=st.stats.morale + st.stats.prestige*0.6 + st.stats.trust*0.35 + st.rel.shi*0.3 - st.stats.wounds*0.8;
@@ -342,7 +379,7 @@ function renderDialogue(sc){
     s40:["柴荣","后周军主帅","柴","观察"],
     s41:["赵匡胤","后周军都头","赵","冷静"],
     s42:["柴荣","后周军主帅","柴","激昂"],
-    s43:["石守信","部将","石","决绝"]
+    s43:["石守信","部将","石","决绝"],\n    s44:["柴荣","后周军主帅","柴","托付"],\n    s45:["赵普","幕僚","赵","旁观"],\n    s46:["石守信","部将","石","认真"],\n    s47:["军医","后周军医","医","疲惫"]
   };
   const d=generic[st.scene];
   if(!d){box.classList.remove("show");return}
@@ -398,6 +435,18 @@ function renderDialogue(sc){
   if(st.scene==="s43") line=st.rel.shi>=55
     ?"“你若停，我也停。你若追，我替你看住退路。”"
     :"“退路已经开了。追，可能成名；停，可能救下更多人。”";
+  if(st.scene==="s44") line=st.rel.chai>=75
+    ?"“我把三百人交给你，不是因为你赢了，而是因为你知道什么时候不能让他们死。”"
+    :"“今日你做得不错。可真正的托付，要等你再证明一次。”";
+  if(st.scene==="s45") line=st.stats.suspicion>=45
+    ?"“你已经开始被人议论。别急着解释。先想清楚，谁在等你犯错。”"
+    :"“名望来了。你若只看见它的好处，很快就会看见它的代价。”";
+  if(st.scene==="s46") line=st.rel.shi>=65
+    ?"“我跟着你，不是因为你每次都对，而是因为我知道你不会把兄弟当数字。”"
+    :"“我今日问你这个问题，是想知道以后还能不能把背后交给你。”";
+  if(st.scene==="s47") line=st.stats.people>=70
+    ?"“赵都头，药不够。可这些人都知道你来过。”"
+    :"“胜仗之后最忙的地方，永远不是庆功帐。”";
   document.getElementById("speaker").textContent=d[0];
   document.getElementById("speakerRole").textContent=d[1];
   document.getElementById("portrait").textContent=d[2];
@@ -478,7 +527,7 @@ function choose(c){
   if(next==="REWIND"){st=readAuto();render();return}
   if(next==="DEAD"){st.dead=true;persist();showModal("赵匡胤卒","这条时间线已经终止。你的自动安全检查点仍然保留，可以返回继续。");return}
   if(!SCENES[next])return;
-  next=battleCheck(next,label);\n  st.scene=next;st.n++;
+  next=battleCheck(next,label);\n  next=aftermathRoute(next);\n  st.scene=next;st.n++;
   st.history.push("第"+st.n+"次选择："+label+" → "+SCENES[next].title);
   st.history=st.history.slice(-14);
   if(st.stats.grain<=0){st.stats.grain=0;st.stats.morale=clamp(st.stats.morale-8)}
