@@ -10,7 +10,7 @@
 button{font:inherit}.app{max-width:1320px;min-height:100vh;margin:auto;background:var(--paper);display:grid;grid-template-columns:285px 1fr;box-shadow:0 0 90px #000}
 aside{background:linear-gradient(180deg,#211d19,#151311);color:#e5dac8;padding:28px 22px;position:sticky;top:0;height:100vh;overflow:auto}.seal{width:56px;height:56px;border:2px solid #b34a40;color:#d15a50;display:grid;place-items:center;writing-mode:vertical-rl;font-weight:700}.brand{font-size:25px;letter-spacing:5px;margin-top:18px}.sub{font:12px system-ui;color:#988d7d;line-height:1.6;margin-top:8px}.rule{height:1px;background:#423a31;margin:24px 0}.stat-title{font-size:11px;letter-spacing:3px;color:#9f9484;margin-bottom:10px}.stat{display:grid;grid-template-columns:1fr auto;gap:10px;margin:10px 0;font-size:13px}.bar{grid-column:1/-1;height:4px;background:#39332d;overflow:hidden}.bar i{display:block;height:100%;background:#9d352d;transition:width .35s}.people{margin:8px 0;padding:9px;border:1px solid #3b342c;font-size:12px;color:#c4b7a3}.people b{color:#e7d9c5;font-weight:500}.side-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.side-actions button{padding:9px 5px;border:1px solid #51483e;background:#24201c;color:#ddd0bd;cursor:pointer;font-size:12px}.side-actions button:hover{border-color:#a77a3e;color:#fff}.hint{font:11px system-ui;color:#756b5e;line-height:1.6;margin-top:18px}
 main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background:rgba(238,228,210,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;color:#74695b;font:12px system-ui;letter-spacing:2px}.top strong{color:var(--red)}.hero{padding:65px 9% 30px;max-width:1050px}.eyebrow{color:var(--red);font:11px system-ui;letter-spacing:4px}.chapter{font-size:12px;color:#827667;margin-top:9px}h1{font-size:48px;font-weight:500;line-height:1.2;margin:15px 0 27px}.lead{font-size:19px;line-height:2.15;white-space:pre-line}.scene-meta{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.tag{border:1px solid #c5b59d;padding:5px 9px;font:11px system-ui;color:#756858;background:#eee5d7}.choices{display:grid;gap:11px;margin-top:30px}.choice{position:relative;text-align:left;padding:18px 20px;border:1px solid #bcae98;background:var(--paper2);cursor:pointer;transition:.2s;color:#322b24}.choice:hover{transform:translateX(5px);border-color:var(--gold);box-shadow:0 7px 18px #6f5c4312}.choice.locked{opacity:.48;cursor:not-allowed}.choice .num{display:inline-grid;place-items:center;width:24px;height:24px;border:1px solid #b7a58c;border-radius:50%;margin-right:12px;color:var(--red);font:12px system-ui}.choice small{display:block;color:#887a69;font:11px system-ui;margin:8px 0 0 38px}.log{margin:35px 9%;max-width:900px;border-top:1px solid var(--line);padding-top:20px}.log h3{font-size:12px;letter-spacing:3px;font-weight:500;color:#806f5d}.log p{font-size:12px;color:#817465;margin:8px 0}.notice{margin:20px 0;padding:12px 14px;border-left:3px solid var(--red);background:#e5d8c4;font-size:12px;line-height:1.7}.modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;z-index:20}.modal.show{display:grid}.modal-card{width:min(540px,90vw);background:var(--paper);padding:28px;box-shadow:0 25px 80px #000}.modal-card h2{margin-top:0;font-weight:500}.modal-card p{line-height:1.8;color:#62574b;font-size:14px}.modal-card button{padding:10px 18px;background:#25211d;color:#eee0cb;border:0;cursor:pointer}.danger{color:var(--red)}footer{padding:24px 9%;border-top:1px solid var(--line);font:11px system-ui;color:#84776a}@media(max-width:800px){.app{display:block}.app aside{display:none}.hero{padding:42px 20px 25px}.top{padding:13px 20px}h1{font-size:34px}.lead{font-size:17px}.log{margin:30px 20px}footer{padding:20px}.choice{padding:16px}.side-actions{grid-template-columns:1fr 1fr}}
-.battle{display:none;margin:0 0 28px;padding:18px;border:1px solid #b9a88f;background:linear-gradient(135deg,#e4d6bf,#f4ecdf);box-shadow:inset 0 0 35px #8d765020}.battle.show{display:block}.battle-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.battle-head strong{letter-spacing:3px;font-size:13px}.battle-head span{font:11px system-ui;color:#806f5d}.battlefield{position:relative;min-height:230px;border:1px solid #c0ae93;background:#d7c6a9;overflow:hidden;padding:20px}.terrain{position:absolute;inset:0;opacity:.22;background:repeating-linear-gradient(0deg,transparent 0 31px,#7e6b52 32px 33px),repeating-linear-gradient(90deg,transparent 0 49px,#7e6b52 50px 51px)}.army{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:center}.unit{min-height:72px;padding:10px;border:1px solid #a99678;background:#eee3d0cc;text-align:center;box-shadow:0 4px 12px #4d3b2412}.unit b{display:block;font-size:12px;margin-bottom:6px}.unit small{font:10px system-ui;color:#786b5c}.unit.you{border:2px solid #9d352d;background:#f1dfd0}.unit.enemy{background:#ddd0ba}.unit .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#9d352d;margin-right:5px}.battle-foot{display:flex;justify-content:space-between;margin-top:10px;font:10px system-ui;color:#786b5c}.pulse{animation:pulse .8s ease}@keyframes pulse{50%{transform:translateY(-3px);box-shadow:0 7px 20px #9d352d30}}.dialogue{display:none;margin:0 0 26px;border:1px solid #c1ae91;background:#eee3d2;box-shadow:0 10px 30px #5d493018}.dialogue.show{display:block}.dialogue-head{display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid #cbb99e;background:#e5d6bd}.portrait{width:48px;height:48px;border:2px solid #9d352d;background:#302a24;color:#e8d9c3;display:grid;place-items:center;font-size:20px;font-weight:700}.speaker b{display:block;font-size:14px}.speaker small{font:10px system-ui;color:#81715f}.dialogue-body{padding:16px 18px;font-size:16px;line-height:1.9}.dialogue-body em{font-style:normal;color:#9d352d}.dialogue-mood{margin-left:auto;font:10px system-ui;color:#806f5d;border:1px solid #bca88b;padding:4px 7px}@media(max-width:800px){.dialogue-body{font-size:15px}}.capital-panel{display:none;margin:0 0 28px;border:1px solid #b9a88f;background:linear-gradient(135deg,#e8dcc9,#f7f0e3);box-shadow:inset 0 0 35px #8d765020}.capital-panel.show{display:block}.capital-head{display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #c7b69b;font-size:13px}.capital-head span{font:11px system-ui;color:#806f5d}.capital-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;padding:13px}.capital-grid div{padding:12px;border:1px solid #c9b89d;background:#f5ecdf}.capital-grid b{display:block;font-size:12px}.capital-grid small{display:block;margin-top:5px;color:#817261;font:10px system-ui;line-height:1.5}.capital-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 13px 13px}.capital-actions button{border:1px solid #b9a88f;background:#eee2d0;padding:10px;text-align:left;cursor:pointer}.capital-actions button:hover{border-color:#a77a3e;transform:translateY(-2px)}@media(max-width:800px){.capital-grid{grid-template-columns:repeat(2,1fr)}.capital-actions{grid-template-columns:1fr}}</style>
+.battle{display:none;margin:0 0 28px;padding:18px;border:1px solid #b9a88f;background:linear-gradient(135deg,#e4d6bf,#f4ecdf);box-shadow:inset 0 0 35px #8d765020}.battle.show{display:block}.battle-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.battle-head strong{letter-spacing:3px;font-size:13px}.battle-head span{font:11px system-ui;color:#806f5d}.battlefield{position:relative;min-height:230px;border:1px solid #c0ae93;background:#d7c6a9;overflow:hidden;padding:20px}.terrain{position:absolute;inset:0;opacity:.22;background:repeating-linear-gradient(0deg,transparent 0 31px,#7e6b52 32px 33px),repeating-linear-gradient(90deg,transparent 0 49px,#7e6b52 50px 51px)}.army{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:center}.unit{min-height:72px;padding:10px;border:1px solid #a99678;background:#eee3d0cc;text-align:center;box-shadow:0 4px 12px #4d3b2412}.unit b{display:block;font-size:12px;margin-bottom:6px}.unit small{font:10px system-ui;color:#786b5c}.unit.you{border:2px solid #9d352d;background:#f1dfd0}.unit.enemy{background:#ddd0ba}.unit .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#9d352d;margin-right:5px}.battle-foot{display:flex;justify-content:space-between;margin-top:10px;font:10px system-ui;color:#786b5c}.pulse{animation:pulse .8s ease}@keyframes pulse{50%{transform:translateY(-3px);box-shadow:0 7px 20px #9d352d30}}.dialogue{display:none;margin:0 0 26px;border:1px solid #c1ae91;background:#eee3d2;box-shadow:0 10px 30px #5d493018}.dialogue.show{display:block}.dialogue-head{display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid #cbb99e;background:#e5d6bd}.portrait{width:48px;height:48px;border:2px solid #9d352d;background:#302a24;color:#e8d9c3;display:grid;place-items:center;font-size:20px;font-weight:700}.speaker b{display:block;font-size:14px}.speaker small{font:10px system-ui;color:#81715f}.dialogue-body{padding:16px 18px;font-size:16px;line-height:1.9}.dialogue-body em{font-style:normal;color:#9d352d}.dialogue-mood{margin-left:auto;font:10px system-ui;color:#806f5d;border:1px solid #bca88b;padding:4px 7px}@media(max-width:800px){.dialogue-body{font-size:15px}}.capital-panel{display:none;margin:0 0 28px;border:1px solid #b9a88f;background:linear-gradient(135deg,#e8dcc9,#f7f0e3);box-shadow:inset 0 0 35px #8d765020}.capital-panel.show{display:block}.capital-head{display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #c7b69b;font-size:13px}.capital-head span{font:11px system-ui;color:#806f5d}.capital-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;padding:13px}.capital-grid div{padding:12px;border:1px solid #c9b89d;background:#f5ecdf}.capital-grid b{display:block;font-size:12px}.capital-grid small{display:block;margin-top:5px;color:#817261;font:10px system-ui;line-height:1.5}.capital-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 13px 13px}.capital-actions button{border:1px solid #b9a88f;background:#eee2d0;padding:10px;text-align:left;cursor:pointer}.capital-actions button:hover{border-color:#a77a3e;transform:translateY(-2px)}@media(max-width:800px){.capital-grid{grid-template-columns:repeat(2,1fr)}.capital-actions{grid-template-columns:1fr}}.nation-panel{display:none;margin:0 0 28px;border:1px solid #b8a68a;background:linear-gradient(135deg,#e6d7bf,#f7efe2);box-shadow:inset 0 0 40px #765f4014}.nation-panel.show{display:block}.nation-head{display:flex;justify-content:space-between;align-items:center;padding:15px 17px;border-bottom:1px solid #c6b494}.nation-head strong{letter-spacing:2px}.nation-head span{font:11px system-ui;color:#806f5d}.nation-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;padding:13px}.nation-card{padding:12px;border:1px solid #c8b698;background:#f6ede0}.nation-card b{display:block;font-size:12px}.nation-card span{display:block;margin-top:5px;font:20px system-ui;color:#9d352d}.nation-card small{display:block;margin-top:4px;color:#827361;font:10px system-ui;line-height:1.5}.nation-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 13px 13px}.nation-actions button{border:1px solid #b9a88f;background:#eee2d0;padding:11px;text-align:left;cursor:pointer;min-height:72px}.nation-actions button:hover{border-color:#9d352d;transform:translateY(-2px)}.nation-actions button:disabled{opacity:.45;cursor:not-allowed;transform:none}.nation-actions b{font-size:12px}.nation-actions small{display:block;margin-top:6px;color:#7f715f;font:10px system-ui;line-height:1.5}.nation-event{margin:0 13px 13px;padding:11px 13px;border-left:3px solid #9d352d;background:#e5d7c2;font-size:12px;line-height:1.7}@media(max-width:800px){.nation-grid{grid-template-columns:repeat(2,1fr)}.nation-actions{grid-template-columns:1fr}}</style>
 </head>
 <body>
 <div class="app">
@@ -53,7 +53,17 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
     <div class="lead" id="text"></div>
     <section class="battle" id="battle"><div class="battle-head"><strong>高平战场态势</strong><span id="battleRound">战局尚未展开</span></div><div class="battlefield"><div class="terrain"></div><div class="army" id="battlefieldUnits"></div></div><div class="battle-foot"><span id="battleOwn">后周军：—</span><span id="battleEnemy">北汉军：—</span></div></section>
     <div class="notice" id="eventNotice" style="display:none"></div><section class="capital-panel" id="capitalPanel"><div class="capital-head"><strong>开封 · 禁军与朝局</strong><span id="capitalMonth">显德二年 · 夏</span></div><div class="capital-grid"><div><b>皇宫</b><small>柴荣的信任与朝廷目光</small></div><div><b>禁军大营</b><small>训练、军纪、将领关系</small></div><div><b>将军府</b><small>石守信等人的私人网络</small></div><div><b>市井</b><small>粮价、民生与你留下的名声</small></div></div><div class="capital-actions" id="capitalActions"></div></section>
-    <section class="dialogue" id="dialogue"><div class="dialogue-head"><div class="portrait" id="portrait">赵</div><div class="speaker"><b id="speaker">赵匡胤</b><small id="speakerRole">后周军都头</small></div><div class="dialogue-mood" id="dialogueMood">沉默</div></div><div class="dialogue-body" id="dialogueBody"></div></section>
+    <section class="nation-panel" id="nationPanel">
+<div class="nation-head"><strong>天下经营 · 国政回合</strong><span id="nationTurnInfo">第 1 年 · 行动 3 / 3</span></div>
+<div class="nation-grid">
+<div class="nation-card"><b>国库</b><span id="nationTreasury">35</span><small>财政余力。过低会拖累军饷与赈济。</small></div>
+<div class="nation-card"><b>稳定</b><span id="nationStability">50</span><small>地方秩序、朝局与民间安全感。</small></div>
+<div class="nation-card"><b>制度</b><span id="nationReform">0</span><small>军政规则能否脱离个人而运转。</small></div>
+<div class="nation-card"><b>疆土</b><span id="nationTerritory">0</span><small>战争与治理真正转化出的控制范围。</small></div>
+</div>
+<div class="nation-actions" id="nationActions"></div>
+<div class="nation-event" id="nationEvent">天下暂时平静，但账册、军报和民间的声音都在累积。</div>
+</section><section class="dialogue" id="dialogue"><div class="dialogue-head"><div class="portrait" id="portrait">赵</div><div class="speaker"><b id="speaker">赵匡胤</b><small id="speakerRole">后周军都头</small></div><div class="dialogue-mood" id="dialogueMood">沉默</div></div><div class="dialogue-body" id="dialogueBody"></div></section>
     <div class="choices" id="choices"></div>
   </section>
   <section class="log"><h3>选择留下的痕迹</h3><div id="history"></div></section>
@@ -63,8 +73,8 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
 <div class="modal" id="modal"><div class="modal-card"><h2 id="modalTitle">存档</h2><p id="modalText"></p><button onclick="closeModal()">知道了</button></div></div>
 
 <script>
-const VERSION=4, AUTO_KEY="zhaohuang-auto-v4", CHECK_KEY="zhaohuang-safe-v4";
-const BASE={version:VERSION,scene:"s01",n:0,chapter:1,flags:{},rel:{chai:15,pu:0,han:0,shi:0},stats:{morale:50,prestige:20,grain:35,people:10,suspicion:5,trust:15,wounds:0,command:0,court:0,armyInfluence:0,month:1,actionPoints:3,chenqiao:0,stability:50,treasury:35,territory:0,casualties:0,reform:0},history:[],dead:false};
+const VERSION=5, AUTO_KEY="zhaohuang-auto-v5", CHECK_KEY="zhaohuang-safe-v5";
+const BASE={version:VERSION,scene:"s01",n:0,chapter:1,flags:{},rel:{chai:15,pu:0,han:0,shi:0},stats:{morale:50,prestige:20,grain:35,people:10,suspicion:5,trust:15,wounds:0,command:0,court:0,armyInfluence:0,month:1,actionPoints:3,chenqiao:0,stability:50,treasury:35,territory:0,casualties:0,reform:0,nationYear:1,nationAP:3},history:[],dead:false};
 
 const SCENES={
 s01:{date:"显德元年 · 春",chapter:"第一章 · 饥火",loc:"后周军营",title:"火还没有烧到城门",text:"天刚亮，风从北面压下来。\n\n营地里没有炊烟。不是今日不做饭，而是已经没有什么可煮的了。\n\n昨夜，三个新兵偷了军粮。老卒把他们按在泥地里，其中一个已经没了气。\n\n亲兵递来一只空木碗。\n\n“赵都头，西仓说还够两日。”\n他顿了顿。\n“西仓的人说，最多一日。”",tags:["饥荒","军营","第一次抉择"],choices:[
@@ -1266,6 +1276,88 @@ function capitalAction(i){
     if(st.stats.month>6){st.stats.month=6;}
   }
   persist();render();
+}
+function nationMood(){
+  const s=st.stats;
+  if(s.treasury<20)return "国库告急：每一次用兵都在透支下一季的粮饷。";
+  if(s.stability<30)return "地方不稳：军令能到达，但未必能让百姓相信。";
+  if(s.reform>=65)return "制度开始脱离个人：你不在场，命令也能继续运转。";
+  if(s.people>=65)return "民间开始记住的不是战报，而是粮价、赈济和家人能否回来。";
+  return "天下尚未安定。每一次选择，都在决定国家以后靠什么维持。";
+}
+function renderNationPanel(){
+  const active=st.chapter>=7;
+  const panel=document.getElementById("nationPanel");
+  if(!panel)return;
+  panel.classList.toggle("show",active);
+  if(!active)return;
+  clampNation();
+  document.getElementById("nationTurnInfo").textContent="第 "+st.stats.nationYear+" 年 · 行动 "+st.stats.nationAP+" / 3";
+  document.getElementById("nationTreasury").textContent=st.stats.treasury;
+  document.getElementById("nationStability").textContent=st.stats.stability;
+  document.getElementById("nationReform").textContent=st.stats.reform;
+  document.getElementById("nationTerritory").textContent=st.stats.territory;
+  document.getElementById("nationEvent").textContent=nationMood();
+  const box=document.getElementById("nationActions");box.innerHTML="";
+  const actions=[
+    ["整顿财政", "国库 +9 · 稳定 +2 · 民望 -1", {treasury:9,stability:2,people:-1,reform:2}, "财政官会嫌你苛刻，但国库终于有了余粮。"],
+    ["赈济灾民", "民望 +8 · 稳定 +5 · 国库 -8", {people:8,stability:5,treasury:-8,grain:-3}, "仓门再次打开。救下来的不是数字，而是一批具体的人。"],
+    ["整编禁军", "军中影响 -3 · 制度 +8 · 稳定 +3", {armyInfluence:-3,reform:8,stability:3,command:3,chenqiao:-3}, "你把部分军权写进制度，而不是写进自己的名字。"],
+    ["扩充边防", "疆土 +6 · 统兵 +4 · 国库 -6 · 伤亡 +3", {territory:6,command:4,treasury:-6,casualties:3,armyInfluence:2}, "边境更远了，军报也更长了。"],
+    ["裁撤冗兵", "国库 +7 · 稳定 -4 · 军心 -4 · 制度 +5", {treasury:7,stability:-4,morale:-4,reform:5,armyInfluence:-4}, "少养一万人，账面更好看；但每一个被裁的人都有一张脸。"],
+    ["巡视地方", "稳定 +6 · 民望 +4 · 国库 -3", {stability:6,people:4,treasury:-3,suspicion:-2}, "你不再只看地图。你开始看道路、粮价和县衙门口的人。"]
+  ];
+  actions.forEach((a,i)=>{
+    const b=document.createElement("button");
+    b.disabled=st.stats.nationAP<=0;
+    b.innerHTML="<b>"+a[0]+"</b><small>"+a[1]+"</small>";
+    b.onclick=()=>nationAction(i);
+    box.appendChild(b);
+  });
+}
+function nationAction(i){
+  if(st.chapter<7 || st.stats.nationAP<=0)return;
+  const actions=[
+    ["整顿财政",{treasury:9,stability:2,people:-1,reform:2},"财政官会嫌你苛刻，但国库终于有了余粮。"],
+    ["赈济灾民",{people:8,stability:5,treasury:-8,grain:-3},"仓门再次打开。救下来的不是数字，而是一批具体的人。"],
+    ["整编禁军",{armyInfluence:-3,reform:8,stability:3,command:3,chenqiao:-3},"你把部分军权写进制度，而不是写进自己的名字。"],
+    ["扩充边防",{territory:6,command:4,treasury:-6,casualties:3,armyInfluence:2},"边境更远了，军报也更长了。"],
+    ["裁撤冗兵",{treasury:7,stability:-4,morale:-4,reform:5,armyInfluence:-4},"少养一万人，账面更好看；但每一个被裁的人都有一张脸。"],
+    ["巡视地方",{stability:6,people:4,treasury:-3,suspicion:-2},"你不再只看地图。你开始看道路、粮价和县衙门口的人。"]
+  ][i];
+  const effects=actions[1];
+  for(const k of Object.keys(effects)){
+    if(k==="chenqiao")st.stats.chenqiao=Math.max(0,st.stats.chenqiao+effects[k]);
+    else if(k in st.stats)st.stats[k]=Number(st.stats[k]||0)+effects[k];
+  }
+  st.stats.nationAP--;
+  st.history.push("国政： "+actions[0]+"。"+actions[2]);
+  if(st.stats.nationAP===0)nationTurnEnd();
+  clampNation();persist();render();
+}
+function nationTurnEnd(){
+  const s=st.stats;
+  st.stats.nationYear++;
+  st.stats.nationAP=3;
+  const roll=(st.n*13+st.stats.nationYear*7+s.people+s.stability)%6;
+  const events=[
+    ["北方旱情","粮价上涨，地方请求调粮。",{grain:-5,treasury:-4,stability:-3}],
+    ["军饷催报","前线要求补发军饷。",{treasury:-5,morale:-3,armyInfluence:2}],
+    ["地方盗乱","县镇出现小规模骚乱。",{stability:-5,people:-3,casualties:1}],
+    ["河运顺畅","粮船及时抵达，军民都松了一口气。",{grain:5,treasury:3,stability:3}],
+    ["新政见效","一项旧规终于开始稳定执行。",{reform:3,stability:4,court:2}],
+    ["边将请战","将领请求扩大前线，胜负尚未可知。",{armyInfluence:3,command:2,treasury:-3,casualties:2}]
+  ][roll];
+  for(const k of Object.keys(events[2])){
+    if(k==="casualties")s.casualties=Math.max(0,s.casualties+events[2][k]);
+    else if(k==="grain")s.grain=clamp(s.grain+events[2][k]);
+    else if(k in s)s[k]=Number(s[k]||0)+events[2][k];
+  }
+  st.history.push("年度结算 · "+events[0]+"："+nationEffectText(events[2]));
+  document.getElementById("nationEvent").textContent=events[0]+"："+nationEffectText(events[2]);
+}
+function nationEffectText(e){
+  return Object.keys(e).map(k=>(e[k]>0?"+":"")+e[k]+" "+({treasury:"国库",stability:"稳定",grain:"粮草",morale:"军心",armyInfluence:"军中影响",people:"民望",reform:"制度",command:"统兵",casualties:"伤亡指数",court:"朝廷评价"}[k]||k)).join(" · ");
 }
 function render(){
   const sc=SCENES[st.scene]||SCENES.s01;
