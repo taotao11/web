@@ -543,7 +543,23 @@ function readAuto(){
   if(parsed)return parsed;
   const safe=localStorage.getItem(CHECK_KEY);
   const fallback=safe?safeParse(safe):null;
-  return fallback||deepCopy(BASE);
+  if(fallback)return fallback;
+  // 从 0.2 版本迁移已有玩家进度，避免升级后丢档。
+  const oldRaw=localStorage.getItem("zhaohuang-auto-v2")||localStorage.getItem("zhaohuang-safe-v2");
+  const oldParsed=oldRaw?safeParse(oldRaw):null;
+  if(oldParsed){
+    oldParsed.version=VERSION;
+    oldParsed.stats={...BASE.stats,...oldParsed.stats};
+    oldParsed.chapter=1;
+    oldParsed.stats.month=1;
+    oldParsed.stats.actionPoints=3;
+    oldParsed.stats.command=0;
+    oldParsed.stats.court=0;
+    oldParsed.stats.armyInfluence=0;
+    oldParsed.stats.chenqiao=0;
+    return normalize(oldParsed);
+  }
+  return deepCopy(BASE);
 }
 let st=readAuto();
 
