@@ -10,7 +10,7 @@
 button{font:inherit}.app{max-width:1320px;min-height:100vh;margin:auto;background:var(--paper);display:grid;grid-template-columns:285px 1fr;box-shadow:0 0 90px #000}
 aside{background:linear-gradient(180deg,#211d19,#151311);color:#e5dac8;padding:28px 22px;position:sticky;top:0;height:100vh;overflow:auto}.seal{width:56px;height:56px;border:2px solid #b34a40;color:#d15a50;display:grid;place-items:center;writing-mode:vertical-rl;font-weight:700}.brand{font-size:25px;letter-spacing:5px;margin-top:18px}.sub{font:12px system-ui;color:#988d7d;line-height:1.6;margin-top:8px}.rule{height:1px;background:#423a31;margin:24px 0}.stat-title{font-size:11px;letter-spacing:3px;color:#9f9484;margin-bottom:10px}.stat{display:grid;grid-template-columns:1fr auto;gap:10px;margin:10px 0;font-size:13px}.bar{grid-column:1/-1;height:4px;background:#39332d;overflow:hidden}.bar i{display:block;height:100%;background:#9d352d;transition:width .35s}.people{margin:8px 0;padding:9px;border:1px solid #3b342c;font-size:12px;color:#c4b7a3}.people b{color:#e7d9c5;font-weight:500}.side-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.side-actions button{padding:9px 5px;border:1px solid #51483e;background:#24201c;color:#ddd0bd;cursor:pointer;font-size:12px}.side-actions button:hover{border-color:#a77a3e;color:#fff}.hint{font:11px system-ui;color:#756b5e;line-height:1.6;margin-top:18px}
 main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background:rgba(238,228,210,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;color:#74695b;font:12px system-ui;letter-spacing:2px}.top strong{color:var(--red)}.hero{padding:65px 9% 30px;max-width:1050px}.eyebrow{color:var(--red);font:11px system-ui;letter-spacing:4px}.chapter{font-size:12px;color:#827667;margin-top:9px}h1{font-size:48px;font-weight:500;line-height:1.2;margin:15px 0 27px}.lead{font-size:19px;line-height:2.15;white-space:pre-line}.scene-meta{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.tag{border:1px solid #c5b59d;padding:5px 9px;font:11px system-ui;color:#756858;background:#eee5d7}.choices{display:grid;gap:11px;margin-top:30px}.choice{position:relative;text-align:left;padding:18px 20px;border:1px solid #bcae98;background:var(--paper2);cursor:pointer;transition:.2s;color:#322b24}.choice:hover{transform:translateX(5px);border-color:var(--gold);box-shadow:0 7px 18px #6f5c4312}.choice.locked{opacity:.48;cursor:not-allowed}.choice .num{display:inline-grid;place-items:center;width:24px;height:24px;border:1px solid #b7a58c;border-radius:50%;margin-right:12px;color:var(--red);font:12px system-ui}.choice small{display:block;color:#887a69;font:11px system-ui;margin:8px 0 0 38px}.log{margin:35px 9%;max-width:900px;border-top:1px solid var(--line);padding-top:20px}.log h3{font-size:12px;letter-spacing:3px;font-weight:500;color:#806f5d}.log p{font-size:12px;color:#817465;margin:8px 0}.notice{margin:20px 0;padding:12px 14px;border-left:3px solid var(--red);background:#e5d8c4;font-size:12px;line-height:1.7}.modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;z-index:20}.modal.show{display:grid}.modal-card{width:min(540px,90vw);background:var(--paper);padding:28px;box-shadow:0 25px 80px #000}.modal-card h2{margin-top:0;font-weight:500}.modal-card p{line-height:1.8;color:#62574b;font-size:14px}.modal-card button{padding:10px 18px;background:#25211d;color:#eee0cb;border:0;cursor:pointer}.danger{color:var(--red)}footer{padding:24px 9%;border-top:1px solid var(--line);font:11px system-ui;color:#84776a}@media(max-width:800px){.app{display:block}.app aside{display:none}.hero{padding:42px 20px 25px}.top{padding:13px 20px}h1{font-size:34px}.lead{font-size:17px}.log{margin:30px 20px}footer{padding:20px}.choice{padding:16px}.side-actions{grid-template-columns:1fr 1fr}}
-</style>
+.battle{display:none;margin:0 0 28px;padding:18px;border:1px solid #b9a88f;background:linear-gradient(135deg,#e4d6bf,#f4ecdf);box-shadow:inset 0 0 35px #8d765020}.battle.show{display:block}.battle-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.battle-head strong{letter-spacing:3px;font-size:13px}.battle-head span{font:11px system-ui;color:#806f5d}.battlefield{position:relative;min-height:230px;border:1px solid #c0ae93;background:#d7c6a9;overflow:hidden;padding:20px}.terrain{position:absolute;inset:0;opacity:.22;background:repeating-linear-gradient(0deg,transparent 0 31px,#7e6b52 32px 33px),repeating-linear-gradient(90deg,transparent 0 49px,#7e6b52 50px 51px)}.army{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:center}.unit{min-height:72px;padding:10px;border:1px solid #a99678;background:#eee3d0cc;text-align:center;box-shadow:0 4px 12px #4d3b2412}.unit b{display:block;font-size:12px;margin-bottom:6px}.unit small{font:10px system-ui;color:#786b5c}.unit.you{border:2px solid #9d352d;background:#f1dfd0}.unit.enemy{background:#ddd0ba}.unit .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#9d352d;margin-right:5px}.battle-foot{display:flex;justify-content:space-between;margin-top:10px;font:10px system-ui;color:#786b5c}.pulse{animation:pulse .8s ease}@keyframes pulse{50%{transform:translateY(-3px);box-shadow:0 7px 20px #9d352d30}}</style>
 </head>
 <body>
 <div class="app">
@@ -51,6 +51,7 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
     <h1 id="title"></h1>
     <div class="scene-meta" id="tags"></div>
     <div class="lead" id="text"></div>
+    <section class="battle" id="battle"><div class="battle-head"><strong>高平战场态势</strong><span id="battleRound">战局尚未展开</span></div><div class="battlefield"><div class="terrain"></div><div class="army" id="battlefieldUnits"></div></div><div class="battle-foot"><span id="battleOwn">后周军：—</span><span id="battleEnemy">北汉军：—</span></div></section>
     <div class="notice" id="eventNotice" style="display:none"></div>
     <div class="choices" id="choices"></div>
   </section>
@@ -325,8 +326,29 @@ function persist(){
   try{localStorage.setItem(AUTO_KEY,payload);localStorage.setItem(CHECK_KEY,payload);return true}catch(e){return false}
 }
 function relText(v,names){if(v>=80)return names[0];if(v>=55)return names[1];if(v>=30)return names[2];if(v>0)return names[3];return names[4]}
+function renderBattle(sc){
+  const battle=document.getElementById("battle");
+  const active=/^s(23|37|38|39|40|41|42|43)$/.test(st.scene);
+  battle.classList.toggle("show",active);
+  if(!active)return;
+  const labels={
+    s23:["第一阵","左翼稳定","中军紧张","右翼动摇","后军待命","北汉骑军寻找缺口"],
+    s37:["右翼危急","你的部队压住右翼","中军等待支援","敌骑逼近侧后","溃兵重新结阵","北汉军：侧后威胁"],
+    s38:["中军推进","柴荣旗帜","你的部队靠近中军","右翼获得支援","敌骑重新集结","北汉军：阵线被迫调整"],
+    s39:["侧翼突入","石守信三百骑","你的部队接应","敌军侧翼裂开","中军暴露","北汉军：骑兵增援"],
+    s40:["后军观察","你的部队完整","友军开始追击","等待军令","敌军出现缺口","北汉军：准备撤退"],
+    s41:["混战","你的部队前推","友军重新站稳","北汉军后撤","伤兵与溃兵","战线正在移动"],
+    s42:["反击","柴荣下令","你的部队准备突击","石守信寻找侧翼","北汉阵形前突","后军开始跟进"],
+    s43:["决胜","你的部队逼近缺口","友军全面推进","敌军阵形动摇","退路正在打开","北汉军：开始溃退"]
+  }[st.scene];
+  document.getElementById("battleRound").textContent=labels[0];
+  document.getElementById("battlefieldUnits").innerHTML=labels.slice(1,5).map((x,i)=>'<div class="unit '+(i===0?'you':'')+(i===3?' enemy':'')+'"><b><span class="dot"></span>'+x+'</b><small>'+["军心 "+st.stats.morale,"威望 "+st.stats.prestige,"伤势 "+st.stats.wounds,"粮草 "+st.stats.grain][i]+"</small></div>").join("");
+  document.getElementById("battleOwn").textContent="后周军：军心 "+st.stats.morale+" · 伤势 "+st.stats.wounds;
+  document.getElementById("battleEnemy").textContent=labels[5];
+}
 function render(){
   const sc=SCENES[st.scene]||SCENES.s01;
+  renderBattle(sc);
   document.getElementById("date").textContent=sc.date;
   document.getElementById("chapter").textContent=sc.chapter;
   document.getElementById("progress").textContent="第 "+Math.min(36,st.n+1)+" 段";
