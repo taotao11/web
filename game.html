@@ -29,12 +29,36 @@ trust:["显德元年 · 战后","第二章 · 高平","高平之后","你挡在�
 power:["显德元年 · 战后","第二章 · 高平","高平之后","你开始懂得权力","你把责任推给别人。你没有受到惩罚，甚至因此得到更多信任。\n\n你第一次明白：朝堂上的刀，未必比战场上的刀更钝。”,[["保存","save"],["再试一次","restart"]]],
 end:["显德元年 · 战后","第二章 · 高平","尾声","你被看见了","高平之后，后周开始整顿禁军。真正的路不是战场，而是战场之后。\n\n有人开始向你靠拢，也有人开始记你的名字。\n\n多年以后，黄袍会落在谁的肩上，没人知道。至少现在，赵匡胤还只是赵匡胤。”,[["保存","save"],["再试一次","restart"]]]
 };
-let st=JSON.parse(localStorage.getItem("zhao-auto")||'null')||{s:"start",n:0};
+function readState(){
+  try{
+    const raw=localStorage.getItem("zhao-auto");
+    if(!raw)return {s:"start",n:0};
+    const x=JSON.parse(raw);
+    return x&&typeof x==="object"&&typeof x.s==="string"?x:{s:"start",n:0};
+  }catch(e){
+    try{localStorage.removeItem("zhao-auto")}catch(_){}
+    return {s:"start",n:0};
+  }
+}
+let st=readState();
 function draw(){let x=S[st.s]||S.start;for(let i=0;i<4;i++);document.querySelector("#date").textContent=x[0];document.querySelector("#chapter").textContent=x[1];document.querySelector("#k").textContent=x[2];document.querySelector("#title").textContent=x[3];document.querySelector("#text").textContent=x[4];document.querySelector("#n").textContent=st.n;let c=document.querySelector("#choices");c.innerHTML="";x[5].forEach((v,i)=>{let b=document.createElement("button");b.className="choice";b.innerHTML="<b>"+["一","二","三","四"][i]+"</b>"+v[0];b.onclick=()=>go(v[1]);c.appendChild(b)})}
-function persist(){localStorage.setItem("zhao-auto",JSON.stringify(st))}
+function persist(){
+  try{localStorage.setItem("zhao-auto",JSON.stringify(st));return true}
+  catch(e){return false}
+}
 function go(n){if(n==="restart"){restart();return}if(n==="save"){save(1);return}if(n==="load"){load(1);return}st.s=n;st.n++;persist();draw();scrollTo(0,0)}
 function save(i){localStorage.setItem("zhao-slot-"+i,JSON.stringify(st));alert("存档已保存")}
-function load(i){let x=localStorage.getItem("zhao-slot-"+i);if(x){st=JSON.parse(x);persist();draw()}else alert("这个存档位还是空的")}
+function load(i){
+  try{
+    let x=localStorage.getItem("zhao-slot-"+i);
+    if(!x){alert("这个存档位还是空的");return}
+    const parsed=JSON.parse(x);
+    if(!parsed||typeof parsed.s!=="string")throw new Error("bad save");
+    st=parsed;persist();draw();
+  }catch(e){
+    alert("这个存档损坏了，已跳过");
+  }
+}
 function restart(){if(confirm("重新开始？")){st={s:"start",n:0};persist();draw()}}
 draw();
 </script></html>
