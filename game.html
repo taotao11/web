@@ -1,6 +1,6 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>乱世赵匡胤 · 黄袍之前</title><style>
 *{box-sizing:border-box}body{margin:0;background:#151311;color:#2b2722;font-family:"Noto Serif SC","Songti SC",serif}.wrap{max-width:1150px;min-height:100vh;margin:auto;background:#e9dfce;display:grid;grid-template-columns:250px 1fr;box-shadow:0 0 80px #000}.side{background:#211e1a;color:#e4d8c5;padding:28px}.seal{border:2px solid #a83b32;color:#c34b40;width:54px;height:54px;display:grid;place-items:center;writing-mode:vertical-rl}.brand{font-size:24px;letter-spacing:4px;margin-top:20px}.muted{color:#9d9282;font:12px system-ui;margin-top:8px}.side button{width:100%;margin-top:8px;padding:9px;background:none;border:1px solid #51483e;color:#ddd0bd;cursor:pointer}.side .info{margin:35px 0;color:#b5a893;line-height:2}.main{min-width:0}.top{padding:20px 7%;border-bottom:1px solid #bdb09b;display:flex;justify-content:space-between;color:#756b5e;font-size:12px;letter-spacing:2px}.story{padding:55px 8%;max-width:900px}.k{color:#96342b;letter-spacing:4px;font-size:12px}h1{font-weight:500;font-size:44px;margin:16px 0 25px}.text{font-size:18px;line-height:2.1;white-space:pre-line}.choices{display:grid;gap:12px;margin-top:35px}.choice{text-align:left;padding:17px;border:1px solid #b9aa94;background:#f0e7d8;cursor:pointer;transition:.2s}.choice:hover{transform:translateX(5px);border-color:#a27a42}.choice b{color:#96342b;margin-right:12px}.foot{padding:18px 8%;border-top:1px solid #bdb09b;color:#84776a;font-size:11px}@media(max-width:700px){.wrap{display:block}.side{display:none}.story{padding:35px 20px}h1{font-size:32px}.text{font-size:16px}.top{padding:15px 20px}}
-</style><div class="wrap"><aside class="side"><div class="seal">乱世</div><div class="brand">黄袍之前</div><div class="muted">赵匡胤 · 五代十国互动史诗</div><div class="info">显德元年<br>选择：<span id="n">0</span> 次<br>自动存档：开启</div><button onclick="save(1)">保存存档</button><button onclick="load(1)">读取存档</button><button onclick="restart()">重新开始</button></aside><main class="main"><div class="top"><span id="date">显德元年 · 春</span><span id="chapter">第一章 · 饥火</span></div><section class="story"><div class="k" id="k"></div><h1 id="title"></h1><div class="text" id="text"></div><div class="choices" id="choices"></div></section><div class="foot">你的选择会留下痕迹。你未必知道痕迹在哪里。</div></main></div>
+</style><div class="wrap"><aside class="side"><div class="seal">乱世</div><div class="brand">黄袍之前</div><div class="muted">赵匡胤 · 五代十国互动史诗</div><div class="info">显德元年<br>选择：<span id="n">0</span> 次<br>自动存档：开启</div><div class="stats"><div class="stat"><span>军心</span><span id="morale">50</span></div><div class="stat"><span>威望</span><span id="prestige">20</span></div><div class="stat"><span>粮草</span><span id="grain">35</span></div><div class="stat"><span>柴荣信任</span><span id="trust">15</span></div><div class="stat"><span>民望</span><span id="people">10</span></div><div class="stat"><span>疑心</span><span id="suspicion">5</span></div></div><button onclick="save(1)">保存存档 Ⅰ</button><button onclick="save(2)">保存存档 Ⅱ</button><button onclick="save(3)">保存存档 Ⅲ</button><button onclick="load(1)">读取存档 Ⅰ</button><button onclick="load(2)">读取存档 Ⅱ</button><button onclick="load(3)">读取存档 Ⅲ</button><button onclick="restart()">重新开始</button></aside><main class="main"><div class="top"><span id="date">显德元年 · 春</span><span id="chapter">第一章 · 饥火</span></div><section class="story"><div class="k" id="k"></div><h1 id="title"></h1><div class="text" id="text"></div><div class="choices" id="choices"></div></section><div class="foot">你的选择会留下痕迹。你未必知道痕迹在哪里。</div></main></div>
 <script>
 const S={
 start:["后周显德元年","第一章 · 饥火","太祖末年","火还没有烧到城门","天刚亮，风从北面压下来。\n\n营地里没有炊烟。不是因为今日不做饭，而是已经没有什么可煮的了。\n\n昨夜有三个新兵偷了军粮，被老卒按在泥地里。你赶到时，其中一个已经没了气。\n\n亲兵递来一只空木碗。\n\n“赵都头，西仓说还够两日。”\n\n他顿了一下。\n\n“西仓的人说，最多一日。””,[["去查西仓","grain"],["让人把偷粮的新兵抬过来","soldier"],["什么也不说，先巡营","patrol"]]],
@@ -41,13 +41,24 @@ function readState(){
   }
 }
 let st=readState();
-function draw(){let x=S[st.s]||S.start;for(let i=0;i<4;i++);document.querySelector("#date").textContent=x[0];document.querySelector("#chapter").textContent=x[1];document.querySelector("#k").textContent=x[2];document.querySelector("#title").textContent=x[3];document.querySelector("#text").textContent=x[4];document.querySelector("#n").textContent=st.n;let c=document.querySelector("#choices");c.innerHTML="";x[5].forEach((v,i)=>{let b=document.createElement("button");b.className="choice";b.innerHTML="<b>"+["一","二","三","四"][i]+"</b>"+v[0];b.onclick=()=>go(v[1]);c.appendChild(b)})}
+const defaults={morale:50,prestige:20,grain:35,trust:15,people:10,suspicion:5};
+Object.keys(defaults).forEach(k=>{if(typeof st[k]!=="number")st[k]=defaults[k]});
+function clamp(v){return Math.max(0,Math.min(100,Math.round(v)))}
+const effects={
+grain:{grain:-4,morale:3,prestige:1},open:{grain:-10,morale:8,people:2},audit:{suspicion:4,prestige:2},
+appeal:{trust:3},punish:{morale:5,people:-6,prestige:2},mercy:{people:8,morale:-3},visit:{people:5},
+bell:{people:4,morale:-1},officers:{morale:4,trust:2},horses:{grain:-3,morale:2},share:{grain:-8,people:10,morale:-2},
+army:{grain:4,morale:7,people:-7},seize:{grain:12,suspicion:7,prestige:3},truth:{suspicion:8,prestige:4,trust:2},
+burn:{suspicion:-2},gaoping:{morale:2,prestige:2},victory:{prestige:8,morale:5},honor:{morale:8,trust:4},
+trust:{trust:10,prestige:2},power:{prestige:9,suspicion:6},end:{trust:2}
+};
+function draw(){let x=S[st.s]||S.start;for(let i=0;i<4;i++);document.querySelector("#date").textContent=x[0];document.querySelector("#chapter").textContent=x[1];document.querySelector("#k").textContent=x[2];document.querySelector("#title").textContent=x[3];document.querySelector("#text").textContent=x[4];document.querySelector("#n").textContent=st.n;["morale","prestige","grain","trust","people","suspicion"].forEach(k=>{let e=document.querySelector("#"+k);if(e)e.textContent=st[k]});let c=document.querySelector("#choices");c.innerHTML="";x[5].forEach((v,i)=>{let b=document.createElement("button");b.className="choice";b.innerHTML="<b>"+["一","二","三","四"][i]+"</b>"+v[0];b.onclick=()=>go(v[1]);c.appendChild(b)})}
 function persist(){
   try{localStorage.setItem("zhao-auto",JSON.stringify(st));return true}
   catch(e){return false}
 }
-function go(n){if(n==="restart"){restart();return}if(n==="save"){save(1);return}if(n==="load"){load(1);return}st.s=n;st.n++;persist();draw();scrollTo(0,0)}
-function save(i){localStorage.setItem("zhao-slot-"+i,JSON.stringify(st));alert("存档已保存")}
+function go(n){if(effects[n])Object.keys(effects[n]).forEach(k=>{st[k]=clamp(st[k]+effects[n][k])});if(n==="restart"){restart();return}if(n==="save"){save(1);return}if(n==="load"){load(1);return}st.s=n;st.n++;persist();draw();scrollTo(0,0)}
+function save(i){try{localStorage.setItem("zhao-slot-"+i,JSON.stringify(st));alert("存档 "+["Ⅰ","Ⅱ","Ⅲ"][i-1]+" 已保存")}catch(e){alert("浏览器禁止存储")}}
 function load(i){
   try{
     let x=localStorage.getItem("zhao-slot-"+i);
