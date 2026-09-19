@@ -1,75 +1,349 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>乱世赵匡胤 · 黄袍之前</title><style>
-*{box-sizing:border-box}body{margin:0;background:#151311;color:#2b2722;font-family:"Noto Serif SC","Songti SC",serif}.wrap{max-width:1150px;min-height:100vh;margin:auto;background:#e9dfce;display:grid;grid-template-columns:250px 1fr;box-shadow:0 0 80px #000}.side{background:#211e1a;color:#e4d8c5;padding:28px}.seal{border:2px solid #a83b32;color:#c34b40;width:54px;height:54px;display:grid;place-items:center;writing-mode:vertical-rl}.brand{font-size:24px;letter-spacing:4px;margin-top:20px}.muted{color:#9d9282;font:12px system-ui;margin-top:8px}.side button{width:100%;margin-top:8px;padding:9px;background:none;border:1px solid #51483e;color:#ddd0bd;cursor:pointer}.side .info{margin:35px 0;color:#b5a893;line-height:2}.main{min-width:0}.top{padding:20px 7%;border-bottom:1px solid #bdb09b;display:flex;justify-content:space-between;color:#756b5e;font-size:12px;letter-spacing:2px}.story{padding:55px 8%;max-width:900px}.k{color:#96342b;letter-spacing:4px;font-size:12px}h1{font-weight:500;font-size:44px;margin:16px 0 25px}.text{font-size:18px;line-height:2.1;white-space:pre-line}.choices{display:grid;gap:12px;margin-top:35px}.choice{text-align:left;padding:17px;border:1px solid #b9aa94;background:#f0e7d8;cursor:pointer;transition:.2s}.choice:hover{transform:translateX(5px);border-color:#a27a42}.choice b{color:#96342b;margin-right:12px}.foot{padding:18px 8%;border-top:1px solid #bdb09b;color:#84776a;font-size:11px}@media(max-width:700px){.wrap{display:block}.side{display:none}.story{padding:35px 20px}h1{font-size:32px}.text{font-size:16px}.top{padding:15px 20px}}
-</style><div class="wrap"><aside class="side"><div class="seal">乱世</div><div class="brand">黄袍之前</div><div class="muted">赵匡胤 · 五代十国互动史诗</div><div class="info">显德元年<br>选择：<span id="n">0</span> 次<br>自动存档：开启</div><div class="stats"><div class="stat"><span>军心</span><span id="morale">50</span></div><div class="stat"><span>威望</span><span id="prestige">20</span></div><div class="stat"><span>粮草</span><span id="grain">35</span></div><div class="stat"><span>柴荣信任</span><span id="trust">15</span></div><div class="stat"><span>民望</span><span id="people">10</span></div><div class="stat"><span>疑心</span><span id="suspicion">5</span></div></div><button onclick="save(1)">保存存档 Ⅰ</button><button onclick="save(2)">保存存档 Ⅱ</button><button onclick="save(3)">保存存档 Ⅲ</button><button onclick="load(1)">读取存档 Ⅰ</button><button onclick="load(2)">读取存档 Ⅱ</button><button onclick="load(3)">读取存档 Ⅲ</button><button onclick="restart()">重新开始</button></aside><main class="main"><div class="top"><span id="date">显德元年 · 春</span><span id="chapter">第一章 · 饥火</span></div><section class="story"><div class="k" id="k"></div><h1 id="title"></h1><div class="text" id="text"></div><div class="choices" id="choices"></div></section><div class="foot">你的选择会留下痕迹。你未必知道痕迹在哪里。</div></main></div>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>乱世赵匡胤 · 黄袍之前</title>
+<style>
+:root{--ink:#28231e;--paper:#eee4d2;--paper2:#f7f0e3;--dark:#171513;--muted:#8b7d6c;--red:#9d352d;--gold:#a77a3e;--line:#c8b99f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#100f0e;color:var(--ink);font-family:"Noto Serif SC","Songti SC","STSong",serif}
+button{font:inherit}.app{max-width:1320px;min-height:100vh;margin:auto;background:var(--paper);display:grid;grid-template-columns:285px 1fr;box-shadow:0 0 90px #000}
+aside{background:linear-gradient(180deg,#211d19,#151311);color:#e5dac8;padding:28px 22px;position:sticky;top:0;height:100vh;overflow:auto}.seal{width:56px;height:56px;border:2px solid #b34a40;color:#d15a50;display:grid;place-items:center;writing-mode:vertical-rl;font-weight:700}.brand{font-size:25px;letter-spacing:5px;margin-top:18px}.sub{font:12px system-ui;color:#988d7d;line-height:1.6;margin-top:8px}.rule{height:1px;background:#423a31;margin:24px 0}.stat-title{font-size:11px;letter-spacing:3px;color:#9f9484;margin-bottom:10px}.stat{display:grid;grid-template-columns:1fr auto;gap:10px;margin:10px 0;font-size:13px}.bar{grid-column:1/-1;height:4px;background:#39332d;overflow:hidden}.bar i{display:block;height:100%;background:#9d352d;transition:width .35s}.people{margin:8px 0;padding:9px;border:1px solid #3b342c;font-size:12px;color:#c4b7a3}.people b{color:#e7d9c5;font-weight:500}.side-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.side-actions button{padding:9px 5px;border:1px solid #51483e;background:#24201c;color:#ddd0bd;cursor:pointer;font-size:12px}.side-actions button:hover{border-color:#a77a3e;color:#fff}.hint{font:11px system-ui;color:#756b5e;line-height:1.6;margin-top:18px}
+main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background:rgba(238,228,210,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;color:#74695b;font:12px system-ui;letter-spacing:2px}.top strong{color:var(--red)}.hero{padding:65px 9% 30px;max-width:1050px}.eyebrow{color:var(--red);font:11px system-ui;letter-spacing:4px}.chapter{font-size:12px;color:#827667;margin-top:9px}h1{font-size:48px;font-weight:500;line-height:1.2;margin:15px 0 27px}.lead{font-size:19px;line-height:2.15;white-space:pre-line}.scene-meta{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.tag{border:1px solid #c5b59d;padding:5px 9px;font:11px system-ui;color:#756858;background:#eee5d7}.choices{display:grid;gap:11px;margin-top:30px}.choice{position:relative;text-align:left;padding:18px 20px;border:1px solid #bcae98;background:var(--paper2);cursor:pointer;transition:.2s;color:#322b24}.choice:hover{transform:translateX(5px);border-color:var(--gold);box-shadow:0 7px 18px #6f5c4312}.choice.locked{opacity:.48;cursor:not-allowed}.choice .num{display:inline-grid;place-items:center;width:24px;height:24px;border:1px solid #b7a58c;border-radius:50%;margin-right:12px;color:var(--red);font:12px system-ui}.choice small{display:block;color:#887a69;font:11px system-ui;margin:8px 0 0 38px}.log{margin:35px 9%;max-width:900px;border-top:1px solid var(--line);padding-top:20px}.log h3{font-size:12px;letter-spacing:3px;font-weight:500;color:#806f5d}.log p{font-size:12px;color:#817465;margin:8px 0}.notice{margin:20px 0;padding:12px 14px;border-left:3px solid var(--red);background:#e5d8c4;font-size:12px;line-height:1.7}.modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;z-index:20}.modal.show{display:grid}.modal-card{width:min(540px,90vw);background:var(--paper);padding:28px;box-shadow:0 25px 80px #000}.modal-card h2{margin-top:0;font-weight:500}.modal-card p{line-height:1.8;color:#62574b;font-size:14px}.modal-card button{padding:10px 18px;background:#25211d;color:#eee0cb;border:0;cursor:pointer}.danger{color:var(--red)}footer{padding:24px 9%;border-top:1px solid var(--line);font:11px system-ui;color:#84776a}@media(max-width:800px){.app{display:block}.app aside{display:none}.hero{padding:42px 20px 25px}.top{padding:13px 20px}h1{font-size:34px}.lead{font-size:17px}.log{margin:30px 20px}footer{padding:20px}.choice{padding:16px}.side-actions{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="seal">乱世</div>
+  <div class="brand">黄袍之前</div>
+  <div class="sub">赵匡胤 · 五代十国互动史诗<br>第一章：饥火 → 高平</div>
+  <div class="rule"></div>
+  <div class="stat-title">当前状态</div>
+  <div class="stat"><span>军心</span><b id="morale">50</b><div class="bar"><i id="moraleBar"></i></div></div>
+  <div class="stat"><span>威望</span><b id="prestige">20</b><div class="bar"><i id="prestigeBar"></i></div></div>
+  <div class="stat"><span>粮草</span><b id="grain">35</b><div class="bar"><i id="grainBar"></i></div></div>
+  <div class="stat"><span>民望</span><b id="people">10</b><div class="bar"><i id="peopleBar"></i></div></div>
+  <div class="stat"><span>疑心</span><b id="suspicion">5</b><div class="bar"><i id="suspicionBar"></i></div></div>
+  <div class="stat"><span>柴荣信任</span><b id="trust">15</b><div class="bar"><i id="trustBar"></i></div></div>
+  <div class="rule"></div>
+  <div class="stat-title">人物关系</div>
+  <div class="people"><b>柴荣</b><br><span id="chR">谨慎观察</span></div>
+  <div class="people"><b>赵普</b><br><span id="puR">尚未结识</span></div>
+  <div class="people"><b>韩通</b><br><span id="htR">军中中立</span></div>
+  <div class="people"><b>老卒石守信</b><br><span id="ssR">尚未建立信任</span></div>
+  <div class="rule"></div>
+  <div class="side-actions">
+    <button onclick="manualSave(1)">存档Ⅰ</button><button onclick="manualLoad(1)">读档Ⅰ</button>
+    <button onclick="manualSave(2)">存档Ⅱ</button><button onclick="manualLoad(2)">读档Ⅱ</button>
+    <button onclick="manualSave(3)">存档Ⅲ</button><button onclick="manualLoad(3)">读档Ⅲ</button>
+    <button onclick="restart()">重新开始</button><button onclick="showHelp()">玩法说明</button>
+  </div>
+  <div class="hint">自动存档：开启<br>版本：0.2 · 第一章垂直切片<br>存档损坏时会自动回退到安全检查点。</div>
+</aside>
+
+<main>
+  <div class="top"><span id="date">显德元年 · 春</span><span id="chapter">第一章 · 饥火</span><strong id="progress">序章</strong></div>
+  <section class="hero">
+    <div class="eyebrow" id="location">太祖末年</div>
+    <div class="chapter" id="sceneNo"></div>
+    <h1 id="title"></h1>
+    <div class="scene-meta" id="tags"></div>
+    <div class="lead" id="text"></div>
+    <div class="notice" id="eventNotice" style="display:none"></div>
+    <div class="choices" id="choices"></div>
+  </section>
+  <section class="log"><h3>选择留下的痕迹</h3><div id="history"></div></section>
+  <footer>历史人物与历史事件作为骨架；具体对白、支线人物与玩家选择为游戏化创作。惨状通过处境、后果与人物命运呈现，不以廉价血腥作为刺激。</footer>
+</main>
+</div>
+<div class="modal" id="modal"><div class="modal-card"><h2 id="modalTitle">存档</h2><p id="modalText"></p><button onclick="closeModal()">知道了</button></div></div>
+
 <script>
-const S={
-start:["后周显德元年","第一章 · 饥火","太祖末年","火还没有烧到城门","天刚亮，风从北面压下来。\n\n营地里没有炊烟。不是因为今日不做饭，而是已经没有什么可煮的了。\n\n昨夜有三个新兵偷了军粮，被老卒按在泥地里。你赶到时，其中一个已经没了气。\n\n亲兵递来一只空木碗。\n\n“赵都头，西仓说还够两日。”\n\n他顿了一下。\n\n“西仓的人说，最多一日。””,[["去查西仓","grain"],["让人把偷粮的新兵抬过来","soldier"],["什么也不说，先巡营","patrol"]]],
-grain:["显德元年 · 春","第一章 · 饥火","西仓","一把米，能换多少人的命","西仓比你想象得更空。\n\n仓吏跪在地上：“赵都头，不是小人克扣。三日前，司里来过人，说要调一批粮。”\n\n角落里，一个抱孩子的妇人忽然笑了一声。\n\n“军爷，别问了。问了也没有粮。””,[["开仓","open"],["封仓，查账","audit"],["拿军令去找上官","appeal"]]],
-soldier:["显德元年 · 春","第一章 · 饥火","营门","他们不是第一个偷粮的人","两个新兵跪在营门。年长的那个只有十七八岁。\n\n“家里还有四个人。”\n\n“前日，他们把我弟弟卖了。”\n\n他抬头：“赵都头，我没有偷。我只是拿回我自己的。””,[["按军法处置","punish"],["放他们回家","mercy"],["让他们带你去看家里","visit"]]],
-patrol:["显德元年 · 春","第一章 · 饥火","营中","没人谈战争，所有人都在谈吃什么","你沿营栅走。有人在磨刀，有人在拆马鞍，还有人把一块皮革煮了三遍。\n\n一个老兵问：“城里还有肉吗？”\n\n对方沉默。\n\n远处忽然响起钟声。不是敌袭。是城里又有人死了。”,[["查钟声","bell"],["召集军官","officers"],["去看马厩","horses"]]],
-open:["显德元年 · 午后","第一章 · 饥火","西仓","你打开了仓门","米落进木桶的声音很轻，营里的人却像听见了鼓。\n\n你命人按军籍分粮。第一轮没有人敢抢。第二轮开始，有人哭了。\n\n到傍晚，粮只剩不到三成。\n\n一个副将问：“你这样做，明日拿什么打仗？”\n\n夜里，一个孩子在营外问：“军爷，明天还有吗？””,[["把粮分给城中饥民","share"],["留下军粮","army"],["秘密派人抢回被调走的粮","seize"]]],
-audit:["显德元年 · 午后","第一章 · 饥火","账房","账本比尸体更会说话","三本账放在一起，数字对不上。差额足够让营地再撑十二日。\n\n仓吏说：“粮不是被一个人拿走的，是一层一层被拿走的。每个人只拿一点，于是没有一个人觉得自己是罪人。”\n\n“您若真查到底，明日便有人来查您。””,[["查到底","truth"],["烧掉账本","burn"],["把账本交给上官","appeal"]]],
-appeal:["显德元年 · 黄昏","第一章 · 饥火","上官府","门里的人吃得很好","你等了两个时辰。终于有人出来。\n\n“粮道断了。”\n\n“什么时候恢复？”\n\n“看天。”\n\n门缝里飘出肉香。那人低声说：“赵都头，别把事情做绝。””,[["忍下","gaoping"],["把话说死","death"],["记下这张脸","gaoping"]]],
-punish:["显德元年 · 午后","第一章 · 饥火","军法","刀落下去的时候，没有人欢呼","军法执行得很快。年轻的新兵直到最后都没有哭。\n\n他一直问：“我娘怎么办？”\n\n当天夜里，营里没有人再偷粮。也没有人再与你说笑。”,[["继续巡营","gaoping"],["去找那个新兵的家人","visit"]]],
-mercy:["显德元年 · 午后","第一章 · 饥火","营门","你放走了他们","两个年轻人消失在风里。当天夜里，三十七个人来找你。\n\n他们没有偷粮，只问：“若我们家里也快饿死了呢？”\n\n你第一次发现，宽恕也会成为一种命令。”,[["让军士分一部分口粮","share"],["告诉他们各自想办法","gaoping"]]],
-visit:["显德元年 · 夜","第一章 · 饥火","城南","门后面的人","城南的街比营里安静，安静得不正常。\n\n一户人家门口坐着老妇人。她没有求粮，只问：“军爷，明日还打仗吗？”\n\n你说：“不知道。”\n\n她点头：“那就好。不打仗，孩子还能睡一夜。””,[["给她粮","share"],["问她城里发生了什么","bell"],["离开","gaoping"]]],
-bell:["显德元年 · 夜","第一章 · 饥火","钟楼","钟声不是给活人报平安的","钟楼下躺着七个人。守钟人说，他们都是今天死的。\n\n“为什么敲钟？”\n\n“让家里人来领。”\n\n你问：“领回去做什么？”\n\n守钟人没有回答。\n\n风从巷子里吹出来。你忽然不想知道答案。”,[["留下帮忙","gaoping"],["离开","gaoping"],["问最近有没有陌生军队进城","gaoping"]]],
-horses:["显德元年 · 夜","第一章 · 饥火","马厩","军马也会饿","二十七匹马已经瘦得见骨。马夫说有人昨夜割了一匹马。不是为了逃，是为了吃。\n\n“赵都头，若明日再断粮，您还护得住这些马吗？””,[["杀两匹救全营","gaoping"],["严禁动马","gaoping"],["把马迁出城","gaoping"]]],
-share:["显德二年 · 春","第一章 · 余烬","余烬","你救下了一些人","你不知道救下了多少。第二天清晨，营门外多了几个人。有人把一块粗布放在门槛上。\n\n布上只有四个字：\n\n“赵军爷，活命。”\n\n这不是荣耀。只是乱世里最轻的一句感谢。\n\n更北面的战报已经到了。北汉来犯。柴荣决定亲征。”,[["整军","gaoping"],["留一部分人守城","gaoping"]]],
-army:["显德元年 · 春","第一章 · 余烬","军营","你保住了军粮","军队撑过了最难的一夜。但城里没有。第三天，营门外出现了一排白布。\n\n有人说你是个好将领。城里的人却不这么想。\n\n北面的军报也到了。”,[["整军出发","gaoping"],["回头看看城里","bell"]]],
-seize:["显德元年 · 夜","第一章 · 饥火","黑路","你第一次越过了线","你派出去的人带回了两车粮。他们还带回来一个消息：粮车属于一位与军中大人物关系密切的商人。\n\n副将问：“要不要还回去？”\n\n你看着那两车粮。没人说话。\n\n从这一夜开始，你知道自己已经有了仇家。”,[["分粮","gaoping"],["留下作为军需","gaoping"]]],
-truth:["显德元年 · 夜","第一章 · 饥火","账本","有些名字不能现在念出来","你找到了三个名字。其中一个来自上官府，另一个来自军中。第三个名字后面没有官职，只有一个朱红印记。\n\n外面有人敲门：“赵都头，睡了吗？”\n\n你没有回答。”,[["把账本藏起来","gaoping"],["带着账本去见柴荣","gaoping"],["烧掉账本","gaoping"]]],
-burn:["显德元年 · 夜","第一章 · 饥火","灰烬","火很快吞掉了纸","账本化成灰。你没有证据，也因此没有把柄。第二天，那个仓吏消失了。\n\n有时候不留下证据，本身也是一种选择。”,[["追查仓吏","gaoping"],["放下此事","gaoping"]]],
-officers:["显德元年 · 午后","第一章 · 饥火","军议","没人愿意先说话","军官们坐成一排。每个人都知道粮不够。每个人也都在等别人先提出解决办法。\n\n最后，一个老将说：“打仗前先别让自己人饿死。”\n\n另一个人冷笑。\n\n“那你拿什么打？””,[["整军北上","gaoping"],["先稳住军心","gaoping"]]],
-death:["显德元年","终局 · 一次错误","死亡","你死在门外","调令之后，你带着剩下的人离营。夜色里，伏兵等了很久。\n\n你甚至没有看见第一支箭从哪里来。\n\n赵匡胤，卒。\n\n历史没有走到陈桥。”,[["从存档继续","load"],["重新开始","restart"]]],
-gaoping:["显德元年 · 四月","第二章 · 高平","高平","真正的战场没有选择题","后周军阵在风里展开。北汉兵已经压上来。右军先乱，有人开始退，有人已经跪下。\n\n柴荣亲自向前。你看见箭雨落下来。\n\n这一刻，过去所有选择留下的东西，都在你身边。有人信你，有人怕你，有人等你犯错。\n\n你只有很短的时间。”,[["率兵突击","victory"],["先稳住溃兵","honor"],["保护柴荣","trust"],["趁乱追击","power"]]],
-victory:["显德元年 · 战后","第二章 · 高平","高平之后","你被看见了","你率兵压向北汉军阵。溃军开始后退。后周赢了。\n\n但你看见更多的是伤兵。有人喊万岁，也有人在找自己的兄弟。\n\n柴荣开始重新整顿禁军。你也被看见了。”,[["接受升迁","end"],["把功劳让给部下","end"]]],
-honor:["显德元年 · 战后","第二章 · 高平","高平之后","你赢得了人的命","你没有成为战场上最耀眼的人，但你带回来的人更多。\n\n军中有人开始愿意把背后交给你。\n\n这是权力最慢的一种积累，也是最难失去的一种。”,[["保存","save"],["再试一次","restart"]]],
-trust:["显德元年 · 战后","第二章 · 高平","高平之后","你挡在了柴荣前面","箭擦过你的肩。柴荣没有退，你也没有。\n\n战后，他问：“若今日败了呢？”\n\n你答：“那便一起死。”\n\n这是你们之间第一次真正的信任。”,[["继续","honor"],["保存","save"]]],
-power:["显德元年 · 战后","第二章 · 高平","高平之后","你开始懂得权力","你把责任推给别人。你没有受到惩罚，甚至因此得到更多信任。\n\n你第一次明白：朝堂上的刀，未必比战场上的刀更钝。”,[["保存","save"],["再试一次","restart"]]],
-end:["显德元年 · 战后","第二章 · 高平","尾声","你被看见了","高平之后，后周开始整顿禁军。真正的路不是战场，而是战场之后。\n\n有人开始向你靠拢，也有人开始记你的名字。\n\n多年以后，黄袍会落在谁的肩上，没人知道。至少现在，赵匡胤还只是赵匡胤。”,[["保存","save"],["再试一次","restart"]]]
+const VERSION=2, AUTO_KEY="zhaohuang-auto-v2", CHECK_KEY="zhaohuang-safe-v2";
+const BASE={version:VERSION,scene:"s01",n:0,chapter:1,flags:{},rel:{chai:15,pu:0,han:0,shi:0},stats:{morale:50,prestige:20,grain:35,people:10,suspicion:5,trust:15},history:[],dead:false};
+
+const SCENES={
+s01:{date:"显德元年 · 春",chapter:"第一章 · 饥火",loc:"后周军营",title:"火还没有烧到城门",text:"天刚亮，风从北面压下来。\n\n营地里没有炊烟。不是今日不做饭，而是已经没有什么可煮的了。\n\n昨夜，三个新兵偷了军粮。老卒把他们按在泥地里，其中一个已经没了气。\n\n亲兵递来一只空木碗。\n\n“赵都头，西仓说还够两日。”\n他顿了顿。\n“西仓的人说，最多一日。”",tags:["饥荒","军营","第一次抉择"],choices:[
+["去查西仓","s02",{grain:2,flag:["checkedGrain"]}],
+["让人把偷粮的新兵带来","s03",{shi:4,flag:["metSoldiers"]}],
+["什么也不说，先巡营","s04",{morale:2,flag:["patrolled"]}]
+]},
+s02:{date:"显德元年 · 春",chapter:"第一章 · 饥火",loc:"西仓",title:"一把米，能换多少人的命",text:"西仓比你想象得更空。仓吏跪在地上：“赵都头，不是小人克扣。三日前，司里来过人，说要调一批粮。”\n\n角落里，一个抱孩子的妇人忽然笑了一声。\n\n“军爷，别问了。问了也没有粮。”\n\n你看着粮仓。军籍上的数字很完整，木仓里的粮却少得可怜。",tags:["粮草","民生"],choices:[
+["开仓，按军籍发粮","s05",{grain:-8,morale:7,people:2,flag:["openedGrain"]}],
+["封仓查账，不许任何人进出","s06",{suspicion:3,prestige:2,flag:["audited"]}],
+["拿军令去找上官","s07",{trust:2,flag:["appealed"]}]
+]},
+s03:{date:"显德元年 · 春",chapter:"第一章 · 饥火",loc:"营门",title:"他们不是第一个偷粮的人",text:"两个新兵跪在营门。年长的只有十七八岁。\n\n“家里还有四个人。”\n\n“前日，他们把我弟弟卖了。”\n\n他抬头：“赵都头，我没有偷。我只是拿回我自己的。”\n\n旁边的老卒低声说：“若今天不立军法，明天就没人守仓了。”",tags:["军法","家庭"],choices:[
+["按军法处置","s08",{morale:6,people:-7,prestige:3,rel:{shi:-3},flag:["punished"]}],
+["放他们回家","s09",{people:8,morale:-3,rel:{shi:-2},flag:["mercy"]}],
+["带你去看他们的家","s10",{people:5,rel:{shi:5},flag:["visitedPoor"]}]
+]},
+s04:{date:"显德元年 · 春",chapter:"第一章 · 饥火",loc:"营中",title:"没人谈战争，所有人都在谈吃什么",text:"你沿营栅走。有人在磨刀，有人在拆马鞍，还有人把一块皮革煮了三遍。\n\n一个老兵问：“城里还有肉吗？”\n\n没人回答。\n\n远处响起钟声。不是敌袭。是城里又有人死了。\n\n石守信站在马厩边看着你：“都头，军心不是喊出来的。”",tags:["军心","石守信"],choices:[
+["去查钟声","s11",{people:4,rel:{shi:3},flag:["bell"]}],
+["召集军官军议","s12",{morale:4,rel:{han:3},flag:["officers"]}],
+["去看马厩","s13",{grain:-3,morale:2,rel:{shi:2},flag:["horses"]}]
+]},
+s05:{date:"显德元年 · 午后",chapter:"第一章 · 饥火",loc:"西仓",title:"你打开了仓门",text:"米落进木桶的声音很轻，营里的人却像听见了鼓。\n\n你命人按军籍分粮。第一轮没有人敢抢。第二轮开始，有人哭了。\n\n到傍晚，粮只剩不到三成。一个副将问：“你这样做，明日拿什么打仗？”\n\n夜里，一个孩子在营外问：“军爷，明天还有吗？”",tags:["粮草下降","民望上升"],choices:[
+["把粮分给城中饥民","s14",{grain:-9,people:10,morale:-2,flag:["shared"]}],
+["留下军粮，保证明日出兵","s15",{grain:4,morale:7,people:-7,flag:["keptArmyGrain"]}],
+["秘密派人抢回被调走的粮","s16",{grain:10,suspicion:7,prestige:3,rel:{han:-3},flag:["seized"]}]
+]},
+s06:{date:"显德元年 · 午后",chapter:"第一章 · 饥火",loc:"账房",title:"账本比尸体更会说话",text:"三本账放在一起，数字对不上。差额足够让营地再撑十二日。\n\n仓吏说：“粮不是被一个人拿走的，是一层一层被拿走的。每个人只拿一点，于是没有一个人觉得自己是罪人。”\n\n“您若真查到底，明日便有人来查您。”",tags:["调查","权力"],choices:[
+["查到底","s17",{suspicion:9,prestige:4,flag:["truth"]}],
+["烧掉账本，保住仓吏","s18",{suspicion:-2,people:2,rel:{pu:1},flag:["burnedBooks"]}],
+["把账本交给上官","s07",{trust:3,flag:["gaveBooks"]}]
+]},
+s07:{date:"显德元年 · 黄昏",chapter:"第一章 · 饥火",loc:"上官府",title:"门里的人吃得很好",text:"你等了两个时辰。终于有人出来。\n\n“粮道断了。”\n\n“什么时候恢复？”\n\n“看天。”\n\n门缝里飘出肉香。那人低声说：“赵都头，别把事情做绝。”\n\n你忽然明白：粮荒不是单纯的天灾。",tags:["权力","疑心"],choices:[
+["忍下，先保住军队","s19",{trust:-1,flag:["endured"]}],
+["把话说死","s20",{suspicion:8,flag:["confronted"]}],
+["记下这张脸，暂不翻案","s19",{prestige:2,flag:["remembered"]}]
+]},
+s08:{date:"显德元年 · 午后",chapter:"第一章 · 饥火",loc:"军法场",title:"刀落下去的时候，没有人欢呼",text:"军法执行得很快。年轻的新兵直到最后都没有哭。\n\n他一直问：“我娘怎么办？”\n\n当天夜里，营里没有人再偷粮。也没有人再与你说笑。\n\n石守信没有评价，只把刀擦了很久。",tags:["军法","代价"],choices:[
+["去找那个新兵的家人","s10",{people:3,rel:{shi:2},flag:["facedCost"]}],
+["继续巡营","s19",{morale:2,prestige:2}]
+]},
+s09:{date:"显德元年 · 午后",chapter:"第一章 · 饥火",loc:"营门",title:"宽恕也会成为一种命令",text:"两个年轻人消失在风里。当天夜里，三十七个人来找你。\n\n他们没有偷粮，只问：“若我们家里也快饿死了呢？”\n\n你第一次发现，宽恕不是一句话，而是一种责任。\n\n石守信看了你一眼：“你得给他们一个能活下去的办法。”",tags:["民望","责任"],choices:[
+["让军士分一部分口粮","s14",{grain:-7,people:8,morale:-2,rel:{shi:4}}],
+["告诉他们各自想办法","s19",{people:-4,morale:3,rel:{shi:-3}}]
+]},
+s10:{date:"显德元年 · 夜",chapter:"第一章 · 饥火",loc:"城南",title:"门后面的人",text:"城南的街比营里安静，安静得不正常。\n\n一户人家门口坐着老妇人。她没有求粮，只问：“军爷，明日还打仗吗？”\n\n你说：“不知道。”\n\n她点头：“那就好。不打仗，孩子还能睡一夜。”\n\n回营路上，你遇见一个读书人。他在路边捡一块发霉的饼。",tags:["民生","赵普线索"],choices:[
+["把自己的干粮给他","s21",{grain:-3,people:6,rel:{pu:5},flag:["metPu"]}],
+["问他城里发生了什么","s11",{people:2,rel:{pu:2},flag:["metPu"]}],
+["离开","s19",{rel:{pu:1}}]
+]},
+s11:{date:"显德元年 · 夜",chapter:"第一章 · 饥火",loc:"钟楼",title:"钟声不是给活人报平安的",text:"钟楼下躺着七个人。守钟人说，他们都是今天死的。\n\n“为什么敲钟？”\n\n“让家里人来领。”\n\n你问：“领回去做什么？”\n\n守钟人没有回答。\n\n风从巷子里吹出来。你忽然不想知道答案。",tags:["饥荒","民生"],choices:[
+["留下帮忙","s14",{people:5,morale:-2}],
+["问最近有没有陌生军队进城","s22",{suspicion:2,rel:{han:1}}],
+["离开","s19",{morale:1}]
+]},
+s12:{date:"显德元年 · 午后",chapter:"第一章 · 饥火",loc:"军议",title:"没人愿意先说话",text:"军官们坐成一排。每个人都知道粮不够，每个人也在等别人先提出解决办法。\n\n最后，一个老将说：“打仗前先别让自己人饿死。”\n\n另一个人冷笑：“那你拿什么打？”\n\n韩通把手按在桌上：“真正的问题是，北面的军报已经来了。”",tags:["军议","战前"],choices:[
+["先稳住军心","s19",{morale:6,rel:{han:4}}],
+["整军准备北上","s22",{prestige:3,morale:2,rel:{han:2},flag:["warPrep"]}],
+["追问粮道责任","s17",{suspicion:4,prestige:3}]
+]},
+s13:{date:"显德元年 · 夜",chapter:"第一章 · 饥火",loc:"马厩",title:"军马也会饿",text:"二十七匹马已经瘦得见骨。马夫说有人昨夜割了一匹马。不是为了逃，是为了吃。\n\n“赵都头，若明日再断粮，您还护得住这些马吗？”\n\n石守信低声说：“人饿急了，军法会变得很薄。”",tags:["军马","军心"],choices:[
+["杀两匹救全营","s14",{grain:5,morale:-1,rel:{shi:-2}}],
+["严禁动马","s19",{morale:4,rel:{shi:2}}],
+["把马迁出城","s22",{grain:-2,morale:2,prestige:2,rel:{shi:3}}]
+]},
+s14:{date:"显德元年 · 深夜",chapter:"第一章 · 余烬",loc:"营门",title:"你救下了一些人",text:"你不知道救下了多少。第二天清晨，营门外多了几个人。有人把一块粗布放在门槛上。\n\n布上只有四个字：\n\n“赵军爷，活命。”\n\n这不是荣耀。只是乱世里最轻的一句感谢。\n\n更北面的战报已经到了。北汉来犯。柴荣决定亲征。",tags:["民望","战争将至"],choices:[
+["整军北上","s23",{prestige:3,morale:3,flag:["march"]}],
+["留一部分人守城","s24",{people:4,morale:1,flag:["garrison"]}]
+]},
+s15:{date:"显德元年 · 春末",chapter:"第一章 · 饥火",loc:"军营",title:"你保住了军粮",text:"军队撑过了最难的一夜。但城里没有。第三天，营门外出现一排白布。\n\n有人说你是个好将领。城里的人却不这么想。\n\n北面的军报也到了。柴荣决定亲征。",tags:["军队","民望下降"],choices:[
+["整军出发","s23",{prestige:3,morale:4,flag:["march"]}],
+["回头看看城里","s24",{people:3,flag:["garrison"]}]
+]},
+s16:{date:"显德元年 · 夜",chapter:"第一章 · 饥火",loc:"黑路",title:"你第一次越过了线",text:"你派出去的人带回两车粮。他们还带回来一个消息：粮车属于一位与军中大人物关系密切的商人。\n\n副将问：“要不要还回去？”\n\n你看着那两车粮。没人说话。\n\n从这一夜开始，你知道自己已经有了仇家。",tags:["越界","疑心"],choices:[
+["分粮","s14",{grain:7,people:5,suspicion:4}],
+["留下作为军需","s23",{grain:10,suspicion:8,prestige:5}]
+]},
+s17:{date:"显德元年 · 夜",chapter:"第一章 · 饥火",loc:"账本",title:"有些名字不能现在念出来",text:"你找到了三个名字。其中一个来自上官府，另一个来自军中。第三个名字后面没有官职，只有一个朱红印记。\n\n外面有人敲门：“赵都头，睡了吗？”\n\n你没有回答。\n\n第二天，你发现桌上多了一枚铜钱。没有字，只有一道刀痕。",tags:["调查","危险"],choices:[
+["把账本藏起来","s19",{suspicion:4,flag:["hiddenEvidence"]}],
+["带着账本去见柴荣","s25",{trust:6,prestige:3,flag:["toldChai"]}],
+["烧掉账本","s18",{suspicion:-2,flag:["burnedBooks"]}]
+]},
+s18:{date:"显德元年 · 夜",chapter:"第一章 · 饥火",loc:"灰烬",title:"火很快吞掉了纸",text:"账本化成灰。你没有证据，也因此没有把柄。第二天，那个仓吏消失了。\n\n有时候不留下证据，本身也是一种选择。\n\n你回营时，一个年轻文士站在门口。他看着你：“有些账，烧不掉。”",tags:["赵普","隐线"],choices:[
+["问他是谁","s21",{rel:{pu:5},flag:["metPu"]}],
+["让他离开","s23",{rel:{pu:-2}}]
+]},
+s19:{date:"显德元年 · 三日后",chapter:"第一章 · 饥火",loc:"行军路",title:"战报终于追上了你",text:"军队向北移动。粮车颠簸，伤兵被绑在车上。\n\n沿途村庄空了。井边有人留下半只木桶，桶里不是水，是浑浊的麦糠。\n\n斥候带回消息：北汉军已经集结。\n\n柴荣的中军传令：“赵匡胤，明日入大营。”",tags:["行军","柴荣"],choices:[
+["如实汇报军中饥情","s25",{trust:5,flag:["honestReport"]}],
+["只汇报军情，不提饥荒","s26",{trust:1,prestige:3,flag:["silentReport"]}],
+["请求分粮给沿途百姓","s27",{grain:-5,people:7,trust:2,flag:["relief"]}]
+]},
+s20:{date:"显德元年 · 夜",chapter:"第一章 · 饥火",loc:"上官府外",title:"话说死了，路就窄了",text:"你把话说得很重。对方没有争辩，只问了一句：“赵都头，你知道自己在和谁说话吗？”\n\n你回营后，军牌旁多了一张白纸。\n\n上面只有一句：\n\n“高处的风，比营里的风冷。”",tags:["敌意","危险"],choices:[
+["撕掉纸条","s23",{suspicion:4}],
+["留下纸条","s25",{suspicion:2,prestige:2,flag:["threat"]}]
+]},
+s21:{date:"显德元年 · 夜",chapter:"第一章 · 饥火",loc:"营门",title:"赵普",text:"年轻文士自称赵普。\n\n他没有谈大道理，只问：“若一个军队每天都在救火，它还有力气去打仗吗？”\n\n你问他为何在这里。\n\n“因为我想知道，一个将领到底是在保护军队，还是在保护自己。”\n\n他说完便笑了。你第一次意识到，有些人的武器不是刀。",tags:["赵普加入","谋略"],choices:[
+["留下他做随军书记","s28",{rel:{pu:8},prestige:2,flag:["puJoined"]}],
+["只让他记录军粮","s28",{rel:{pu:4},flag:["puJoined"]}],
+["让他回去","s23",{rel:{pu:-3}}]
+]},
+s22:{date:"显德元年 · 春末",chapter:"第一章 · 饥火",loc:"北上军道",title:"军队开始像一把刀",text:"队伍重新排列。饿过的人反而更沉默。\n\n韩通告诉你，北汉已经与契丹方面互有声息。你不需要知道所有细节，只知道这一仗不会像营门口的冲突那样简单。\n\n夜里，石守信来找你：“若真打起来，我跟你的队。”",tags:["战争","人物关系"],choices:[
+["让石守信负责前锋","s29",{rel:{shi:8},morale:3,flag:["shiFront"]}],
+["让他留在中军","s29",{rel:{shi:4},trust:2}],
+["告诉他各凭军令","s29",{rel:{shi:0},prestige:2}]
+]},
+s23:{date:"显德元年 · 四月",chapter:"第二章 · 高平",loc:"高平军阵",title:"真正的战场没有选择题",text:"后周军阵在风里展开。北汉兵已经压上来。右军先乱，有人开始退，有人已经跪下。\n\n柴荣亲自向前。你看见箭雨落下来。\n\n过去所有选择留下的东西，都在你身边：有人信你，有人怕你，有人等你犯错。\n\n鼓声第三次响起。",tags:["高平之战","关键战局"],choices:[
+["率兵突击","s30",{morale:8,prestige:8}],
+["先稳住溃兵","s31",{morale:10,trust:3}],
+["保护柴荣","s32",{trust:10,prestige:2}],
+["趁乱追击","s33",{prestige:10,suspicion:5}]
+]},
+s24:{date:"显德元年 · 四月",chapter:"第二章 · 高平",loc:"城防",title:"留下的人也在打仗",text:"你留下了一部分人守城。北上主力在远处与北汉交锋。\n\n城中人第一次发现，军营并没有把他们丢下。\n\n午后，战报送来：高平战局反复，柴荣需要援军。\n\n你只有一支疲惫的队伍。",tags:["守城","两难"],choices:[
+["带主力驰援","s30",{morale:6,prestige:7,people:3}],
+["守住城，不冒险","s31",{people:7,morale:3,prestige:2}],
+["派石守信带队驰援","s34",{rel:{shi:8},trust:2}]
+]},
+s25:{date:"显德元年 · 四月",chapter:"第二章 · 高平",loc:"柴荣中军",title:"皇帝问你，最怕什么",text:"柴荣没有看你的军报，只问：“赵匡胤，你最怕什么？”\n\n你可以说怕败，怕死，怕饿，怕失去部下。\n\n他听完只点头。\n\n“知道怕，才知道兵为什么会散。”\n\n远处传来急鼓。高平已经开战。",tags:["柴荣","核心关系"],choices:[
+["说怕部下白死","s31",{trust:8,morale:3}],
+["说怕军队失控","s30",{trust:4,prestige:4}],
+["说不怕","s33",{trust:-3,prestige:6}]
+]},
+s26:{date:"显德元年 · 四月",chapter:"第二章 · 高平",loc:"中军",title:"你隐去了最重要的一句话",text:"柴荣看完军情，忽然问：“粮够吗？”\n\n你回答：“够用。”\n\n他盯了你片刻，没有追问。\n\n这一刻你赢得了秩序，却失去了一个可以说真话的机会。\n\n高平的鼓声已经响起。",tags:["隐瞒","柴荣信任下降"],choices:[
+["上前接战","s30",{trust:-2,prestige:6}],
+["稳住后军","s31",{trust:1,morale:8}]
+]},
+s27:{date:"显德元年 · 四月",chapter:"第二章 · 高平",loc:"军道",title:"你把粮给了路边的人",text:"沿途百姓接过粮袋时没有欢呼。他们只是把袋子抱紧。\n\n一个老人问：“军爷，你们自己够吗？”\n\n你没有回答。\n\n当天夜里，斥候告诉你：有一支当地乡勇愿意替军队带路。",tags:["民望","援军线索"],choices:[
+["接受向导","s30",{people:5,morale:4,prestige:4}],
+["让他们回去","s31",{people:2,morale:2}]
+]},
+s28:{date:"显德元年 · 四月",chapter:"第二章 · 高平",loc:"行军帐",title:"有人开始替你记账",text:"赵普把粮、兵、伤员和军官关系写在同一张纸上。\n\n“将军，很多事不是因为一个人聪明，而是因为他知道什么时候该问。”\n\n他把纸递给你。\n\n纸上圈出两个字：军心。",tags:["赵普","谋略成长"],choices:[
+["让赵普随你入中军","s25",{rel:{pu:5},prestige:2}],
+["让他留后方整理军粮","s29",{rel:{pu:3},grain:3}]
+]},
+s29:{date:"显德元年 · 四月",chapter:"第二章 · 高平",loc:"高平前夜",title:"每个人都在等明天",text:"前夜没有人睡得好。\n\n有人磨刀，有人写家书，有人把最后一块干粮分成两半。\n\n石守信坐在火边说：“都头，明天若活下来，我们就知道今天值不值。”\n\n你没有回答。因为没有人知道答案。",tags:["战前夜","人物关系"],choices:[
+["和士卒一起吃最后的干粮","s23",{morale:8,rel:{shi:4}}],
+["独自研究军图","s23",{prestige:4,trust:2}],
+["去见柴荣","s25",{trust:5}]
+]},
+s30:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"高平战场",title:"你被看见了",text:"你率兵压向北汉军阵。溃军开始后退。后周赢了。\n\n但你看见更多的是伤兵。有人喊万岁，也有人在找自己的兄弟。\n\n柴荣开始重新整顿禁军。你也被看见了。\n\n战后，你发现自己的名字已经开始在军中传播。",tags:["胜利","威望上升"],choices:[
+["接受升迁","s35",{prestige:6,trust:2}],
+["把功劳让给部下","s36",{morale:6,trust:5,rel:{shi:5}}],
+["先救伤兵","s36",{people:3,morale:5,prestige:2}]
+]},
+s31:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"高平战场",title:"你赢得了人的命",text:"你没有成为战场上最耀眼的人，但你带回来的人更多。\n\n军中有人开始愿意把背后交给你。\n\n这是权力最慢的一种积累，也是最难失去的一种。\n\n夜里，柴荣派人传话：“赵匡胤，明日入帐。”",tags:["军心","柴荣信任"],choices:[
+["如实汇报所有损失","s36",{trust:7,people:2}],
+["只报战果","s35",{prestige:7,trust:-2}]
+]},
+s32:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"柴荣身侧",title:"你挡在了柴荣前面",text:"箭擦过你的肩。柴荣没有退，你也没有。\n\n战后，他问：“若今日败了呢？”\n\n你答：“那便一起死。”\n\n他沉默很久。\n\n这是你们之间第一次真正的信任。",tags:["柴荣","信任"],choices:[
+["继续","s36",{trust:8,prestige:3}],
+["把伤藏起来","s35",{trust:3,prestige:6}]
+]},
+s33:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"高平之后",title:"你开始懂得权力",text:"你把责任推给别人。你没有受到惩罚，甚至因此得到更多信任。\n\n你第一次明白：朝堂上的刀，未必比战场上的刀更钝。\n\n石守信看着你，没有说话。\n\n赵普却在纸上写下：‘记住今天。’",tags:["权力","危险"],choices:[
+["接受这份信任","s35",{prestige:8,suspicion:5}],
+["承担一部分责任","s36",{prestige:3,trust:4,suspicion:-2}]
+]},
+s34:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"高平战场",title:"石守信带回来的人",text:"石守信带着疲惫的队伍赶到。援军没有让战局立刻变得轻松，却让一段溃退的军阵重新站住。\n\n他回来时只说：“你让我来，我便来了。”\n\n这句话很轻，却可能比军令更重。",tags:["石守信","兄弟关系"],choices:[
+["把功劳写进军报","s36",{rel:{shi:10},morale:5,prestige:3}],
+["让他不要张扬","s35",{rel:{shi:5},suspicion:-1}]
+]},
+s35:{date:"显德二年 · 夏",chapter:"第一章 · 尾声",loc:"后周军营",title:"你被记住了",text:"高平之后，禁军开始重新整顿。\n\n你得到新的位置，也得到新的目光。有人开始向你靠拢，有人开始记你的名字。\n\n赵普提醒你：“一个人有了名望以后，别人看到的就不再是他做了什么，而是他们希望他做什么。”\n\n这不是结局。只是第一道门。\n\n多年以后，黄袍会落在谁的肩上，没人知道。至少现在，赵匡胤还只是赵匡胤。",tags:["章节完成","新的道路"],choices:[
+["保存并结束第一章","END",{flag:["chapter1Done"]}],
+["回到安全检查点重玩","REWIND"]
+]},
+s36:{date:"显德二年 · 夏",chapter:"第一章 · 尾声",loc:"后周军营",title:"你带回了更多活人",text:"高平之后，真正留在你身上的不是战功，而是那些活着回来的人。\n\n军中开始有人愿意跟你。赵普也开始替你看更远的地方。柴荣对你的信任变得具体：他开始把更难的事情交给你。\n\n乱世没有因为一场胜仗变得温柔。你只是学会了在它里面继续走。",tags:["章节完成","人物成长"],choices:[
+["保存并结束第一章","END",{flag:["chapter1Done"]}],
+["回到安全检查点重玩","REWIND"]
+]}
 };
-function readState(){
-  try{
-    const raw=localStorage.getItem("zhao-auto");
-    if(!raw)return {s:"start",n:0};
-    const x=JSON.parse(raw);
-    return x&&typeof x==="object"&&typeof x.s==="string"?x:{s:"start",n:0};
-  }catch(e){
-    try{localStorage.removeItem("zhao-auto")}catch(_){}
-    return {s:"start",n:0};
-  }
+
+function deepCopy(o){return JSON.parse(JSON.stringify(o))}
+function normalize(x){
+  const s=deepCopy(BASE);
+  if(!x||typeof x!=="object") return s;
+  s.version=VERSION;
+  if(typeof x.scene==="string"&&SCENES[x.scene])s.scene=x.scene;
+  if(Number.isFinite(x.n))s.n=Math.max(0,Math.floor(x.n));
+  if(Number.isFinite(x.chapter))s.chapter=x.chapter;
+  if(x.flags&&typeof x.flags==="object")s.flags={...x.flags};
+  if(x.rel&&typeof x.rel==="object")for(const k of Object.keys(s.rel))if(Number.isFinite(x.rel[k]))s.rel[k]=clamp(x.rel[k]);
+  if(x.stats&&typeof x.stats==="object")for(const k of Object.keys(s.stats))if(Number.isFinite(x.stats[k]))s.stats[k]=clamp(x.stats[k]);
+  if(Array.isArray(x.history))s.history=x.history.slice(-14).filter(v=>typeof v==="string");
+  s.dead=!!x.dead;
+  return s;
 }
-let st=readState();
-const defaults={morale:50,prestige:20,grain:35,trust:15,people:10,suspicion:5};
-Object.keys(defaults).forEach(k=>{if(typeof st[k]!=="number")st[k]=defaults[k]});
+function safeParse(raw){
+  try{const x=JSON.parse(raw);return x&&typeof x==="object"?normalize(x):null}catch(e){return null}
+}
+function readAuto(){
+  const raw=localStorage.getItem(AUTO_KEY);
+  const parsed=raw?safeParse(raw):null;
+  if(parsed)return parsed;
+  const safe=localStorage.getItem(CHECK_KEY);
+  const fallback=safe?safeParse(safe):null;
+  return fallback||deepCopy(BASE);
+}
+let st=readAuto();
+
 function clamp(v){return Math.max(0,Math.min(100,Math.round(v)))}
-const effects={
-grain:{grain:-4,morale:3,prestige:1},open:{grain:-10,morale:8,people:2},audit:{suspicion:4,prestige:2},
-appeal:{trust:3},punish:{morale:5,people:-6,prestige:2},mercy:{people:8,morale:-3},visit:{people:5},
-bell:{people:4,morale:-1},officers:{morale:4,trust:2},horses:{grain:-3,morale:2},share:{grain:-8,people:10,morale:-2},
-army:{grain:4,morale:7,people:-7},seize:{grain:12,suspicion:7,prestige:3},truth:{suspicion:8,prestige:4,trust:2},
-burn:{suspicion:-2},gaoping:{morale:2,prestige:2},victory:{prestige:8,morale:5},honor:{morale:8,trust:4},
-trust:{trust:10,prestige:2},power:{prestige:9,suspicion:6},end:{trust:2}
-};
-function draw(){let x=S[st.s]||S.start;for(let i=0;i<4;i++);document.querySelector("#date").textContent=x[0];document.querySelector("#chapter").textContent=x[1];document.querySelector("#k").textContent=x[2];document.querySelector("#title").textContent=x[3];document.querySelector("#text").textContent=x[4];document.querySelector("#n").textContent=st.n;["morale","prestige","grain","trust","people","suspicion"].forEach(k=>{let e=document.querySelector("#"+k);if(e)e.textContent=st[k]});let c=document.querySelector("#choices");c.innerHTML="";x[5].forEach((v,i)=>{let b=document.createElement("button");b.className="choice";b.innerHTML="<b>"+["一","二","三","四"][i]+"</b>"+v[0];b.onclick=()=>go(v[1]);c.appendChild(b)})}
 function persist(){
-  try{localStorage.setItem("zhao-auto",JSON.stringify(st));return true}
-  catch(e){return false}
+  const payload=JSON.stringify(st);
+  try{localStorage.setItem(AUTO_KEY,payload);localStorage.setItem(CHECK_KEY,payload);return true}catch(e){return false}
 }
-function go(n){if(effects[n])Object.keys(effects[n]).forEach(k=>{st[k]=clamp(st[k]+effects[n][k])});if(n==="restart"){restart();return}if(n==="save"){save(1);return}if(n==="load"){load(1);return}st.s=n;st.n++;persist();draw();scrollTo(0,0)}
-function save(i){try{localStorage.setItem("zhao-slot-"+i,JSON.stringify(st));alert("存档 "+["Ⅰ","Ⅱ","Ⅲ"][i-1]+" 已保存")}catch(e){alert("浏览器禁止存储")}}
-function load(i){
+function relText(v,names){if(v>=80)return names[0];if(v>=55)return names[1];if(v>=30)return names[2];if(v>0)return names[3];return names[4]}
+function render(){
+  const sc=SCENES[st.scene]||SCENES.s01;
+  document.getElementById("date").textContent=sc.date;
+  document.getElementById("chapter").textContent=sc.chapter;
+  document.getElementById("progress").textContent="第 "+Math.min(36,st.n+1)+" 段";
+  document.getElementById("location").textContent=sc.loc;
+  document.getElementById("sceneNo").textContent="选择次数 · "+st.n;
+  document.getElementById("title").textContent=sc.title;
+  document.getElementById("text").textContent=sc.text;
+  const tags=document.getElementById("tags");tags.innerHTML="";
+  sc.tags.forEach(t=>{const d=document.createElement("span");d.className="tag";d.textContent=t;tags.appendChild(d)});
+  const event=document.getElementById("eventNotice");
+  const ev=randomEvent();
+  if(ev){event.style.display="block";event.textContent="乱世偶发："+ev.text}else event.style.display="none";
+  for(const k of Object.keys(st.stats)){const e=document.getElementById(k);const b=document.getElementById(k+"Bar");if(e)e.textContent=st.stats[k];if(b)b.style.width=st.stats[k]+"%"}
+  document.getElementById("chR").textContent=relText(st.rel.chai,["愿为你担保","明显信任","谨慎观察","保持距离","心存戒备"]);
+  document.getElementById("puR").textContent=relText(st.rel.pu,["视你为知己","愿为你谋划","愿意观察","略有兴趣","尚未结识"]);
+  document.getElementById("htR").textContent=relText(st.rel.han,["完全信任","愿意协作","军中中立","有保留","不满"]);
+  document.getElementById("ssR").textContent=relText(st.rel.shi,["生死兄弟","愿意跟随","开始信任","保持距离","心有芥蒂"]);
+  const box=document.getElementById("choices");box.innerHTML="";
+  sc.choices.forEach((c,i)=>{
+    const b=document.createElement("button");b.className="choice";
+    b.innerHTML='<span class="num">'+["一","二","三","四"][i]+"</span>"+c[0];
+    b.onclick=()=>choose(c);
+    box.appendChild(b);
+  });
+  const hist=document.getElementById("history");hist.innerHTML="";
+  st.history.slice().reverse().forEach(x=>{const p=document.createElement("p");p.textContent="· "+x;hist.appendChild(p)});
+}
+function randomEvent(){
+  if(st.n<3||st.n%4!==0)return null;
+  const pool=[
+    {text:"一名士卒把自己的半块饼塞给旁边的新兵。军心 +2。",apply:()=>st.stats.morale=clamp(st.stats.morale+2)},
+    {text:"一匹驮粮的军马倒下。粮草 -2。",apply:()=>st.stats.grain=clamp(st.stats.grain-2)},
+    {text:"城里有人认出了你的军旗。民望 +2。",apply:()=>st.stats.people=clamp(st.stats.people+2)},
+    {text:"一封没有署名的信被塞进军帐。疑心 +2。",apply:()=>st.stats.suspicion=clamp(st.stats.suspicion+2)}
+  ];
+  const ev=pool[Math.floor((st.n/4)%pool.length)];ev.apply();persist();return ev;
+}
+function applyEffects(e){
+  if(!e)return;
+  const keys=["morale","prestige","grain","people","suspicion","trust"];
+  for(const k of keys)if(Number.isFinite(e[k]))st.stats[k]=clamp(st.stats[k]+e[k]);
+  if(e.rel)for(const k of Object.keys(e.rel))st.rel[k]=clamp((st.rel[k]||0)+e.rel[k]);
+  if(e.flag)for(const f of e.flag)st.flags[f]=true;
+}
+function choose(c){
+  const [label,next,effect]=c;
+  applyEffects(effect);
+  if(next==="END"){st.history.push("完成第一章：《黄袍之前》——"+label);persist();showModal("第一章完成","你已经走过饥火与高平。存档已保留。下一章可以继续扩展显德二年至陈桥。");return}
+  if(next==="REWIND"){st=readAuto();render();return}
+  if(next==="DEAD"){st.dead=true;persist();showModal("赵匡胤卒","这条时间线已经终止。你的自动安全检查点仍然保留，可以返回继续。");return}
+  if(!SCENES[next])return;
+  st.scene=next;st.n++;
+  st.history.push("第"+st.n+"次选择："+label+" → "+SCENES[next].title);
+  st.history=st.history.slice(-14);
+  if(st.stats.grain<=0){st.stats.grain=0;st.stats.morale=clamp(st.stats.morale-8)}
+  if(st.stats.morale<=0){st.scene="s31";st.history.push("军心崩溃：你被迫优先稳定后军。")}
+  persist();render();scrollTo({top:0,behavior:"smooth"});
+}
+function showModal(title,text){document.getElementById("modalTitle").textContent=title;document.getElementById("modalText").textContent=text;document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function manualSave(i){
+  try{localStorage.setItem("zhaohuang-slot-"+i,JSON.stringify(st));showModal("存档 "+["Ⅰ","Ⅱ","Ⅲ"][i-1]+" 已保存","这是独立存档位。自动安全检查点仍会持续更新。")}catch(e){showModal("存档失败","浏览器拒绝了本地存储。你可以关闭隐私模式后再试。")}
+}
+function manualLoad(i){
   try{
-    let x=localStorage.getItem("zhao-slot-"+i);
-    if(!x){alert("这个存档位还是空的");return}
-    const parsed=JSON.parse(x);
-    if(!parsed||typeof parsed.s!=="string")throw new Error("bad save");
-    st=parsed;persist();draw();
-  }catch(e){
-    alert("这个存档损坏了，已跳过");
-  }
+    const raw=localStorage.getItem("zhaohuang-slot-"+i);
+    const parsed=raw?safeParse(raw):null;
+    if(!parsed){showModal("这个存档不可用","存档不存在或结构已经损坏。已保护当前游戏，不会覆盖现有进度。");return}
+    st=parsed;persist();render();showModal("读取成功","已从存档 "+["Ⅰ","Ⅱ","Ⅲ"][i-1]+" 恢复。");
+  }catch(e){showModal("读取失败","已保护当前进度。")}
 }
-function restart(){if(confirm("重新开始？")){st={s:"start",n:0};persist();draw()}}
-draw();
-</script></html>
+function restart(){
+  if(confirm("重新开始会覆盖自动进度，但不会删除三个手动存档。确定吗？")){st=deepCopy(BASE);persist();render();scrollTo({top:0,behavior:"smooth"})}
+}
+function showHelp(){showModal("玩法说明","本章约 30–60 分钟，存在多条路线。军心、威望、粮草、民望、疑心和柴荣信任会影响后续场景；人物关系也会变化。\n\n最重要的是：不要追求“正确答案”。你做出的决定会改变你看到的人、风险和结局。\n\n存档采用版本校验 + 安全检查点。即使浏览器里的旧数据损坏，游戏也会尝试从安全检查点恢复。")}
+window.addEventListener("error",()=>{try{const safe=localStorage.getItem(CHECK_KEY);if(safe){st=safeParse(safe)||deepCopy(BASE);render()}}catch(e){}});
+persist();render();
+</script>
+</body>
+</html>
