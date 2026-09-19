@@ -10,14 +10,14 @@
 button{font:inherit}.app{max-width:1320px;min-height:100vh;margin:auto;background:var(--paper);display:grid;grid-template-columns:285px 1fr;box-shadow:0 0 90px #000}
 aside{background:linear-gradient(180deg,#211d19,#151311);color:#e5dac8;padding:28px 22px;position:sticky;top:0;height:100vh;overflow:auto}.seal{width:56px;height:56px;border:2px solid #b34a40;color:#d15a50;display:grid;place-items:center;writing-mode:vertical-rl;font-weight:700}.brand{font-size:25px;letter-spacing:5px;margin-top:18px}.sub{font:12px system-ui;color:#988d7d;line-height:1.6;margin-top:8px}.rule{height:1px;background:#423a31;margin:24px 0}.stat-title{font-size:11px;letter-spacing:3px;color:#9f9484;margin-bottom:10px}.stat{display:grid;grid-template-columns:1fr auto;gap:10px;margin:10px 0;font-size:13px}.bar{grid-column:1/-1;height:4px;background:#39332d;overflow:hidden}.bar i{display:block;height:100%;background:#9d352d;transition:width .35s}.people{margin:8px 0;padding:9px;border:1px solid #3b342c;font-size:12px;color:#c4b7a3}.people b{color:#e7d9c5;font-weight:500}.side-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.side-actions button{padding:9px 5px;border:1px solid #51483e;background:#24201c;color:#ddd0bd;cursor:pointer;font-size:12px}.side-actions button:hover{border-color:#a77a3e;color:#fff}.hint{font:11px system-ui;color:#756b5e;line-height:1.6;margin-top:18px}
 main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background:rgba(238,228,210,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;color:#74695b;font:12px system-ui;letter-spacing:2px}.top strong{color:var(--red)}.hero{padding:65px 9% 30px;max-width:1050px}.eyebrow{color:var(--red);font:11px system-ui;letter-spacing:4px}.chapter{font-size:12px;color:#827667;margin-top:9px}h1{font-size:48px;font-weight:500;line-height:1.2;margin:15px 0 27px}.lead{font-size:19px;line-height:2.15;white-space:pre-line}.scene-meta{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.tag{border:1px solid #c5b59d;padding:5px 9px;font:11px system-ui;color:#756858;background:#eee5d7}.choices{display:grid;gap:11px;margin-top:30px}.choice{position:relative;text-align:left;padding:18px 20px;border:1px solid #bcae98;background:var(--paper2);cursor:pointer;transition:.2s;color:#322b24}.choice:hover{transform:translateX(5px);border-color:var(--gold);box-shadow:0 7px 18px #6f5c4312}.choice.locked{opacity:.48;cursor:not-allowed}.choice .num{display:inline-grid;place-items:center;width:24px;height:24px;border:1px solid #b7a58c;border-radius:50%;margin-right:12px;color:var(--red);font:12px system-ui}.choice small{display:block;color:#887a69;font:11px system-ui;margin:8px 0 0 38px}.log{margin:35px 9%;max-width:900px;border-top:1px solid var(--line);padding-top:20px}.log h3{font-size:12px;letter-spacing:3px;font-weight:500;color:#806f5d}.log p{font-size:12px;color:#817465;margin:8px 0}.notice{margin:20px 0;padding:12px 14px;border-left:3px solid var(--red);background:#e5d8c4;font-size:12px;line-height:1.7}.modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;z-index:20}.modal.show{display:grid}.modal-card{width:min(540px,90vw);background:var(--paper);padding:28px;box-shadow:0 25px 80px #000}.modal-card h2{margin-top:0;font-weight:500}.modal-card p{line-height:1.8;color:#62574b;font-size:14px}.modal-card button{padding:10px 18px;background:#25211d;color:#eee0cb;border:0;cursor:pointer}.danger{color:var(--red)}footer{padding:24px 9%;border-top:1px solid var(--line);font:11px system-ui;color:#84776a}@media(max-width:800px){.app{display:block}.app aside{display:none}.hero{padding:42px 20px 25px}.top{padding:13px 20px}h1{font-size:34px}.lead{font-size:17px}.log{margin:30px 20px}footer{padding:20px}.choice{padding:16px}.side-actions{grid-template-columns:1fr 1fr}}
-.battle{display:none;margin:0 0 28px;padding:18px;border:1px solid #b9a88f;background:linear-gradient(135deg,#e4d6bf,#f4ecdf);box-shadow:inset 0 0 35px #8d765020}.battle.show{display:block}.battle-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.battle-head strong{letter-spacing:3px;font-size:13px}.battle-head span{font:11px system-ui;color:#806f5d}.battlefield{position:relative;min-height:230px;border:1px solid #c0ae93;background:#d7c6a9;overflow:hidden;padding:20px}.terrain{position:absolute;inset:0;opacity:.22;background:repeating-linear-gradient(0deg,transparent 0 31px,#7e6b52 32px 33px),repeating-linear-gradient(90deg,transparent 0 49px,#7e6b52 50px 51px)}.army{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:center}.unit{min-height:72px;padding:10px;border:1px solid #a99678;background:#eee3d0cc;text-align:center;box-shadow:0 4px 12px #4d3b2412}.unit b{display:block;font-size:12px;margin-bottom:6px}.unit small{font:10px system-ui;color:#786b5c}.unit.you{border:2px solid #9d352d;background:#f1dfd0}.unit.enemy{background:#ddd0ba}.unit .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#9d352d;margin-right:5px}.battle-foot{display:flex;justify-content:space-between;margin-top:10px;font:10px system-ui;color:#786b5c}.pulse{animation:pulse .8s ease}@keyframes pulse{50%{transform:translateY(-3px);box-shadow:0 7px 20px #9d352d30}}.dialogue{display:none;margin:0 0 26px;border:1px solid #c1ae91;background:#eee3d2;box-shadow:0 10px 30px #5d493018}.dialogue.show{display:block}.dialogue-head{display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid #cbb99e;background:#e5d6bd}.portrait{width:48px;height:48px;border:2px solid #9d352d;background:#302a24;color:#e8d9c3;display:grid;place-items:center;font-size:20px;font-weight:700}.speaker b{display:block;font-size:14px}.speaker small{font:10px system-ui;color:#81715f}.dialogue-body{padding:16px 18px;font-size:16px;line-height:1.9}.dialogue-body em{font-style:normal;color:#9d352d}.dialogue-mood{margin-left:auto;font:10px system-ui;color:#806f5d;border:1px solid #bca88b;padding:4px 7px}@media(max-width:800px){.dialogue-body{font-size:15px}}</style>
+.battle{display:none;margin:0 0 28px;padding:18px;border:1px solid #b9a88f;background:linear-gradient(135deg,#e4d6bf,#f4ecdf);box-shadow:inset 0 0 35px #8d765020}.battle.show{display:block}.battle-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.battle-head strong{letter-spacing:3px;font-size:13px}.battle-head span{font:11px system-ui;color:#806f5d}.battlefield{position:relative;min-height:230px;border:1px solid #c0ae93;background:#d7c6a9;overflow:hidden;padding:20px}.terrain{position:absolute;inset:0;opacity:.22;background:repeating-linear-gradient(0deg,transparent 0 31px,#7e6b52 32px 33px),repeating-linear-gradient(90deg,transparent 0 49px,#7e6b52 50px 51px)}.army{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:center}.unit{min-height:72px;padding:10px;border:1px solid #a99678;background:#eee3d0cc;text-align:center;box-shadow:0 4px 12px #4d3b2412}.unit b{display:block;font-size:12px;margin-bottom:6px}.unit small{font:10px system-ui;color:#786b5c}.unit.you{border:2px solid #9d352d;background:#f1dfd0}.unit.enemy{background:#ddd0ba}.unit .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#9d352d;margin-right:5px}.battle-foot{display:flex;justify-content:space-between;margin-top:10px;font:10px system-ui;color:#786b5c}.pulse{animation:pulse .8s ease}@keyframes pulse{50%{transform:translateY(-3px);box-shadow:0 7px 20px #9d352d30}}.dialogue{display:none;margin:0 0 26px;border:1px solid #c1ae91;background:#eee3d2;box-shadow:0 10px 30px #5d493018}.dialogue.show{display:block}.dialogue-head{display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid #cbb99e;background:#e5d6bd}.portrait{width:48px;height:48px;border:2px solid #9d352d;background:#302a24;color:#e8d9c3;display:grid;place-items:center;font-size:20px;font-weight:700}.speaker b{display:block;font-size:14px}.speaker small{font:10px system-ui;color:#81715f}.dialogue-body{padding:16px 18px;font-size:16px;line-height:1.9}.dialogue-body em{font-style:normal;color:#9d352d}.dialogue-mood{margin-left:auto;font:10px system-ui;color:#806f5d;border:1px solid #bca88b;padding:4px 7px}@media(max-width:800px){.dialogue-body{font-size:15px}}.capital-panel{display:none;margin:0 0 28px;border:1px solid #b9a88f;background:linear-gradient(135deg,#e8dcc9,#f7f0e3);box-shadow:inset 0 0 35px #8d765020}.capital-panel.show{display:block}.capital-head{display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #c7b69b;font-size:13px}.capital-head span{font:11px system-ui;color:#806f5d}.capital-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;padding:13px}.capital-grid div{padding:12px;border:1px solid #c9b89d;background:#f5ecdf}.capital-grid b{display:block;font-size:12px}.capital-grid small{display:block;margin-top:5px;color:#817261;font:10px system-ui;line-height:1.5}.capital-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 13px 13px}.capital-actions button{border:1px solid #b9a88f;background:#eee2d0;padding:10px;text-align:left;cursor:pointer}.capital-actions button:hover{border-color:#a77a3e;transform:translateY(-2px)}@media(max-width:800px){.capital-grid{grid-template-columns:repeat(2,1fr)}.capital-actions{grid-template-columns:1fr}}</style>
 </head>
 <body>
 <div class="app">
 <aside>
   <div class="seal">乱世</div>
   <div class="brand">黄袍之前</div>
-  <div class="sub">赵匡胤 · 五代十国互动史诗<br>第一章：饥火 → 高平</div>
+  <div class="sub">赵匡胤 · 五代十国互动史诗<br>第一章：饥火 → 高平 → 开封</div>
   <div class="rule"></div>
   <div class="stat-title">当前状态</div>
   <div class="stat"><span>军心</span><b id="morale">50</b><div class="bar"><i id="moraleBar"></i></div></div>
@@ -26,13 +26,13 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
   <div class="stat"><span>民望</span><b id="people">10</b><div class="bar"><i id="peopleBar"></i></div></div>
   <div class="stat"><span>疑心</span><b id="suspicion">5</b><div class="bar"><i id="suspicionBar"></i></div></div>
   <div class="stat"><span>柴荣信任</span><b id="trust">15</b><div class="bar"><i id="trustBar"></i></div></div>
-  <div class="stat"><span>伤势</span><b id="wounds">0</b><div class="bar"><i id="woundsBar"></i></div></div>
+  <div class="stat"><span>伤势</span><b id="wounds">0</b><div class="bar"><i id="woundsBar"></i></div></div><div id="chapter2Stats" style="display:none"><div class="rule"></div><div class="stat-title">禁军 · 朝局</div><div class="stat"><span>统兵</span><b id="command">0</b><div class="bar"><i id="commandBar"></i></div></div><div class="stat"><span>朝廷评价</span><b id="court">0</b><div class="bar"><i id="courtBar"></i></div></div><div class="stat"><span>军中影响</span><b id="armyInfluence">0</b><div class="bar"><i id="armyInfluenceBar"></i></div></div></div>
   <div class="rule"></div>
   <div class="stat-title">人物关系</div>
   <div class="people"><b>柴荣</b><br><span id="chR">谨慎观察</span></div>
   <div class="people"><b>赵普</b><br><span id="puR">尚未结识</span></div>
   <div class="people"><b>韩通</b><br><span id="htR">军中中立</span></div>
-  <div class="people"><b>老卒石守信</b><br><span id="ssR">尚未建立信任</span></div>
+  <div class="people"><b>老卒石守信</b><br><span id="ssR">尚未建立信任</span></div><div class="people" id="capitalRelation" style="display:none"><b>开封局势</b><br><span id="capitalR">尚未进入朝局</span></div>
   <div class="rule"></div>
   <div class="side-actions">
     <button onclick="manualSave(1)">存档Ⅰ</button><button onclick="manualLoad(1)">读档Ⅰ</button>
@@ -40,11 +40,11 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
     <button onclick="manualSave(3)">存档Ⅲ</button><button onclick="manualLoad(3)">读档Ⅲ</button>
     <button onclick="restart()">重新开始</button><button onclick="showHelp()">玩法说明</button>
   </div>
-  <div class="hint">自动存档：开启<br>版本：0.2 · 第一章垂直切片<br>存档损坏时会自动回退到安全检查点。</div>
+  <div class="hint">自动存档：开启<br>版本：0.3 · 第一章 + 第二章<br>存档损坏时会自动回退到安全检查点。</div>
 </aside>
 
 <main>
-  <div class="top"><span id="date">显德元年 · 春</span><span id="chapter">第一章 · 饥火</span><strong id="progress">序章</strong></div>
+  <div class="top"><span id="actionInfo" style="display:none">行动点 3 / 3</span><span id="date">显德元年 · 春</span><span id="chapter">第一章 · 饥火</span><strong id="progress">序章</strong></div>
   <section class="hero">
     <div class="eyebrow" id="location">太祖末年</div>
     <div class="chapter" id="sceneNo"></div>
@@ -52,7 +52,7 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
     <div class="scene-meta" id="tags"></div>
     <div class="lead" id="text"></div>
     <section class="battle" id="battle"><div class="battle-head"><strong>高平战场态势</strong><span id="battleRound">战局尚未展开</span></div><div class="battlefield"><div class="terrain"></div><div class="army" id="battlefieldUnits"></div></div><div class="battle-foot"><span id="battleOwn">后周军：—</span><span id="battleEnemy">北汉军：—</span></div></section>
-    <div class="notice" id="eventNotice" style="display:none"></div>
+    <div class="notice" id="eventNotice" style="display:none"></div><section class="capital-panel" id="capitalPanel"><div class="capital-head"><strong>开封 · 禁军与朝局</strong><span id="capitalMonth">显德二年 · 夏</span></div><div class="capital-grid"><div><b>皇宫</b><small>柴荣的信任与朝廷目光</small></div><div><b>禁军大营</b><small>训练、军纪、将领关系</small></div><div><b>将军府</b><small>石守信等人的私人网络</small></div><div><b>市井</b><small>粮价、民生与你留下的名声</small></div></div><div class="capital-actions" id="capitalActions"></div></section>
     <section class="dialogue" id="dialogue"><div class="dialogue-head"><div class="portrait" id="portrait">赵</div><div class="speaker"><b id="speaker">赵匡胤</b><small id="speakerRole">后周军都头</small></div><div class="dialogue-mood" id="dialogueMood">沉默</div></div><div class="dialogue-body" id="dialogueBody"></div></section>
     <div class="choices" id="choices"></div>
   </section>
@@ -63,8 +63,8 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
 <div class="modal" id="modal"><div class="modal-card"><h2 id="modalTitle">存档</h2><p id="modalText"></p><button onclick="closeModal()">知道了</button></div></div>
 
 <script>
-const VERSION=2, AUTO_KEY="zhaohuang-auto-v2", CHECK_KEY="zhaohuang-safe-v2";
-const BASE={version:VERSION,scene:"s01",n:0,chapter:1,flags:{},rel:{chai:15,pu:0,han:0,shi:0},stats:{morale:50,prestige:20,grain:35,people:10,suspicion:5,trust:15,wounds:0},history:[],dead:false};
+const VERSION=3, AUTO_KEY="zhaohuang-auto-v3", CHECK_KEY="zhaohuang-safe-v3";
+const BASE={version:VERSION,scene:"s01",n:0,chapter:1,flags:{},rel:{chai:15,pu:0,han:0,shi:0},stats:{morale:50,prestige:20,grain:35,people:10,suspicion:5,trust:15,wounds:0,command:0,court:0,armyInfluence:0,month:1,actionPoints:3,chenqiao:0},history:[],dead:false};
 
 const SCENES={
 s01:{date:"显德元年 · 春",chapter:"第一章 · 饥火",loc:"后周军营",title:"火还没有烧到城门",text:"天刚亮，风从北面压下来。\n\n营地里没有炊烟。不是今日不做饭，而是已经没有什么可煮的了。\n\n昨夜，三个新兵偷了军粮。老卒把他们按在泥地里，其中一个已经没了气。\n\n亲兵递来一只空木碗。\n\n“赵都头，西仓说还够两日。”\n他顿了顿。\n“西仓的人说，最多一日。”",tags:["饥荒","军营","第一次抉择"],choices:[
@@ -280,12 +280,199 @@ s47:{date:"显德元年 · 战后",chapter:"第二章 · 高平",loc:"伤兵营"
 ["留下来帮军医","s36",{people:12,morale:2,prestige:1}]
 ]},
 s35:{date:"显德二年 · 夏",chapter:"第一章 · 尾声",loc:"后周军营",title:"你被记住了",text:"高平之后，禁军开始重新整顿。\n\n你得到新的位置，也得到新的目光。有人开始向你靠拢，有人开始记你的名字。\n\n赵普提醒你：“一个人有了名望以后，别人看到的就不再是他做了什么，而是他们希望他做什么。”\n\n这不是结局。只是第一道门。\n\n多年以后，黄袍会落在谁的肩上，没人知道。至少现在，赵匡胤还只是赵匡胤。",tags:["章节完成","新的道路"],choices:[
-["保存并结束第一章","END",{flag:["chapter1Done"]}],
+["进入开封","s100",{flag:["chapter1Done","enteredKaifeng"]}],
 ["回到安全检查点重玩","REWIND"]
 ]},
 s36:{date:"显德二年 · 夏",chapter:"第一章 · 尾声",loc:"后周军营",title:"你带回了更多活人",text:"高平之后，真正留在你身上的不是战功，而是那些活着回来的人。\n\n军中开始有人愿意跟你。赵普也开始替你看更远的地方。柴荣对你的信任变得具体：他开始把更难的事情交给你。\n\n乱世没有因为一场胜仗变得温柔。你只是学会了在它里面继续走。",tags:["章节完成","人物成长"],choices:[
-["保存并结束第一章","END",{flag:["chapter1Done"]}],
+["进入开封","s100",{flag:["chapter1Done","enteredKaifeng"]}],
 ["回到安全检查点重玩","REWIND"]
+]}
+,
+
+s100:{date:"显德二年 · 夏",chapter:"第二章 · 开封风云",loc:"开封城门",title:"回到开封，战争没有结束",text:"高平的尘土还没有从甲胄上落尽，开封已经换了一副面孔。\n\n城门外，运粮车堵成一条长线；城门内，禁军正在重新编伍。有人因为战功升迁，有人因为一次退缩被撤职。\n\n赵普站在城墙阴影里。\n\n“这里和战场不一样。”他说。\n\n“战场上，敌人在旗子对面。开封城里，很多人连站在哪一边都不会先告诉你。”\n\n你第一次意识到：从今天开始，你要面对的不只是敌军。",tags:["章节转场","开封","禁军整顿"],choices:[
+["先去见柴荣","s101",{trust:5,court:2,command:2,flag:["metChaiInCapital"]}],
+["先去禁军大营","s102",{command:4,armyInfluence:2,morale:2,flag:["enteredCamp"]}],
+["跟赵普走一趟","s103",{rel:{pu:7},court:3,suspicion:1,flag:["capitalTalk"]}]
+]},
+
+s101:{date:"显德二年 · 夏",chapter:"第二章 · 开封风云",loc:"宫城",title:"柴荣给你的第一个任务",text:"柴荣没有问你高平打得漂亮不漂亮。\n\n他摊开一张禁军名册。\n\n“这些人，要重新编。”\n\n名册上有阵亡者、逃兵、功臣，也有几个你从未见过却已经占据要职的人。\n\n柴荣看着你：“你来做，还是让别人做？”\n\n这是一个很小的问题。可你知道，谁掌握编制，谁就开始影响军队的骨头。",tags:["柴荣","禁军","权力"],choices:[
+["接下整编，先查清每一支部队","s104",{command:7,trust:4,court:2,armyInfluence:3,flag:["reformArmy"]}],
+["只处理自己熟悉的部队","s105",{command:4,trust:2,suspicion:-2}],
+["建议由韩通负责，你从旁协助","s106",{command:2,rel:{han:6},trust:6,court:3}]
+]},
+
+s102:{date:"显德二年 · 夏",chapter:"第二章 · 开封风云",loc:"禁军大营",title:"三千个人，三千种脾气",text:"禁军大营比高平战场更嘈杂。\n\n有人刚从前线回来，有人多年没有真正上过战场。老兵嫌新兵不守规矩，新兵嫌老兵欺压人。\n\n军械库里缺了弓弦，马厩里少了饲料，军法册却写得整整齐齐。\n\n石守信看着你：“想把一支军队变成你的军队，第一件事不是让他们怕你。”",tags:["禁军","军纪","石守信"],choices:[
+["整顿军械与粮秣","s107",{command:5,armyInfluence:4,grain:-5,morale:4,rel:{shi:5},flag:["logistics"]}],
+["先整军法，严惩违纪","s108",{command:7,morale:3,suspicion:2,rel:{shi:-2},flag:["strictDiscipline"]}],
+["和士卒一起训练","s109",{command:4,armyInfluence:6,morale:7,people:2,rel:{shi:8},flag:["trainedWithTroops"]}]
+]},
+
+s103:{date:"显德二年 · 夏",chapter:"第二章 · 开封风云",loc:"旧书坊",title:"赵普第一次认真问你",text:"赵普带你绕过官道，走进一间没有招牌的旧书坊。\n\n桌上没有兵书，只有几张朝廷名册。\n\n“你知道为什么很多将领打了胜仗，最后却没有自己的军队吗？”\n\n他没有等你回答。\n\n“因为他们只知道向上证明自己能打，不知道向下让别人愿意跟。”\n\n他把名册推给你。\n\n“你准备让别人怎么看你？”",tags:["赵普","权谋","人物成长"],choices:[
+["让别人看到你的军功","s110",{prestige:6,armyInfluence:3,suspicion:5,rel:{pu:3},chenqiao:2}],
+["让别人看到你会用人","s111",{command:5,court:4,rel:{pu:8},armyInfluence:4,chenqiao:3}],
+["什么都不急着证明","s112",{suspicion:-5,trust:5,court:2,rel:{pu:5},chenqiao:1}]
+]},
+
+s104:{date:"显德二年 · 夏",chapter:"第二章 · 禁军整顿",loc:"禁军名册房",title:"数字背后全是人",text:"你把名册一张张摊开。\n\n一个营缺了两百人，账上却写着满员；另一个营名义上兵强马壮，真正能出营的只有一半。\n\n你没有立即抓人。\n\n你先让石守信带人去核对军籍，让赵普查旧档，让韩通问军法。\n\n三个人第一次因为同一件事坐在一张桌子旁。",tags:["整编","军籍","人物网络"],choices:[
+["公开清查","s113",{command:8,court:-2,armyInfluence:5,suspicion:4,flag:["publicAudit"]}],
+["先内部修正，不惊动朝廷","s114",{command:5,court:3,suspicion:-3,armyInfluence:4,flag:["quietReform"]}],
+["把问题全部上报柴荣","s115",{trust:8,court:5,command:2,flag:["reportedChai"]}]
+]},
+
+s105:{date:"显德二年 · 夏",chapter:"第二章 · 禁军整顿",loc:"旧营",title:"你只管自己的人",text:"你只整顿熟悉的那一支。\n\n效率很高。三天后，军械齐整、队列严明，甚至有人说：“跟赵都头的人就是不一样。”\n\n但另一边，几个营的缺额仍然存在。\n\n赵普没有批评你，只问了一句：“你是在建立一支能打的部队，还是在建立一群只听你的部下？”",tags:["军权","选择代价"],choices:[
+["承认这个风险，扩大整顿","s104",{command:4,armyInfluence:3,suspicion:3}],
+["继续只管自己的人","s116",{command:3,armyInfluence:5,suspicion:5,chenqiao:4}],
+["把最得力的人派给韩通","s106",{rel:{han:5},trust:3,court:4,suspicion:-2}]
+]},
+
+s106:{date:"显德二年 · 夏",chapter:"第二章 · 将领之间",loc:"军议厅",title:"韩通不喜欢漂亮话",text:"韩通把名册合上。\n\n“你想整军，可以。但别把整军变成结党。”\n\n你没有反驳。\n\n韩通看着你：“若你真想让禁军变强，就让最有能力的人去最需要他的地方。”\n\n这句话让赵普沉默了很久。",tags:["韩通","军纪","派系"],choices:[
+["接受韩通的原则","s117",{rel:{han:8},court:5,armyInfluence:3,suspicion:-4}],
+["告诉他军队必须有核心","s118",{command:7,armyInfluence:6,suspicion:5,rel:{han:-3},chenqiao:5}],
+["把争议交给柴荣裁决","s101",{trust:6,court:4}]
+]},
+
+s107:{date:"显德二年 · 夏",chapter:"第二章 · 禁军整顿",loc:"军械库",title:"军队最怕的不是敌人",text:"你打开军械库。\n\n弓弦不足，箭簇混杂，马料被潮气打湿。\n\n军需官说：“每年都是这样。”\n\n你第一次意识到，一支军队的崩溃可能从来不在战场上。\n\n一个士卒问：“赵将军，这次会有人管吗？”",tags:["后勤","士卒","真实战争"],choices:[
+["建立军需清册","s113",{command:4,armyInfluence:5,grain:-3,flag:["supplyLedger"]}],
+["追查军需亏空","s114",{court:3,suspicion:6,prestige:4,flag:["supplyAudit"]}],
+["先补足最缺的物资","s109",{grain:-8,morale:6,people:3,flag:["emergencySupply"]}]
+]},
+
+s108:{date:"显德二年 · 夏",chapter:"第二章 · 军法",loc:"校场",title:"军法可以让人站直，也可以让人闭嘴",text:"三个士卒因为斗殴被押到校场。\n\n按照旧例，他们应当重罚。\n\n但其中一个刚从高平回来，腿上还缠着布。另一个是新兵，家里刚刚断粮。\n\n韩通站在一旁，没有替任何人说话。\n\n所有人都等你开口。",tags:["军法","人情","韩通"],choices:[
+["照章严惩","s117",{command:6,morale:4,suspicion:2}],
+["分清主次，惩主犯、赦从犯","s109",{command:3,morale:5,people:4,rel:{han:3}}],
+["让他们戴罪训练新兵","s119",{command:5,morale:7,armyInfluence:4,people:2,flag:["rehabilitated"]}]
+]},
+
+s109:{date:"显德二年 · 夏",chapter:"第二章 · 禁军整顿",loc:"校场",title:"你开始站在他们中间",text:"你脱下外袍，亲自下场。\n\n第一天，没人敢说话。第三天，开始有人笑。第七天，老兵会在训练结束后告诉你哪个新兵的脚伤没有好。\n\n石守信说：“这才是军队。”\n\n“不是因为他们怕你，是因为他们知道你会一起吃苦。”",tags:["军心","训练","石守信"],choices:[
+["建立轮训制度","s113",{command:6,armyInfluence:7,morale:6,grain:-2,flag:["rotation"]}],
+["提拔最能打的人","s118",{command:7,armyInfluence:6,prestige:5,suspicion:3,chenqiao:4}],
+["让老兵带新兵","s119",{command:4,morale:8,people:3,rel:{shi:5},armyInfluence:5}]
+]},
+
+s110:{date:"显德二年 · 夏",chapter:"第二章 · 名望",loc:"开封街市",title:"军功的另一面",text:"街上有人认出了你的名字。\n\n有人夸你高平敢战，也有人低声说：“将军名声太大，未必是好事。”\n\n一个卖饼的妇人把最后两个饼塞给你。\n\n“军爷，拿去给伤兵。”\n\n你忽然发现，民间的名望和朝廷的目光往往同时出现。",tags:["民望","军功","朝廷"],choices:[
+["接受名声","s118",{prestige:8,people:2,court:-2,suspicion:6,chenqiao:5}],
+["把名声推给柴荣","s112",{trust:7,people:3,suspicion:-4,court:4}],
+["把饼送回伤兵营","s119",{people:7,morale:3,rel:{shi:3},chenqiao:2}]
+]},
+
+s111:{date:"显德二年 · 秋",chapter:"第二章 · 开封风云",loc:"将军府",title:"谁在替你说话",text:"你开始有意识地用人。\n\n石守信管训练，高怀德负责骑军，王审琦处理军籍。每个人都知道自己为什么在这里。\n\n赵普看着名单：“这才是真正危险的地方。”\n\n“你不再只是一个人。”\n\n“你开始拥有一张关系网。”",tags:["班底","将领","权力"],choices:[
+["让关系网公开透明","s117",{armyInfluence:6,court:5,suspicion:-3,command:3}],
+["让核心将领更紧密","s118",{armyInfluence:10,command:5,suspicion:8,chenqiao:7}],
+["故意保持距离","s112",{suspicion:-6,court:3,trust:4,armyInfluence:2,chenqiao:1}]
+]},
+
+s112:{date:"显德二年 · 秋",chapter:"第二章 · 谨慎",loc:"赵普住处",title:"不争，也是一种选择",text:"赵普给你倒了一杯茶。\n\n“你知道最容易让皇帝不放心的是什么吗？”\n\n你没有回答。\n\n“不是你有功，而是你让所有人觉得，没有你军队就不能动。”\n\n窗外传来操练声。\n\n你第一次开始思考：真正的权力，是让人需要你，还是让制度可以离开你？",tags:["赵普","政治","柴荣"],choices:[
+["主动限制自己的亲信","s117",{armyInfluence:-3,court:7,suspicion:-8,trust:8,chenqiao:-3}],
+["保持军中核心地位","s118",{armyInfluence:7,command:5,suspicion:7,chenqiao:6}],
+["继续观察，不做决定","s113",{court:3,suspicion:-2,rel:{pu:6},chenqiao:1}]
+]},
+
+s113:{date:"显德二年 · 秋",chapter:"第二章 · 禁军整顿",loc:"禁军大营",title:"第一次月度清点",text:"三个月下来，你终于看到一支军队真正的轮廓。\n\n粮秣、军籍、训练、伤员、军械，全都开始进入同一套账。\n\n可账本越清楚，你越能看见问题。\n\n有人虚报兵额，有人侵吞军饷，也有人只是靠这点差额养活一家人。\n\n赵普说：“制度开始运转以后，真正难的是决定哪些人会被它碾过去。”",tags:["月度结算","制度","后勤"],choices:[
+["继续严格执行","s120",{command:6,court:3,armyInfluence:5,morale:4,suspicion:3}],
+["给基层留一点余地","s121",{people:6,morale:5,court:2,suspicion:-3,armyInfluence:2}],
+["把问题交给柴荣决定","s101",{trust:7,court:5}]
+]},
+
+s114:{date:"显德二年 · 秋",chapter:"第二章 · 暗流",loc:"军需司",title:"账上的空缺",text:"一张军需单少了四十石粮。\n\n负责的人跪下说：“不是我一个人的事。”\n\n他没有说出其他名字。\n\n你可以继续查，也可以让这件事停在这里。\n\n你突然想起第一章那个粮仓。多年以后你也许会忘记一个人的脸，却不会忘记那种空仓的声音。",tags:["粮草","旧事重演","选择"],choices:[
+["追查到底","s122",{court:4,suspicion:7,prestige:4,grain:5,flag:["capitalCorruption"]}],
+["只追回粮，不扩大","s121",{grain:4,people:3,suspicion:-2}],
+["暂时压下，观察背后的人","s120",{court:3,suspicion:2,chenqiao:3,rel:{pu:4}}]
+]},
+
+s115:{date:"显德二年 · 秋",chapter:"第二章 · 柴荣的判断",loc:"宫城",title:"柴荣开始看你的分寸",text:"柴荣看完你的报告，没有立即表态。\n\n“你很会发现问题。”\n\n他抬头。\n\n“现在我要知道，你会不会制造问题。”\n\n这是夸奖，也是提醒。\n\n你第一次清楚地感到：信任不是无限增加的，它也会被消耗。",tags:["柴荣","信任","政治"],choices:[
+["承认自己也可能犯错","s112",{trust:8,court:5,suspicion:-4}],
+["强调军队必须改革","s120",{command:6,armyInfluence:5,trust:2,court:2}],
+["请柴荣亲自定边界","s117",{trust:10,court:6,suspicion:-2}]
+]},
+
+s116:{date:"显德二年 · 秋",chapter:"第二章 · 私军阴影",loc:"将军府",title:"只听你的声音",text:"你的部下越来越多。\n\n他们叫你“赵将军”，而不是你的官职。\n\n这让人骄傲，也让人不安。\n\n有一天，韩通突然来问：“如果柴荣的命令和你的命令冲突，你的人听谁？”\n\n屋里一下安静了。",tags:["权力风险","韩通","伏笔"],choices:[
+["回答：听皇命","s117",{court:8,trust:8,suspicion:-5,chenqiao:-2}],
+["回答：先听我解释","s118",{armyInfluence:8,command:5,suspicion:10,chenqiao:8}],
+["反问韩通为何这么问","s122",{rel:{han:-2},suspicion:6,chenqiao:5}]
+]},
+
+s117:{date:"显德二年 · 冬",chapter:"第二章 · 开封风云",loc:"宫城与军营之间",title:"制度开始记住你的名字",text:"这一年里，你没有只打过一场仗。\n\n你开始管军籍、粮秣、训练和将领。你发现真正的权力从来不只是一道军令，而是一群人愿意按照你的制度行动。\n\n柴荣越来越重用你。赵普越来越谨慎。石守信却比以前更愿意把人交给你。\n\n而朝廷里，也终于有人开始讨论一个问题：\n\n“赵匡胤，会不会有一天拥有太多？”",tags:["年度转折","权力","陈桥伏笔"],choices:[
+["继续扩张军中影响","s123",{armyInfluence:8,command:6,suspicion:8,chenqiao:10}],
+["主动向柴荣交权","s124",{trust:10,court:8,suspicion:-8,chenqiao:-5}],
+["让赵普继续观察朝局","s125",{rel:{pu:10},court:4,suspicion:-3,chenqiao:5}]
+]},
+
+s118:{date:"显德二年 · 冬",chapter:"第二章 · 军中声望",loc:"禁军校场",title:"有人开始喊你的名字",text:"操练结束时，有士卒低声说：“赵将军来了。”\n\n不是官职，是名字。\n\n石守信没有阻止。\n\n韩通却站在远处看了很久。\n\n赵普后来告诉你：“名声一旦进入军营，就不会再完全属于你。”",tags:["军心","名望","风险"],choices:[
+["接受军中拥护","s123",{armyInfluence:10,command:7,morale:5,chenqiao:12,suspicion:9}],
+["提醒士卒只认军令","s124",{court:6,trust:7,suspicion:-6,chenqiao:-6}],
+["把功劳推给全军","s125",{people:4,morale:5,armyInfluence:4,chenqiao:4,rel:{shi:5}}]
+]},
+
+s119:{date:"显德二年 · 冬",chapter:"第二章 · 军心",loc:"伤兵营",title:"你开始记住每一个营的名字",text:"伤兵营里，你发现很多问题不是战场造成的。\n\n鞋底磨破、军饷迟发、药材不足、家属无人照看。\n\n你命人把这些问题逐项登记。\n\n一个老兵问：“将军，真的会有人看这些吗？”\n\n你说：“以后我会看。”",tags:["士卒","民生","长期治理"],choices:[
+["建立伤兵与家属册","s121",{people:8,morale:7,court:3,armyInfluence:4,grain:-3}],
+["优先恢复战斗力","s120",{command:6,morale:5,armyInfluence:5,grain:-2}],
+["让石守信负责长期照料","s125",{rel:{shi:9},people:7,morale:5,armyInfluence:3}]
+]},
+
+s120:{date:"显德二年 · 冬",chapter:"第二章 · 朝局",loc:"朝会",title:"文官开始问：为什么是你",text:"朝会上，一个文官没有直接弹劾你。\n\n他只是问：“为何禁军整顿如此多的事务，都由赵将军经手？”\n\n柴荣没有立即替你回答。\n\n所有人的目光都落在你身上。\n\n这是第一次，你必须同时回答军队和朝廷。",tags:["朝堂","疑心","柴荣"],choices:[
+["解释制度，而不是解释自己","s124",{court:8,suspicion:-5,trust:7,chenqiao:-3}],
+["强调战功与效率","s123",{prestige:6,court:3,suspicion:8,chenqiao:7}],
+["请柴荣决定你负责多少","s125",{trust:9,court:6,suspicion:-3,chenqiao:-2}]
+]},
+
+s121:{date:"显德二年 · 冬",chapter:"第二章 · 民生",loc:"开封市井",title:"城里的人开始知道你是谁",text:"粮价涨了一次，又慢慢落下来。\n\n你处理军需时顺手解决了几处军民争粮的问题。\n\n街边卖饼的人终于敢和你开玩笑。\n\n“赵将军，下次可别把粮都拿去打仗。”\n\n你笑了笑。\n\n乱世里，这样一句玩笑已经是很奢侈的信任。",tags:["民望","开封","民生"],choices:[
+["继续关注粮价","s125",{people:8,court:4,grain:-3,chenqiao:1}],
+["把精力全部放回军营","s120",{command:6,armyInfluence:5,people:-2}],
+["向柴荣申请长期军民粮道","s124",{trust:6,court:7,people:4,grain:3,chenqiao:-2}]
+]},
+
+s122:{date:"显德二年 · 冬",chapter:"第二章 · 暗流",loc:"军需司",title:"有人开始怕你",text:"你查得越深，愿意配合的人越少。\n\n一个军需官在门外跪了很久。\n\n“赵将军，我知道你要查什么。但我若把名字说出来，我一家老小以后怎么办？”\n\n你又一次站在第一章那个问题面前：\n\n制度究竟是为了找罪人，还是为了让下一次少一个空仓？",tags:["权力","制度","旧日回声"],choices:[
+["继续查到底","s123",{court:3,suspicion:10,prestige:5,grain:6,chenqiao:8}],
+["给基层一次自首机会","s121",{people:5,court:2,suspicion:-4,grain:3}],
+["把案件交给韩通军法处","s117",{rel:{han:7},court:6,suspicion:-2,chenqiao:2}]
+]},
+
+s123:{date:"显德二年 · 冬",chapter:"第二章 · 暗潮",loc:"开封夜色",title:"夜里有人谈起了黄袍",text:"这一次，你没有笑。\n\n黄袍两个字不是从你嘴里说出来的。它甚至没有真正成为一句完整的话。\n\n只是一个醉酒的老兵说：“若赵将军带兵，天下也许……”\n\n石守信立刻打断了他。\n\n赵普却在回府路上告诉你：\n\n“从今晚开始，最危险的不是别人拥护你。”\n\n“是别人替你说出你从未说过的话。”",tags:["重大伏笔","黄袍","政治风险"],choices:[
+["立即严禁军中议论","s124",{suspicion:-8,court:8,chenqiao:-8,trust:5}],
+["什么也不说，暗中观察","s125",{suspicion:2,chenqiao:5,rel:{pu:6}}],
+["让石守信彻查是谁起头","s126",{rel:{shi:8},suspicion:6,armyInfluence:4,chenqiao:6}]
+]},
+
+s124:{date:"显德二年 · 冬末",chapter:"第二章 · 柴荣",loc:"宫城",title:"柴荣最后一次单独见你",text:"柴荣问你：“你知道我为什么一直给你兵吗？”\n\n你没有马上回答。\n\n“因为你能打。”\n\n他顿了一下。\n\n“但能打的人很多。”\n\n“我真正需要的是一个知道自己手里有多少兵、这些兵为什么愿意跟他、又知道什么时候应该把兵交还给朝廷的人。”\n\n这是信任，也是边界。",tags:["柴荣","信任","边界"],choices:[
+["答：臣只听皇命","s127",{trust:12,court:8,suspicion:-8,chenqiao:-12}],
+["答：臣会替陛下守住禁军","s128",{trust:6,command:5,armyInfluence:5,chenqiao:4}],
+["沉默，向柴荣行礼","s127",{trust:10,suspicion:-3,chenqiao:-5}]
+]},
+
+s125:{date:"显德二年 · 冬末",chapter:"第二章 · 赵普",loc:"赵普住处",title:"赵普把未来写在纸上",text:"赵普铺开一张纸。\n\n上面没有写“黄袍”，没有写“陈桥”。\n\n只有几个人名、几支禁军、几条粮道和几个朝廷官职。\n\n“你现在还不需要决定以后要做什么。”\n\n“你只需要知道，别人已经开始替你决定你会做什么。”",tags:["赵普","未来","伏笔"],choices:[
+["让赵普继续布局信息","s127",{rel:{pu:12},court:5,suspicion:-3,chenqiao:6}],
+["停止一切秘密布局","s124",{court:7,trust:5,suspicion:-8,chenqiao:-8}],
+["只研究军务，不碰朝局","s128",{command:6,armyInfluence:4,rel:{pu:3},chenqiao:2}]
+]},
+
+s126:{date:"显德二年 · 冬末",chapter:"第二章 · 石守信",loc:"禁军营门",title:"石守信第一次真正怕了",text:"石守信把查到的名单烧在火盆里。\n\n“没有人真的说你要反。”\n\n“可已经有人在想，如果天下出了乱子，谁能带兵。”\n\n他抬头看你。\n\n“将军，我愿意跟你打仗。但我不想有一天，我们连自己为什么拔刀都说不清楚。”",tags:["石守信","忠诚","底线"],choices:[
+["告诉他只为柴荣而战","s127",{rel:{shi:10},trust:8,chenqiao:-10,court:5}],
+["告诉他先活下去再说","s128",{rel:{shi:5},armyInfluence:5,chenqiao:6,suspicion:3}],
+["把名单交给柴荣","s124",{rel:{shi:3},trust:10,court:8,suspicion:-5,chenqiao:-8}]
+]},
+
+s127:{date:"显德二年 · 冬末",chapter:"第二章 · 年终",loc:"开封城楼",title:"你站在城楼上，看见了另一种战争",text:"这一年，你没有登上皇位，也没有改变天下。\n\n你只是从一个战场上的将领，变成了一个开始理解军队、粮道、朝廷和人心的人。\n\n你回头看开封。\n\n城里依然有人挨饿，军营里依然有人死，朝堂上依然有人互相试探。\n\n但你已经不再只是被时代推着走。\n\n你开始有能力选择自己站在哪里。",tags:["第二章完成","成长","历史伏笔"],choices:[
+["保存第二章并继续下一年","s129",{flag:["chapter2Done"],court:5,trust:5}],
+["重新体验开封整顿","s100"]
+]},
+
+s128:{date:"显德二年 · 冬末",chapter:"第二章 · 年终",loc:"禁军大营",title:"你选择了先把刀磨好",text:"你没有急着碰朝局。\n\n这一年，你把更多时间留在军营。\n\n士卒知道你的名字，将领知道你的规矩，军械和粮秣也比过去整齐。\n\n赵普说：“你可能错过了一些机会。”\n\n石守信却笑了。\n\n“至少我们知道明天拿什么吃饭。”",tags:["第二章完成","军队","稳健"],choices:[
+["保存第二章并继续下一年","s129",{flag:["chapter2Done"],command:5,armyInfluence:4}],
+["重新体验开封整顿","s100"]
+]},
+
+s129:{date:"显德二年 · 年终",chapter:"第二章 · 尾声",loc:"开封城楼",title:"第二年：你开始拥有选择",text:"显德二年结束。\n\n你已经拥有军中声望，也开始懂得朝廷的边界。\n\n更重要的是，你的选择留下了不同的关系：有人愿意追随，有人保持警惕，有人开始把你视为未来的变量。\n\n远处的城门缓缓关闭。\n\n新的年份即将到来。\n\n真正的历史，还没有走到最危险的地方。",tags:["章节完成","陈桥前夜","继续"],choices:[
+["进入第三章","s130",{flag:["chapter3Unlocked"]}],
+["回到第二章","s100"]
+]},
+
+s130:{date:"显德三年 · 春",chapter:"第三章 · 北伐之前",loc:"开封",title:"显德三年，新的边境军报",text:"新的军报从北方送来。\n\n你已经不是那个只需要听命冲锋的年轻将领。\n\n下一章，战争、禁军、朝廷与未来会开始真正交叉。\n\n而你在第二章留下的一切——将领关系、柴荣信任、军中影响、朝廷疑心——都会被带进来。",tags:["第三章预告","北伐","历史主线"],choices:[
+["继续第三章","s131",{flag:["chapter3Started"]}],
+["回到开封整顿","s100"]
+]},
+
+s131:{date:"显德三年 · 春",chapter:"第三章 · 北伐之前",loc:"宫城",title:"军报送到的时候，柴荣已经在等你",text:"这一章即将进入更大的战争与政治冲突。\n\n你的第二章选择已经开始改变人物对你的态度。\n\n这里暂时停下，但存档会保留全部状态。",tags:["未完待续","历史主线"],choices:[
+["保存并返回","s130"]
 ]}
 };
 
@@ -341,6 +528,8 @@ function normalize(x){
   if(x.flags&&typeof x.flags==="object")s.flags={...x.flags};
   if(x.rel&&typeof x.rel==="object")for(const k of Object.keys(s.rel))if(Number.isFinite(x.rel[k]))s.rel[k]=clamp(x.rel[k]);
   if(x.stats&&typeof x.stats==="object")for(const k of Object.keys(s.stats))if(Number.isFinite(x.stats[k]))s.stats[k]=clamp(x.stats[k]);
+  s.stats.actionPoints=Math.max(0,Math.min(3,s.stats.actionPoints));
+  s.stats.month=Math.max(1,Math.min(6,s.stats.month));
   if(Array.isArray(x.history))s.history=x.history.slice(-14).filter(v=>typeof v==="string");
   s.dead=!!x.dead;
   return s;
@@ -379,7 +568,11 @@ function renderDialogue(sc){
     s40:["柴荣","后周军主帅","柴","观察"],
     s41:["赵匡胤","后周军都头","赵","冷静"],
     s42:["柴荣","后周军主帅","柴","激昂"],
-    s43:["石守信","部将","石","决绝"],\n    s44:["柴荣","后周军主帅","柴","托付"],\n    s45:["赵普","幕僚","赵","旁观"],\n    s46:["石守信","部将","石","认真"],\n    s47:["军医","后周军医","医","疲惫"]
+    s43:["石守信","部将","石","决绝"],
+    s44:["柴荣","后周军主帅","柴","托付"],
+    s45:["赵普","幕僚","赵","旁观"],
+    s46:["石守信","部将","石","认真"],
+    s47:["军医","后周军医","医","疲惫"]
   };
   const d=generic[st.scene];
   if(!d){box.classList.remove("show");return}
@@ -473,12 +666,67 @@ function renderBattle(sc){
   document.getElementById("battleOwn").textContent="后周军：军心 "+st.stats.morale+" · 伤势 "+st.stats.wounds;
   document.getElementById("battleEnemy").textContent=labels[5];
 }
+function capitalMood(){
+  if(st.stats.suspicion>=60)return "朝廷开始明显警惕你的军中影响";
+  if(st.stats.armyInfluence>=65)return "禁军中越来越多人知道你的名字";
+  if(st.stats.court>=55)return "朝廷评价偏正面，你暂时拥有空间";
+  return "开封局势平静，但所有人都在观察";
+}
+function renderCapitalActions(){
+  const box=document.getElementById("capitalActions");
+  if(!box)return;
+  box.innerHTML="";
+  const actions=[
+    ["训练禁军","command",4,"军心 +3，军中影响 +4"],
+    ["访问将领","armyInfluence",3,"随机加深一名将领关系"],
+    ["处理民生","people",5,"民望 +5，粮草 -2"],
+    ["参加朝会","court",5,"朝廷评价 +5，疑心 +1"]
+  ];
+  actions.forEach((a,i)=>{
+    const b=document.createElement("button");
+    b.innerHTML="<b>"+a[0]+"</b><br><small>"+a[3]+"</small>";
+    b.disabled=st.stats.actionPoints<=0;
+    b.onclick=()=>capitalAction(i);
+    box.appendChild(b);
+  });
+}
+function capitalAction(i){
+  if(st.stats.actionPoints<=0)return;
+  st.stats.actionPoints--;
+  if(i===0){st.stats.command=clamp(st.stats.command+4);st.stats.armyInfluence=clamp(st.stats.armyInfluence+4);st.stats.morale=clamp(st.stats.morale+3);}
+  if(i===1){st.stats.armyInfluence=clamp(st.stats.armyInfluence+3);st.rel.shi=clamp(st.rel.shi+2);if(st.rel.han<55)st.rel.han=clamp(st.rel.han+2);else st.rel.pu=clamp(st.rel.pu+2);}
+  if(i===2){st.stats.people=clamp(st.stats.people+5);st.stats.grain=clamp(st.stats.grain-2);st.stats.chenqiao=Math.max(0,st.stats.chenqiao-1);}
+  if(i===3){st.stats.court=clamp(st.stats.court+5);st.stats.suspicion=clamp(st.stats.suspicion+1);}
+  if(st.stats.actionPoints===0){
+    st.stats.month++;
+    st.stats.actionPoints=3;
+    st.history.push("月度行动结算：开封局势发生变化。");
+    if(st.stats.armyInfluence>=50)st.stats.chenqiao++;
+    if(st.stats.court<25)st.stats.suspicion=clamp(st.stats.suspicion+2);
+    if(st.stats.people>=50)st.stats.morale=clamp(st.stats.morale+2);
+    if(st.stats.month>6){st.stats.month=6;}
+  }
+  persist();render();
+}
 function render(){
   const sc=SCENES[st.scene]||SCENES.s01;
-  renderBattle(sc);\n  renderDialogue(sc);
+  const inCapital=st.chapter>=2 || /^s(100|10[1-9]|11[0-9]|12[0-9]|13[0-1])$/.test(st.scene);
+  st.chapter=inCapital?Math.max(2,st.chapter):st.chapter;
+  document.getElementById("chapter2Stats").style.display=inCapital?"block":"none";
+  document.getElementById("capitalRelation").style.display=inCapital?"block":"none";
+  document.getElementById("actionInfo").style.display=inCapital?"inline":"none";
+  document.getElementById("capitalPanel").classList.toggle("show",inCapital);
+  if(inCapital){
+    document.getElementById("actionInfo").textContent="行动点 "+st.stats.actionPoints+" / 3 · 显德二年第 "+st.stats.month+" 月";
+    document.getElementById("capitalMonth").textContent="显德二年 · 第 "+st.stats.month+" 月";
+    document.getElementById("capitalR").textContent=capitalMood();
+    renderCapitalActions();
+  }
+  renderBattle(sc);
+  renderDialogue(sc);
   document.getElementById("date").textContent=sc.date;
   document.getElementById("chapter").textContent=sc.chapter;
-  document.getElementById("progress").textContent="第 "+Math.min(36,st.n+1)+" 段";
+  document.getElementById("progress").textContent="第 "+Math.min(99,st.n+1)+" 段";
   document.getElementById("location").textContent=sc.loc;
   document.getElementById("sceneNo").textContent="选择次数 · "+st.n;
   document.getElementById("title").textContent=sc.title;
@@ -521,17 +769,22 @@ function applyEffects(e){
   if(e.flag)for(const f of e.flag)st.flags[f]=true;
 }
 function choose(c){
-  const [label,plannedNext,effect]=c;\n  let next=plannedNext;
+  const [label,plannedNext,effect]=c;
+  let next=plannedNext;
   applyEffects(effect);
-  if(next==="END"){st.history.push("完成第一章：《黄袍之前》——"+label);persist();showModal("第一章完成",endingSummary()+"\\n\\n存档已保留。下一章可以继续扩展显德二年至陈桥。");return}
+  if(next==="END"){next="s100";}
   if(next==="REWIND"){st=readAuto();render();return}
   if(next==="DEAD"){st.dead=true;persist();showModal("赵匡胤卒","这条时间线已经终止。你的自动安全检查点仍然保留，可以返回继续。");return}
   if(!SCENES[next])return;
-  next=battleCheck(next,label);\n  next=aftermathRoute(next);\n  st.scene=next;st.n++;
+  if(/^s(100|10[1-9]|11[0-9]|12[0-9]|13[0-1])$/.test(next)){st.chapter=2;st.stats.actionPoints=Math.max(0,st.stats.actionPoints-1);if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
+  next=battleCheck(next,label);
+  next=aftermathRoute(next);
+  st.scene=next;st.n++;
   st.history.push("第"+st.n+"次选择："+label+" → "+SCENES[next].title);
-  st.history=st.history.slice(-14);
+  st.history=st.history.slice(-18);
   if(st.stats.grain<=0){st.stats.grain=0;st.stats.morale=clamp(st.stats.morale-8)}
-  if(st.stats.morale<=0){st.scene="s31";st.history.push("军心崩溃：你被迫优先稳定后军。")}\n  if(st.stats.wounds>=100){st.dead=true;persist();showModal("战场重伤","你的时间线在高平提前结束。自动安全检查点仍保留。");return}
+  if(st.stats.morale<=0){st.scene="s31";st.history.push("军心崩溃：你被迫优先稳定后军。")}
+  if(st.stats.wounds>=100){st.dead=true;persist();showModal("战场重伤","你的时间线在高平提前结束。自动安全检查点仍保留。");return}
   persist();render();scrollTo({top:0,behavior:"smooth"});
 }
 function endingSummary(){
@@ -564,7 +817,10 @@ function restart(){
   if(confirm("重新开始会覆盖自动进度，但不会删除三个手动存档。确定吗？")){st=deepCopy(BASE);persist();render();scrollTo({top:0,behavior:"smooth"})}
 }
 function showHelp(){showModal("玩法说明","本章约 30–60 分钟，存在多条路线。军心、威望、粮草、民望、疑心和柴荣信任会影响后续场景；人物关系也会变化。\n\n最重要的是：不要追求“正确答案”。你做出的决定会改变你看到的人、风险和结局。\n\n存档采用版本校验 + 安全检查点。即使浏览器里的旧数据损坏，游戏也会尝试从安全检查点恢复。")}
-window.addEventListener("error",()=>{try{const safe=localStorage.getItem(CHECK_KEY);if(safe){st=safeParse(safe)||deepCopy(BASE);render()}}catch(e){}});\n\n// 伤势采用反向进度条：越高越危险。\n
+window.addEventListener("error",()=>{try{const safe=localStorage.getItem(CHECK_KEY);if(safe){st=safeParse(safe)||deepCopy(BASE);render()}}catch(e){}});
+
+// 伤势采用反向进度条：越高越危险。
+
 persist();render();
 </script>
 </body>
