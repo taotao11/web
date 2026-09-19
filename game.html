@@ -26,6 +26,7 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
   <div class="stat"><span>民望</span><b id="people">10</b><div class="bar"><i id="peopleBar"></i></div></div>
   <div class="stat"><span>疑心</span><b id="suspicion">5</b><div class="bar"><i id="suspicionBar"></i></div></div>
   <div class="stat"><span>柴荣信任</span><b id="trust">15</b><div class="bar"><i id="trustBar"></i></div></div>
+  <div class="stat"><span>伤势</span><b id="wounds">0</b><div class="bar"><i id="woundsBar"></i></div></div>
   <div class="rule"></div>
   <div class="stat-title">人物关系</div>
   <div class="people"><b>柴荣</b><br><span id="chR">谨慎观察</span></div>
@@ -61,7 +62,7 @@ main{min-width:0}.top{position:sticky;top:0;z-index:5;padding:15px 7%;background
 
 <script>
 const VERSION=2, AUTO_KEY="zhaohuang-auto-v2", CHECK_KEY="zhaohuang-safe-v2";
-const BASE={version:VERSION,scene:"s01",n:0,chapter:1,flags:{},rel:{chai:15,pu:0,han:0,shi:0},stats:{morale:50,prestige:20,grain:35,people:10,suspicion:5,trust:15},history:[],dead:false};
+const BASE={version:VERSION,scene:"s01",n:0,chapter:1,flags:{},rel:{chai:15,pu:0,han:0,shi:0},stats:{morale:50,prestige:20,grain:35,people:10,suspicion:5,trust:15,wounds:0},history:[],dead:false};
 
 const SCENES={
 s01:{date:"显德元年 · 春",chapter:"第一章 · 饥火",loc:"后周军营",title:"火还没有烧到城门",text:"天刚亮，风从北面压下来。\n\n营地里没有炊烟。不是今日不做饭，而是已经没有什么可煮的了。\n\n昨夜，三个新兵偷了军粮。老卒把他们按在泥地里，其中一个已经没了气。\n\n亲兵递来一只空木碗。\n\n“赵都头，西仓说还够两日。”\n他顿了顿。\n“西仓的人说，最多一日。”",tags:["饥荒","军营","第一次抉择"],choices:[
@@ -231,6 +232,30 @@ s36:{date:"显德二年 · 夏",chapter:"第一章 · 尾声",loc:"后周军营"
 ]}
 };
 
+function battleCheck(next, choiceLabel){
+  if(st.scene!=="s23") return next;
+  const strength=st.stats.morale + st.stats.prestige*0.6 + st.stats.trust*0.35 + st.rel.shi*0.3 - st.stats.wounds*0.8;
+  const roll=((st.n*17 + st.stats.morale*3 + st.stats.prestige*5 + st.rel.shi*7)%31);
+  const pressure=strength+roll;
+  if(choiceLabel.includes("率兵突击")){
+    if(pressure<72){st.flags.battleBroken=true;st.stats.wounds=clamp(st.stats.wounds+18);st.stats.morale=clamp(st.stats.morale-12);return "s31";}
+    st.flags.battleCharge=true;st.stats.wounds=clamp(st.stats.wounds+8);return next;
+  }
+  if(choiceLabel.includes("稳住溃兵")){
+    if(pressure<58){st.flags.battleHoldFailed=true;st.stats.wounds=clamp(st.stats.wounds+10);return "s30";}
+    st.flags.battleHold=true;return next;
+  }
+  if(choiceLabel.includes("保护柴荣")){
+    if(st.rel.chai+st.stats.trust<28){st.flags.chaiRisk=true;st.stats.wounds=clamp(st.stats.wounds+22);return "s30";}
+    st.flags.savedChai=true;st.stats.wounds=clamp(st.stats.wounds+14);return next;
+  }
+  if(choiceLabel.includes("趁乱追击")){
+    if(st.stats.suspicion>12){st.flags.overextended=true;st.stats.wounds=clamp(st.stats.wounds+16);return "s31";}
+    st.flags.pursuit=true;return next;
+  }
+  return next;
+}
+
 function deepCopy(o){return JSON.parse(JSON.stringify(o))}
 function normalize(x){
   const s=deepCopy(BASE);
@@ -314,16 +339,29 @@ function applyEffects(e){
 function choose(c){
   const [label,next,effect]=c;
   applyEffects(effect);
-  if(next==="END"){st.history.push("完成第一章：《黄袍之前》——"+label);persist();showModal("第一章完成","你已经走过饥火与高平。存档已保留。下一章可以继续扩展显德二年至陈桥。");return}
+  if(next==="END"){st.history.push("完成第一章：《黄袍之前》——"+label);persist();showModal("第一章完成",endingSummary()+"\\n\\n存档已保留。下一章可以继续扩展显德二年至陈桥。");return}
   if(next==="REWIND"){st=readAuto();render();return}
   if(next==="DEAD"){st.dead=true;persist();showModal("赵匡胤卒","这条时间线已经终止。你的自动安全检查点仍然保留，可以返回继续。");return}
   if(!SCENES[next])return;
-  st.scene=next;st.n++;
+  next=battleCheck(next,label);\n  st.scene=next;st.n++;
   st.history.push("第"+st.n+"次选择："+label+" → "+SCENES[next].title);
   st.history=st.history.slice(-14);
   if(st.stats.grain<=0){st.stats.grain=0;st.stats.morale=clamp(st.stats.morale-8)}
-  if(st.stats.morale<=0){st.scene="s31";st.history.push("军心崩溃：你被迫优先稳定后军。")}
+  if(st.stats.morale<=0){st.scene="s31";st.history.push("军心崩溃：你被迫优先稳定后军。")}\n  if(st.stats.wounds>=100){st.dead=true;persist();showModal("战场重伤","你的时间线在高平提前结束。自动安全检查点仍保留。");return}
   persist();render();scrollTo({top:0,behavior:"smooth"});
+}
+function endingSummary(){
+  const s=st.stats, r=st.rel;
+  const traits=[];
+  if(s.people>=30)traits.push("你在饥荒中留下了“救人”的名声");
+  if(s.morale>=65)traits.push("你更像一个能把军心拢住的将领");
+  if(s.prestige>=45)traits.push("你的战功已经开始被军中记住");
+  if(s.trust>=35||r.chai>=25)traits.push("柴荣对你的信任明显加深");
+  if(r.pu>=10)traits.push("赵普开始把你视为值得长期观察的人");
+  if(r.shi>=10)traits.push("石守信愿意把背后交给你");
+  if(s.suspicion>=18)traits.push("你也因此积累了更多政治风险");
+  if(!traits.length)traits.push("你活着走出了第一场大乱，但还没有留下清晰的名字");
+  return "本章结算：\\n\\n"+traits.map(x=>"· "+x).join("\\n")+"\\n\\n伤势："+s.wounds+" / 100\\n粮草："+s.grain+"\\n民望："+s.people+"\\n军心："+s.morale+"\\n威望："+s.prestige;
 }
 function showModal(title,text){document.getElementById("modalTitle").textContent=title;document.getElementById("modalText").textContent=text;document.getElementById("modal").classList.add("show")}
 function closeModal(){document.getElementById("modal").classList.remove("show")}
@@ -342,7 +380,7 @@ function restart(){
   if(confirm("重新开始会覆盖自动进度，但不会删除三个手动存档。确定吗？")){st=deepCopy(BASE);persist();render();scrollTo({top:0,behavior:"smooth"})}
 }
 function showHelp(){showModal("玩法说明","本章约 30–60 分钟，存在多条路线。军心、威望、粮草、民望、疑心和柴荣信任会影响后续场景；人物关系也会变化。\n\n最重要的是：不要追求“正确答案”。你做出的决定会改变你看到的人、风险和结局。\n\n存档采用版本校验 + 安全检查点。即使浏览器里的旧数据损坏，游戏也会尝试从安全检查点恢复。")}
-window.addEventListener("error",()=>{try{const safe=localStorage.getItem(CHECK_KEY);if(safe){st=safeParse(safe)||deepCopy(BASE);render()}}catch(e){}});
+window.addEventListener("error",()=>{try{const safe=localStorage.getItem(CHECK_KEY);if(safe){st=safeParse(safe)||deepCopy(BASE);render()}}catch(e){}});\n\n// 伤势采用反向进度条：越高越危险。\n
 persist();render();
 </script>
 </body>
