@@ -769,6 +769,76 @@ s181:{date:"显德四年 · 开始",chapter:"第五章 · 柴荣之死",loc:"开
 ["先控制禁军营门","s183",{command:6,armyInfluence:6,chenqiao:6,flag:["securedGuards"]}],
 ["派石守信保护赵普","s184",{rel:{shi:5,pu:5},people:2,chenqiao:2}]
 ]}
+
+s182:{date:"显德四年 · 开封",chapter:"第五章 · 柴荣之死",loc:"宫城",title:"诏令确认之后，真正的混乱才开始",text:"正式诏令终于传来。\n\n皇位继承已经确定，可禁军换防、宫门守卫、城内粮道仍然没有完全稳定。\n\n你站在宫门前，第一次清楚地意识到：历史上的“继承”不是一个名字替换，而是一整套命令重新寻找落脚点。",tags:["继承","禁军","开封"],choices:[
+["让禁军全部按新诏令重新编组","s185",{court:6,armyInfluence:-3,chenqiao:-4,flag:["reorganizedGuards"]}],
+["保留原有部署，先确保城内稳定","s186",{command:4,armyInfluence:5,chenqiao:4}],
+["请赵普核对所有军令来源","s187",{rel:{pu:8},court:4,suspicion:3}]
+]},
+s183:{date:"显德四年 · 开封",chapter:"第五章 · 柴荣之死",loc:"禁军营门",title:"你先控制了门，而不是控制皇宫",text:"禁军营门被你稳住。\n\n你下令不许任何人擅自进出，不许抢夺军械，不许以谣言调动士卒。\n\n这是一个看似保守的决定。\n\n可石守信说：“至少今晚，没人能借乱局杀人。”",tags:["禁军","军纪","危机"],choices:[
+["等待正式诏令","s185",{court:5,chenqiao:-4,suspicion:-3}],
+["主动控制更多关键位置","s186",{command:5,armyInfluence:7,chenqiao:7,suspicion:5}],
+["把营门交给石守信","s187",{rel:{shi:8},armyInfluence:-2,chenqiao:-3}]
+]},
+s184:{date:"显德四年 · 开封",chapter:"第五章 · 柴荣之死",loc:"将军府",title:"赵普没有急着谈皇位",text:"赵普收到你的保护后，只说了一句话：“先活过今晚。”\n\n石守信把门外的脚步声数了一遍。\n\n城里开始出现各种传闻。\n\n你们都知道，真正危险的不是谁说错了一句话，而是谁能让一万个人同时相信那句话。",tags:["赵普","石守信","危机"],choices:[
+["先稳定粮仓与伤兵营","s185",{people:5,grain:-3,morale:3,chenqiao:-2}],
+["先稳定禁军换防","s186",{command:5,armyInfluence:5,chenqiao:5}],
+["让赵普整理各方消息","s187",{rel:{pu:8},suspicion:4,chenqiao:4}]
+]},
+s185:{date:"显德四年 · 初夏",chapter:"第五章 · 柴荣之死",loc:"开封禁军",title:"新皇帝需要的不是你的忠诚宣言，而是一支能听令的军队",text:"继承已经完成。\n\n你没有成为皇帝身边最耀眼的人。\n\n可你知道，真正决定开封安稳与否的，仍然是禁军。\n\n过去三年积累的一切开始重新结算：柴荣的信任、赵普的判断、石守信的关系、你的军中影响，以及那条越来越危险的陈桥线。",tags:["继承完成","禁军","陈桥"],choices:[
+["主动把兵权交回新朝廷体系","s188",{court:8,armyInfluence:-8,chenqiao:-10,trust:3}],
+["继续掌握核心禁军，保证局势稳定","s189",{command:6,armyInfluence:8,chenqiao:9,suspicion:5}],
+["让石守信和韩通共同分担","s190",{rel:{shi:5,han:5},armyInfluence:-3,chenqiao:-4,court:4}]
+]},
+s186:{date:"显德四年 · 初夏",chapter:"第五章 · 柴荣之死",loc:"开封",title:"你开始拥有一支真正听令的军队",text:"局势稳定下来。\n\n可稳定本身也带来危险：士卒越来越习惯你的判断。\n\n有人甚至说，只要赵将军在，开封就不会乱。\n\n你知道这句话不能继续流传。\n\n因为下一次皇命与军中习惯发生冲突时，所有人都会想起今天。",tags:["军队","个人影响","危险"],choices:[
+["公开强调皇命高于个人","s188",{armyInfluence:-5,chenqiao:-7,court:6}],
+["不纠正，让局势自然发展","s189",{armyInfluence:7,chenqiao:9,suspicion:5}],
+["主动分散核心军队","s190",{armyInfluence:-6,chenqiao:-6,command:-2}]
+]},
+s187:{date:"显德四年 · 初夏",chapter:"第五章 · 柴荣之死",loc:"军议厅",title:"赵普把所有军令摆在桌上",text:"赵普发现过去几个月有几道军令存在空档。\n\n没有人能证明是谁故意留下的。\n\n可这意味着：一旦再发生一次宫门混乱，就可能有人利用空白。\n\n你终于明白，所谓陈桥，并不一定始于一件大事。它也可能始于一张没有写清楚的纸。",tags:["赵普","军令","制度"],choices:[
+["补齐军令流程","s188",{court:7,chenqiao:-7,suspicion:-3}],
+["让赵普继续调查","s189",{rel:{pu:7},suspicion:5,armyInfluence:4,chenqiao:5}],
+["把空档交给石守信处理","s190",{rel:{shi:6},armyInfluence:2,chenqiao:-2}]
+]},
+s188:{date:"显德四年 · 夏",chapter:"第五章 · 尾声",loc:"开封城楼",title:"你选择让制度先于自己的名字",text:"你把能交出去的兵权交了出去。\n\n有人觉得你错过了最容易上升的时候。\n\n可你知道，真正的历史并不是一条必然通向某个结果的直线。每一次克制，都可能让未来少一条危险的路。\n\n但也可能留下另一种问题：当真正的危机到来时，谁还能迅速调动禁军？",tags:["制度","分权","历史分岔"],choices:[
+["继续下一章","s191",{flag:["chapter6Unlocked"]}],["回到第五章开头","s181"]
+]},
+s189:{date:"显德四年 · 夏",chapter:"第五章 · 尾声",loc:"开封禁军大营",title:"军队终于把你当成了第一反应",text:"你没有宣布任何野心。\n\n可军令越来越快，士卒越来越服从，将领越来越依赖你。\n\n陈桥的危险值已经不再只是一个隐藏数字。它开始变成一种现实：如果某一天皇命中断，军队会不会自己寻找一个新的中心？",tags:["陈桥","禁军","高风险"],choices:[
+["主动拆散个人核心","s188",{armyInfluence:-9,chenqiao:-10,suspicion:-4}],["继续掌握核心禁军","s191",{armyInfluence:6,chenqiao:10,suspicion:6,flag:["strongGuardCore"]}],["让赵普制定新的交接规则","s190",{rel:{pu:6},court:5,chenqiao:-5}]
+]},
+s190:{date:"显德四年 · 夏",chapter:"第五章 · 尾声",loc:"开封",title:"三个人开始决定一支军队的未来",text:"你、石守信、韩通开始共同承担禁军事务。\n\n这降低了个人风险，却也让权力结构变得更复杂。\n\n赵普提醒：“分权不等于没有争夺。只是争夺从一个人，变成了几个人。”",tags:["禁军","石守信","韩通"],choices:[
+["建立公开轮换制度","s188",{court:6,armyInfluence:-4,chenqiao:-6}],["维持三人核心","s191",{armyInfluence:4,chenqiao:6,suspicion:4}],["把最终裁决权交给朝廷","s188",{court:8,chenqiao:-7}]
+]},
+s191:{date:"显德四年 · 秋前",chapter:"第六章 · 陈桥之前",loc:"开封",title:"真正的历史已经逼近",text:"到这里，前三年积累的选择开始真正汇总。\n\n你没有被一件神秘的事情突然推上历史中心。\n\n是饥荒时你怎么选粮，是高平时你救谁，是北伐时你怎么对待伤兵，是柴荣病重后你如何处理禁军，是你有没有让“听你的”成为习惯。\n\n接下来，所有这些都会同时发生作用。\n\n陈桥不会因为一个按钮而出现。它会因为无数个普通选择，终于形成一个无法忽视的局面。",tags:["陈桥前夜","长期后果","主线"],choices:[
+["继续第六章","s192",{flag:["chapter6Started"]}],["回到第五章","s181"]
+]},
+s192:{date:"显德四年 · 秋",chapter:"第六章 · 陈桥之前",loc:"开封禁军",title:"一纸军令，开始改变所有人的站位",text:"新的军令正在形成。\n\n你看着禁军名单，终于发现：有些人会因为你的过去而支持你，有些人会因为你的克制而信任你，还有一些人只会服从最后盖章的人。\n\n历史走到这里，已经没有单纯的善恶选择。\n\n只有后果。",tags:["陈桥","禁军","分支系统"],choices:[
+["继续构筑皇命优先的体系","s193",{court:8,armyInfluence:-4,chenqiao:-8}],["继续扩大个人军中影响","s194",{armyInfluence:8,chenqiao:10,suspicion:6}],["让赵普、石守信共同参与决策","s195",{rel:{pu:5,shi:5},armyInfluence:2,chenqiao:2}]
+]},
+s193:{date:"显德四年 · 秋",chapter:"第六章 · 陈桥之前",loc:"宫城",title:"你把自己的名字从军令里拿掉",text:"你要求所有军令恢复完整流程。\n\n这让禁军短期变慢，却让边界重新清晰。\n\n你知道自己可能因此错过一些机会。\n\n但至少，如果未来发生巨变，没有人能轻易说：这是赵匡胤的军队。",tags:["皇命","克制","分支"],choices:[["继续第六章","s196",{chenqiao:-6,court:6}]]},
+s194:{date:"显德四年 · 秋",chapter:"第六章 · 陈桥之前",loc:"禁军大营",title:"你的名字已经比军令更快",text:"你走进营门，士卒自动让开道路。\n\n没有人喊口号。\n\n可你知道，真正危险的权力从来不需要口号。\n\n陈桥风险已经接近临界点。",tags:["陈桥","个人威望","临界"],choices:[["继续第六章","s196",{chenqiao:8,armyInfluence:5}]]},
+s195:{date:"显德四年 · 秋",chapter:"第六章 · 陈桥之前",loc:"将军府",title:"你们决定把未来写成共同承担",text:"赵普负责消息，石守信负责基层，韩通负责军纪。\n\n你没有把所有东西抓在手里。\n\n可这种结构也意味着：如果皇命突然中断，三个人都知道该找谁。\n\n这是安全，也可能是另一种准备。",tags:["赵普","石守信","韩通"],choices:[["继续第六章","s196",{chenqiao:3,armyInfluence:3}]]},
+s196:{date:"显德四年 · 深秋",chapter:"第六章 · 陈桥之前",loc:"开封城外",title:"黄河以北传来新的军报",text:"北方边境再次出现异常调动。\n\n朝廷需要一支能迅速北上的军队。\n\n而开封的禁军，恰恰是你最熟悉、也是最容易被所有人注意的一支力量。\n\n你终于站到了陈桥真正的门口。门还没有打开。\n\n但钥匙已经开始落到几个人手里。",tags:["陈桥前夜","北方军报","关键节点"],choices:[
+["坚持一切行动等待正式诏令","s197",{court:8,chenqiao:-8,armyInfluence:-3}],["接受临时军令，率军北上","s198",{command:6,armyInfluence:7,chenqiao:8,suspicion:5}],["让石守信与韩通共同领军","s199",{rel:{shi:5,han:5},chenqiao:-2,armyInfluence:2}]
+]},
+s197:{date:"显德四年 · 深秋",chapter:"第六章 · 陈桥之前",loc:"开封",title:"你等诏令，别人却开始等你",text:"你没有动。\n\n可军中的人心并没有停。\n\n他们开始讨论：如果赵将军不动，谁会动？\n\n你第一次明白，有时候“不行动”也会制造行动。",tags:["等待","军心","陈桥"],choices:[["继续观察","s200",{chenqiao:2,armyInfluence:2}]]},
+s198:{date:"显德四年 · 深秋",chapter:"第六章 · 陈桥之前",loc:"开封禁军",title:"军队出城之前，黄袍还只是一块布",text:"你整军出发。\n\n没有人提黄袍。\n\n没有人说天下。\n\n只有军旗、马蹄和一条越来越清晰的军令链。\n\n可你已经知道：当一支军队只在乎一个人的命令时，历史会开始自己寻找解释。",tags:["出兵","陈桥","关键选择"],choices:[["继续","s200",{armyInfluence:5,chenqiao:5}]]},
+s199:{date:"显德四年 · 深秋",chapter:"第六章 · 陈桥之前",loc:"军营",title:"你们三个人共同带兵",text:"石守信和韩通分别带兵。\n\n这种安排让军队更分散，也让任何一个人都更难独自改变局势。\n\n可所有人都知道，真正的核心仍然是你。",tags:["分权","军队","陈桥"],choices:[["继续","s200",{armyInfluence:3,chenqiao:2}]]},
+s200:{date:"显德四年 · 深秋",chapter:"第六章 · 陈桥之前",loc:"军营夜营",title:"夜里，有人把黄袍放在了你的帐外",text:"没有人说是谁送来的。\n\n它只是安静地放在那里。\n\n你没有碰。\n\n帐外传来马蹄声。\n\n石守信站在门口。赵普也到了。\n\n他们没有问你愿不愿意。\n\n他们只问：“明日的军令，听谁的？”",tags:["黄袍","陈桥","关键节点"],choices:[
+["烧掉黄袍，立即等待诏令","s201",{chenqiao:-12,armyInfluence:-5,court:8,suspicion:-5,flag:["burnedRobe"]}],["收下黄袍，但拒绝立即披上","s202",{chenqiao:5,armyInfluence:5,suspicion:5,flag:["keptRobe"]}],["问赵普和石守信，他们真正想要什么","s203",{rel:{pu:5,shi:5},suspicion:2,chenqiao:3}]
+]},
+s201:{date:"显德四年 · 深秋",chapter:"第六章 · 陈桥之前",loc:"军营",title:"黄袍被烧了，问题却没有消失",text:"火焰很快吞掉了那块布。\n\n可帐外的人没有散。\n\n他们真正等待的不是黄袍，而是一个答案：当命令失去来源时，谁来承担责任？\n\n你把军令重新写了一遍。\n\n历史暂时没有翻页。",tags:["黄袍","克制","分支"],choices:[["继续","s204",{chenqiao:-6}]]},
+s202:{date:"显德四年 · 深秋",chapter:"第六章 · 陈桥之前",loc:"军营",title:"你没有披上，但所有人都看见了",text:"你把黄袍收起来。\n\n没有穿。\n\n可这一刻已经被人看见。\n\n从此以后，任何关于你的忠诚，都不会再像以前那么简单。",tags:["黄袍","风险","分支"],choices:[["继续","s204",{chenqiao:6,suspicion:5}]]},
+s203:{date:"显德四年 · 深秋",chapter:"第六章 · 陈桥之前",loc:"军营",title:"他们说：不是我们想要，是大家都怕乱",text:"石守信沉默很久。\n\n赵普却说：“人们总会把自己的选择说成被局势逼出来的。”\n\n你终于明白，真正的陈桥从来不是一个人决定的。\n\n它是许多人同时害怕失控时，寻找一个中心。",tags:["赵普","石守信","陈桥"],choices:[["继续","s204",{chenqiao:4,armyInfluence:4}]]},
+s204:{date:"显德四年 · 深夜",chapter:"第六章 · 终局前夜",loc:"开封",title:"门外的军队正在等",text:"远处传来整齐的脚步声。\n\n你没有看见黄袍。\n\n但你知道，真正的选择已经不再只属于你。\n\n下一阶段将根据你过去所有选择决定：你会拒绝这条路、利用这条路，还是被这条路推着走。",tags:["终局前夜","陈桥","多结局"],choices:[["继续终局","s205",{}]]},
+s205:{date:"显德四年 · 深夜",chapter:"第六章 · 终局前夜",loc:"开封城门",title:"历史把最后一个问题留给你",text:"城门之外，军旗在夜风里翻动。\n\n赵普、石守信站在你身后。\n\n没有人再问你有没有野心。\n\n他们只问：\n\n“如果明日天下真的要你做选择，你会把什么放在第一位？”",tags:["终局","陈桥","选择"],choices:[
+["皇命与制度","s206",{court:8,chenqiao:-10,armyInfluence:-5,flag:["endingOrder"]}],
+["军队与开封稳定","s207",{command:5,armyInfluence:5,chenqiao:4,flag:["endingStability"]}],
+["顺势而为","s208",{armyInfluence:8,chenqiao:10,suspicion:8,flag:["endingAmbition"]}]
+]},
+s206:{date:"显德四年 · 深夜",chapter:"终局分支",loc:"开封",title:"你选择让制度先于自己",text:"你没有让军队替你回答。\n\n你要求所有部队等待正式诏令。\n\n这一夜可能改变很多事情，也可能让你失去本可以抓住的机会。\n\n但你的选择留下了一条清晰的记录：你没有把自己的名字写进皇命里。",tags:["结局分支","制度"],choices:[["结束本阶段","END",{}]]},
+s207:{date:"显德四年 · 深夜",chapter:"终局分支",loc:"开封",title:"你选择先让城不乱",text:"你把禁军分成几路，封住粮仓、宫门与兵器库，尽量避免无序冲突。\n\n这意味着你实际拥有了极大的临时权力。\n\n至于这份权力最终会回到谁手里，取决于接下来的历史。",tags:["结局分支","稳定"],choices:[["结束本阶段","END",{}]]},
+s208:{date:"显德四年 · 深夜",chapter:"终局分支",loc:"开封",title:"你顺着军中的声音走了下去",text:"你没有主动宣布什么。\n\n但当越来越多的人把希望、恐惧和未来都放到你身上时，你没有再把他们推回去。\n\n黄袍究竟是谁准备的，已经不再重要。重要的是，你最终选择承认这股力量。",tags:["结局分支","陈桥"],choices:[["结束本阶段","END",{}]]}
 };
 
 function aftermathRoute(next){
@@ -1109,7 +1179,9 @@ function choose(c){
   if(!SCENES[next])return;
   if(/^s(100|10[1-9]|11[0-9]|12[0-9]|13[0-1])$/.test(next)){st.chapter=2;st.stats.actionPoints=Math.max(0,st.stats.actionPoints-1);if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
   if(/^s(132|13[3-9]|14[0-9]|15[0-9]|16[0-9])$/.test(next)){st.chapter=3;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
-  if(/^s(17[0-9]|18[0-9]|19[0-9])$/.test(next)){st.chapter=4;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
+  if(/^s(17[0-9]|18[0-9]|19[0-9]|200)$/.test(next)){st.chapter=4;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
+  if(/^s(181|182|183|184|185|186|187|188|189|190)$/.test(next)){st.chapter=5;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
+  if(/^s(191|192|193|194|195|196|197|198|199|200|201|202|203|204|205|206|207|208)$/.test(next)){st.chapter=6;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
   next=battleCheck(next,label);
   next=aftermathRoute(next);
   st.scene=next;st.n++;
