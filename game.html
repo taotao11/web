@@ -466,13 +466,308 @@ s129:{date:"显德二年 · 年终",chapter:"第二章 · 尾声",loc:"开封城
 ["回到第二章","s100"]
 ]},
 
-s130:{date:"显德三年 · 春",chapter:"第三章 · 北伐之前",loc:"开封",title:"显德三年，新的边境军报",text:"新的军报从北方送来。\n\n你已经不是那个只需要听命冲锋的年轻将领。\n\n下一章，战争、禁军、朝廷与未来会开始真正交叉。\n\n而你在第二章留下的一切——将领关系、柴荣信任、军中影响、朝廷疑心——都会被带进来。",tags:["第三章预告","北伐","历史主线"],choices:[
-["继续第三章","s131",{flag:["chapter3Started"]}],
-["回到开封整顿","s100"]
+s130:{date:"显德三年 · 春",chapter:"第三章 · 北伐",loc:"开封",title:"显德三年，边境的雪还没有化",text:"显德三年，北方军报一封接一封送进开封。\n\n契丹边军正在重新布置。朝廷决定北伐。\n\n你已经不是那个只需要听命冲锋的年轻将领。过去两年里，你训练过士卒，查过粮账，也学会了知道什么话应该说，什么话应该留在心里。\n\n可真正的战争不会因为你学会了谨慎就变得仁慈。\n\n柴荣把地图摊在案上。手指落在边关。\n\n“这一趟，朕要的是城。可你告诉朕，拿一座城要死多少人？”",tags:["第三章","北伐","边境","历史主线"],choices:[
+["先算粮道和伤兵营，再谈攻城","s132",{command:4,court:3,people:2,trust:3,flag:["northLogistics"]}],
+["请命最精锐部队先行","s133",{command:6,morale:4,armyInfluence:5,chenqiao:2,flag:["northVanguard"]}],
+["问柴荣：若战事不顺，撤军的界线在哪里","s134",{court:4,suspicion:-2,trust:5,flag:["northExitLine"]}]
 ]},
 
-s131:{date:"显德三年 · 春",chapter:"第三章 · 北伐之前",loc:"宫城",title:"军报送到的时候，柴荣已经在等你",text:"这一章即将进入更大的战争与政治冲突。\n\n你的第二章选择已经开始改变人物对你的态度。\n\n这里暂时停下，但存档会保留全部状态。",tags:["未完待续","历史主线"],choices:[
-["保存并返回","s130"]
+s131:{date:"显德三年 · 春",chapter:"第三章 · 北伐",loc:"宫城",title:"柴荣把北方的地图推给你",text:"柴荣没有立即回答。\n\n他看着地图上那些被墨线圈住的城池，又看了你一眼。\n\n“将领最容易犯的错，是把地图上的一个小点，当成值得拿所有人的命去换的东西。”\n\n他命你参与北伐军的前军议事。\n\n这是一次机会，也是一场考验。你必须决定：先解决人，还是先解决城。",tags:["北伐","军议","柴荣"],choices:[
+["跟军需官核对十日粮秣","s132",{grain:3,command:3,people:2}],
+["去前军挑选最能打的部队","s133",{morale:4,armyInfluence:4,chenqiao:2}],
+["留下来和柴荣单独谈撤军底线","s134",{trust:6,court:3}]
+]},
+
+s132:{date:"显德三年 · 春",chapter:"第三章 · 北伐",loc:"北伐军粮道",title:"一车粮，后面跟着三百张嘴",text:"北上的路比军报里写得更坏。\n\n雨把道路泡成泥。运粮车陷进去，士卒推了半天，车轮纹丝不动。\n\n军需官告诉你：若按原定速度走，前军七日后就会缺粮。\n\n你看见路旁的百姓。他们已经把最后一点麦种藏进衣襟。\n\n一个孩子问：“官军来了，是不是又要征粮？”\n\n没有人回答。",tags:["粮道","百姓","后勤"],choices:[
+["军粮优先，按户征收","s135",{grain:10,people:-10,morale:4,flag:["requisitioned"]}],
+["买粮，不许强征","s136",{grain:3,people:8,court:-1,flag:["boughtGrain"]}],
+["减慢行军，让运输队先修路","s137",{grain:-3,command:3,morale:2,people:5,flag:["roadRepair"]}]
+]},
+
+s133:{date:"显德三年 · 春",chapter:"第三章 · 北伐",loc:"前军营地",title:"最精锐的人，也会怕死",text:"你挑出的前军有不少高平老兵。\n\n他们听见北伐两个字，没有欢呼。\n\n石守信看着名单：“这里面有一百多人已经在高平受过伤。”\n\n“让他们上，他们可能撑得住。”\n\n“也可能因为旧伤，再死一次。”\n\n军帐里很安静。战争把勇敢和消耗放在同一张账上。",tags:["老兵","军心","选择"],choices:[
+["老兵留作骨干，新兵承担更多前线任务","s137",{morale:3,people:3,command:4,rel:{shi:5},flag:["veteranReserve"]}],
+["只看战力，谁能打谁上","s138",{morale:6,armyInfluence:5,prestige:4,chenqiao:3,rel:{shi:-3},flag:["meritFirst"]}],
+["让石守信自行挑人","s139",{rel:{shi:8},command:2,morale:2,flag:["shiSelects"]}]
+]},
+
+s134:{date:"显德三年 · 春",chapter:"第三章 · 北伐",loc:"御帐",title:"柴荣没有回答撤军两个字",text:"你问完，帐中安静了很久。\n\n柴荣最后说：“朕当然知道撤军。可如果每一个将领都把退路算得太清楚，军队就只剩退路。”\n\n他顿了顿。\n\n“但朕也不愿意让你们因为朕的一句话，把命送在一座城下。”\n\n这是皇帝能给出的回答，也是一个将领最难执行的命令：既要进，又要知道什么时候不能再进。",tags:["柴荣","军令","风险"],choices:[
+["接受命令，先建立伤兵撤运线","s137",{trust:5,people:5,command:3,flag:["casualtyRoute"]}],
+["要求前军拥有临机撤退权","s140",{trust:2,court:-2,suspicion:3,command:4,flag:["retreatAuthority"]}],
+["不再追问，准备攻城","s138",{prestige:5,morale:3,armyInfluence:3,chenqiao:2}]
+]},
+
+s135:{date:"显德三年 · 春",chapter:"第三章 · 北伐",loc:"村镇",title:"军粮进了军营，村子却安静下来",text:"征粮的命令执行得很快。\n\n军车满了。\n\n村里的锅却空了。\n\n一个老人拿着空粮袋站在路边：“今年的种子也拿走了。”\n\n军需官说这是为了大军。你知道他说得没错。\n\n可战争最残酷的地方，往往就是每一个命令都能找到一个听起来合理的理由。",tags:["征粮","代价","民生"],choices:[
+["补发一部分粮种","s141",{grain:-6,people:8,court:2,flag:["seedCompensation"]}],
+["维持征粮，不再节外生枝","s142",{grain:4,morale:4,people:-8,flag:["hardRequisition"]}],
+["记录受损村庄，战后补偿","s136",{people:3,prestige:2,flag:["compensationLedger"]}]
+]},
+
+s136:{date:"显德三年 · 春",chapter:"第三章 · 北伐",loc:"军粮道",title:"你买下的粮，也有人不愿意卖",text:"钱粮摆在桌上，事情却没有因此简单。\n\n有商人愿意卖，也有百姓拒绝。\n\n他们不是不想要钱，而是不知道军队走后自己还能不能活到秋收。\n\n你第一次明白，所谓民心，并不是让所有人喜欢你，而是让他们相信明天还存在。",tags:["民生","粮道","信任"],choices:[
+["给商人高价，保证军粮","s141",{grain:6,people:2,court:-1}],
+["把部分军车改为民粮运输","s143",{grain:-4,people:8,morale:-1,flag:["civilianConvoy"]}],
+["放弃争论，优先保证前军","s142",{grain:5,command:3,people:-4}]
+]},
+
+s137:{date:"显德三年 · 春",chapter:"第三章 · 北伐",loc:"北方驿道",title:"修路的人，比打仗的人更早倒下",text:"道路终于能走了。\n\n可修路的民夫已经倒下一批。军医说不是敌伤，是饥饿和寒冷。\n\n你站在泥路边，忽然想起高平。\n\n那时候你以为战争就是两军相撞。现在你知道，真正的战争从一条路、一袋粮、一个被征走的青壮年开始。",tags:["战争代价","民夫","记忆"],choices:[
+["给民夫发军粮","s141",{grain:-5,people:10,morale:2,flag:["workersFed"]}],
+["让他们回村，改由军队修路","s142",{command:-1,people:4,armyInfluence:2}],
+["继续赶路，不让大军停下","s144",{morale:5,command:4,people:-6,chenqiao:2}]
+]},
+
+s138:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"前线",title:"第一座城没有想象中那么远",text:"城墙终于出现在地平线上。\n\n军旗越来越多。\n\n将士开始兴奋。可你知道，真正的伤亡还没有开始。\n\n攻城器械被推到前面时，一个年轻士卒问：“赵将军，城里的人也是汉人，为什么要打？”\n\n你没有立刻回答。因为战争从来不会先问一个人愿不愿意。",tags:["攻城","前线","抉择"],choices:[
+["先劝降，给守军和百姓留退路","s145",{people:6,court:3,command:-2,flag:["offerSurrender"]}],
+["集中器械，三日内强攻","s144",{morale:5,prestige:6,wounds:8,armyInfluence:4,chenqiao:3,flag:["siegeAssault"]}],
+["围城断粮","s146",{grain:5,prestige:3,people:-8,flag:["siegeBlockade"]}]
+]},
+
+s139:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"前军",title:"石守信挑出来的人，没有最强的",text:"石守信没有选最勇猛的人。\n\n他选了那些能在夜里轮值、受伤后还能带队、知道什么时候停手的人。\n\n“仗不是只打一阵。”他说。\n\n你看着名单，第一次发现，一个将领真正留下的东西，可能不是他杀了多少敌人，而是他让多少人活着回来。",tags:["石守信","军队","老兵"],choices:[
+["让这套选人法推广到全军","s141",{command:5,morale:4,rel:{shi:8},armyInfluence:3}],
+["只在自己的部队使用","s142",{command:3,rel:{shi:4},armyInfluence:2}],
+["记录名单，暂不扩大","s140",{court:2,suspicion:-2,rel:{shi:3}}]
+]},
+
+s140:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"军议帐",title:"将军开始拥有自己的判断",text:"你的临机权限被写进军令。\n\n这让士卒更安心，也让朝廷更敏感。\n\n一位文官提醒：“赵将军，军中若人人只听自己的判断，皇命就会变得很远。”\n\n你没有反驳。因为他说的是风险，而不是恶意。",tags:["军权","朝廷","风险"],choices:[
+["主动把权限写成可审计的军令","s143",{court:5,suspicion:-3,command:4,chenqiao:-2,flag:["auditableCommand"]}],
+["保留临机权限，战场上再说","s144",{command:5,armyInfluence:4,suspicion:5,chenqiao:3}],
+["把决定权交回柴荣","s145",{trust:7,court:4,armyInfluence:-3,chenqiao:-4,flag:["returnedAuthority"]}]
+]},
+
+s141:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"前线后方",title:"军粮、伤兵和百姓，终于被写进同一本账",text:"你建立了一本新的账。\n\n它不只记粮，也记伤兵、死亡、失踪和被征发的民夫。\n\n有人笑你：“打仗还记这些，能多杀一个敌人吗？”\n\n你回答：“不能。但能让我知道，下一次该少死多少人。”\n\n这句话被人记住了。",tags:["制度","伤亡账","军队"],choices:[
+["把账册送给柴荣","s147",{trust:6,court:4,prestige:2}],
+["让赵普参与整理","s148",{rel:{pu:8},suspicion:2,armyInfluence:2}],
+["只留在军中，不上报","s149",{armyInfluence:5,suspicion:5,chenqiao:2}]
+]},
+
+s142:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"军营",title:"军队越来越快，百姓越来越沉默",text:"你的军队推进速度很快。\n\n可每走一处，留下的空村越来越多。\n\n士卒的饭变多了，路边的炊烟却变少了。\n\n这不是一个立刻爆发的坏结果。它更像一笔慢慢累积的账，直到某一天，所有人一起发现自己已经付不起。",tags:["推进","民生代价","军心"],choices:[
+["停止扩大征发","s143",{people:8,command:-2,court:2}],
+["把责任归入战时条例","s149",{court:3,suspicion:4,command:4,chenqiao:2}],
+["继续推进，争取速战速决","s144",{morale:5,prestige:5,people:-5,chenqiao:3}]
+]},
+
+s143:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"前线",title:"你开始发现，制度也能救人",text:"你把军粮、民粮、伤兵运输和军纪写成了明确的流程。\n\n执行起来并不漂亮。有人嫌麻烦，有人故意绕开规定。\n\n但当第一批重伤士卒被完整送回后，营里第一次有人说：\n\n“原来受伤以后，也不是只能等死。”",tags:["军制","伤兵","希望"],choices:[
+["继续完善制度","s147",{command:4,people:5,morale:3,court:3}],
+["把制度交给韩通监督","s150",{rel:{han:6},court:4,suspicion:-2}],
+["让石守信负责基层执行","s151",{rel:{shi:7},armyInfluence:3}]
+]},
+
+s144:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"城下",title:"城墙下面，声音突然变得很少",text:"攻城开始。\n\n第一天，鼓声压过了惨叫。第二天，鼓声停了。\n\n第三天，你看到担架一具接一具回来。\n\n有个士卒还活着，却一直问：“城破了吗？”\n\n军医没有回答。\n\n战争到了这里，已经没有什么豪言壮语。只有一个数字：今天还有多少人能站起来。",tags:["攻城","伤亡","战争代价"],choices:[
+["停攻一天，救治伤兵","s152",{wounds:-8,morale:-2,people:4,command:-2,flag:["siegePause"]}],
+["继续强攻","s153",{prestige:7,morale:4,wounds:12,armyInfluence:5,chenqiao:4}],
+["改为夜袭薄弱处","s154",{prestige:5,wounds:5,command:4,armyInfluence:3}]
+]},
+
+s145:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"城下军议",title:"守军第一次派人出城",text:"对方没有立刻投降。\n\n他们只派出一个使者，问三个问题：百姓能不能走？降卒能不能活？城破之后能不能不抢？\n\n军中有人笑了。\n\n你却没有笑。\n\n因为你知道，一座城真正要付出的代价，从来不只是城墙上死的人。",tags:["谈判","百姓","选择"],choices:[
+["保证百姓离城","s155",{people:10,court:4,prestige:-1,flag:["safeCivilians"]}],
+["只保证降卒不杀","s156",{command:3,people:3,prestige:2}],
+["不做保证，要求立即开城","s153",{prestige:5,morale:3,suspicion:2}]
+]},
+
+s146:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"城外",title:"围城最安静，也最残酷",text:"城门关上以后，双方都没有再冲锋。\n\n城里的人开始缺粮。城外的军队也开始缺粮。\n\n每天都有百姓从城墙上被放下来。他们瘦得像一阵风就能吹倒。\n\n你的部将问：“要不要放他们过去？”\n\n你忽然意识到：有时候，不杀人也能让人死。",tags:["围城","饥荒","伦理"],choices:[
+["开一条民众通道","s155",{grain:-7,people:12,morale:-1,flag:["humanitarianCorridor"]}],
+["继续封锁","s153",{grain:4,prestige:5,people:-12,chenqiao:3}],
+["秘密给城内送粮","s156",{grain:-6,people:8,suspicion:6,flag:["secretRelief"]}]
+]},
+
+s147:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"御帐",title:"柴荣第一次认真看完你的伤亡账",text:"柴荣没有先看战报。\n\n他先看伤兵和死亡的数字。\n\n很久以后，他问：“这些数字是谁让你记的？”\n\n“臣自己。”\n\n柴荣点头。\n\n“记住。将来若有人只告诉你赢了多少城，你就问他，死了多少人。”",tags:["柴荣","伤亡账","信任"],choices:[
+["请求把伤亡统计纳入军制","s157",{trust:7,court:5,command:3,flag:["casualtySystem"]}],
+["只把账留在自己手里","s158",{trust:3,armyInfluence:5,suspicion:4}],
+["请求柴荣给你更多兵权","s159",{trust:2,command:7,armyInfluence:7,chenqiao:5,flag:["askedPower"]}]
+]},
+
+s148:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"军帐",title:"赵普开始看见另一张地图",text:"赵普把你的账册铺在桌上。\n\n他没有看伤亡，而是看粮道、将领往来和谁在什么时候出现。\n\n“你记录的是死人。”他说。\n\n“我记录的是活人如何走到死人的位置。”\n\n他沉默了一会儿。\n\n“那我来帮你看另一张图。”",tags:["赵普","情报","政治"],choices:[
+["让赵普建立军情网络","s160",{rel:{pu:10},armyInfluence:4,suspicion:5,chenqiao:5,flag:["puNetwork"]}],
+["只让他做后勤分析","s157",{rel:{pu:5},court:3}],
+["拒绝把军情交给幕僚","s158",{suspicion:-2,armyInfluence:2}]
+]},
+
+s149:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"军中",title:"秘密越来越多，军队却越来越安静",text:"没有人知道完整的账。\n\n将领只知道自己的部队，士卒只知道下一道命令。\n\n短期看，这让军队更快。\n\n可你也发现：当所有信息都集中在少数人手里，一旦你判断错一次，整个军队都会一起错。",tags:["军权","秘密","风险"],choices:[
+["开放部分军务给副将","s157",{court:3,suspicion:-2,command:2}],
+["继续集中信息","s160",{armyInfluence:6,suspicion:6,chenqiao:5}],
+["把关键军务交给柴荣","s158",{trust:7,armyInfluence:-3,chenqiao:-4}]
+]},
+
+s150:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"军议",title:"韩通问：你到底想建立什么",text:"韩通没有绕弯。\n\n“你现在做的已经不是一次整顿。你在建立一套谁都能用的规矩，还是一套只有你的人能用的规矩？”\n\n这是一个很危险的问题。因为答案会决定未来的你，究竟是一个将领，还是一个拥有自己体系的将领。",tags:["韩通","制度","权力"],choices:[
+["建立公开制度，谁都能用","s157",{court:6,suspicion:-4,chenqiao:-3,rel:{han:5}}],
+["建立核心圈层，效率优先","s160",{armyInfluence:6,chenqiao:5,rel:{han:-3}}],
+["让柴荣决定制度边界","s158",{trust:7,court:4,chenqiao:-4}]
+]},
+
+s151:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"基层营寨",title:"石守信把名单交给你",text:"名单上不是最能打的人。\n\n是那些失去兄弟、失去父亲、自己带着旧伤却仍在训练新兵的人。\n\n石守信说：“他们不怕死，是因为他们已经知道死是什么。”\n\n你看着名单，没有说话。",tags:["石守信","老兵","代价"],choices:[
+["给老兵家属长期抚恤","s157",{people:8,grain:-5,morale:5,rel:{shi:8}}],
+["把老兵编入教官队","s158",{command:5,morale:4,rel:{shi:5},armyInfluence:3}],
+["把最能打的老兵重新投入前线","s160",{prestige:5,morale:5,rel:{shi:-4},chenqiao:4}]
+]},
+
+s152:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"伤兵营",title:"暂停一天，前线的人开始骂你",text:"你命令攻城器械停一天。\n\n前线有人骂你胆小。\n\n伤兵营却第一次有了足够的人手。\n\n一个失去腿的老卒抓住你的袖子：“赵将军，别让他们急着再上。”\n\n第二天，军令来了。\n\n柴荣没有问你有没有怕。只问：“你准备好了吗？”",tags:["伤兵","军令","柴荣"],choices:[
+["继续攻城，但先安排轮换","s153",{command:4,morale:2,wounds:-3,trust:3}],
+["请求柴荣改用围城","s154",{trust:4,grain:-3,prestige:-1}],
+["承认前线伤亡已经超过预期","s157",{trust:6,court:4,prestige:-2,flag:["admittedLoss"]}]
+]},
+
+s153:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"城门",title:"城门终于开了",text:"城门打开的时候，没有想象中的欢呼。\n\n有人跪下，有人抱着孩子往后退。\n\n你的士卒冲进城里。你最先做的不是追击，而是派人封住粮仓和民居。\n\n你知道军队一旦失去边界，胜利会立刻变成另一场灾难。",tags:["破城","军纪","后果"],choices:[
+["严禁掠夺，违者军法","s157",{people:8,morale:3,prestige:4,suspicion:2,flag:["noLoot"]}],
+["允许士卒领取战利品","s160",{morale:6,prestige:6,people:-15,armyInfluence:4,chenqiao:4,flag:["lootAllowed"]}],
+["把粮食优先分给城中百姓","s161",{grain:-8,people:15,morale:1,prestige:-2,flag:["fedCity"]}]
+]},
+
+s154:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"城外夜营",title:"夜色让每个人都看不清未来",text:"你没有选择正面撞城。\n\n夜里，一支小队摸向城墙薄弱处。\n\n他们没有喊杀声。只有绳索、脚步和偶尔的一声闷响。\n\n天亮时，城头换了旗。\n\n你第一次意识到：战争里最危险的不是最响亮的那一刻，而是没人知道发生了什么的那一刻。",tags:["夜袭","战术","风险"],choices:[
+["立即控制城门与粮仓","s157",{command:4,people:5,prestige:4}],
+["先救伤兵再进城","s161",{people:8,morale:3,prestige:1,wounds:-4}],
+["追击撤退的守军","s160",{prestige:6,morale:5,wounds:8,chenqiao:3}]
+]},
+
+s155:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"降城外",title:"你给了一条路，未必所有人都愿意走",text:"你答应给百姓留路。\n\n可真正走出来的人很少。\n\n有人不信官军，有人舍不得家，有人已经没有力气。\n\n你突然明白，命令可以打开城门，却不能立刻修复恐惧。",tags:["百姓","降城","信任"],choices:[
+["继续安置出城百姓","s161",{people:10,grain:-6,court:3}],
+["把重点放回军务","s157",{command:4,prestige:2}],
+["让赵普记录这些人的去向","s160",{rel:{pu:6},suspicion:3,armyInfluence:3}]
+]},
+
+s156:{date:"显德三年 · 夏",chapter:"第三章 · 北伐",loc:"城下",title:"你答应了一个条件，军中却出现两种声音",text:"有人认为你软弱。\n\n有人认为你终于像个将领。\n\n最麻烦的是，两种声音都在军中。\n\n你开始意识到：当你的决定影响越来越多人，你面对的就不再只是敌人。",tags:["军中争论","声望","风险"],choices:[
+["公开解释军令","s157",{court:4,people:4,suspicion:-2}],
+["不解释，让结果说话","s160",{prestige:4,armyInfluence:4,chenqiao:3}],
+["让柴荣亲自定调","s158",{trust:6,court:4,armyInfluence:-2,chenqiao:-3}]
+]},
+
+s157:{date:"显德三年 · 秋前",chapter:"第三章 · 柴荣病重",loc:"北伐行营",title:"军报写着胜利，御医却说了另一句话",text:"北方战事还在继续。\n\n城池已经拿下，军队却没有停止疲惫。\n\n这天夜里，御医把你叫到帐外。\n\n“陛下的病，比军报里写的严重。”\n\n你回头看见柴荣仍在处理军务。\n\n他咳了一声，继续在地图上落下一枚棋子。\n\n你第一次意识到：真正危险的敌人，可能已经不在城外。",tags:["柴荣","病重","转折"],choices:[
+["先封锁消息，稳定军心","s162",{trust:3,court:3,suspicion:5,flag:["illnessSecret"]}],
+["立即安排后撤与医疗","s163",{people:3,command:2,trust:5,flag:["medicalRetreat"]}],
+["请求柴荣把继承与军权安排说清楚","s164",{court:5,suspicion:4,trust:-1,flag:["successionTalk"]}]
+]},
+
+s158:{date:"显德三年 · 秋前",chapter:"第三章 · 柴荣病重",loc:"行营",title:"柴荣看见了你手里的兵",text:"柴荣叫你进去。\n\n他已经明显疲惫，却仍然问起军中情况。\n\n“你的人现在有多少？”\n\n你知道这个问题不是在问数字。\n\n它在问：这些人听的是皇命，还是你的名字？",tags:["柴荣","军权","疑心"],choices:[
+["回答：听皇命","s162",{trust:8,court:4,armyInfluence:-2,chenqiao:-4,flag:["imperialLoyalty"]}],
+["回答：先听军令，再听将领","s164",{trust:2,command:5,chenqiao:3}],
+["沉默","s160",{suspicion:5,armyInfluence:5,chenqiao:4}]
+]},
+
+s159:{date:"显德三年 · 秋前",chapter:"第三章 · 柴荣病重",loc:"御帐",title:"兵权给得越多，边界就越模糊",text:"你得到更多兵权。\n\n将领开始更加依赖你，士卒开始把你的名字和军令放在一起。\n\n这本身并不意味着什么。\n\n可赵普在离开时只说了一句：“名字一旦比官职更容易被记住，朝廷就会开始计算风险。”",tags:["军权","赵普","陈桥"],choices:[
+["把新增兵权分给各营","s162",{command:2,armyInfluence:-2,chenqiao:-3,court:3}],
+["集中精锐在自己麾下","s160",{armyInfluence:8,chenqiao:7,suspicion:6}],
+["请柴荣明确你的任期与权限","s164",{trust:5,court:5,chenqiao:-2}]
+]},
+
+s160:{date:"显德三年 · 秋前",chapter:"第三章 · 柴荣病重",loc:"军帐",title:"赵普没有再问你想不想要天下",text:"赵普把门关上。\n\n“别急着回答任何大问题。”\n\n“现在真正重要的是：谁掌兵，谁传令，谁能让十万人相信明天的命令。”\n\n他看着你。\n\n“如果这些东西都落在一个人手里，哪怕那个人什么都没想，别人也会替他想。”",tags:["赵普","权力结构","风险"],choices:[
+["主动分散军权","s162",{armyInfluence:-5,chenqiao:-6,suspicion:-3,court:5}],
+["保持现状","s164",{armyInfluence:3,chenqiao:3,suspicion:3}],
+["让赵普继续观察各方动向","s165",{rel:{pu:8},armyInfluence:4,chenqiao:6,suspicion:5,flag:["puWatching"]}]
+]},
+
+s161:{date:"显德三年 · 秋前",chapter:"第三章 · 柴荣病重",loc:"伤兵与难民营",title:"胜利之后，人群没有散去",text:"战事稍缓。\n\n伤兵、难民、被征发的民夫都留在营地周围。\n\n他们没有战功，却必须继续生活。\n\n你命人统计每一张脸。有人说你是在收买人心。\n\n你只回答：“活着的人也需要被记住。”",tags:["难民","民生","声望"],choices:[
+["建立临时安置营","s162",{people:12,grain:-7,morale:2,court:3}],
+["让地方官接管","s163",{court:5,people:4,command:2}],
+["优先返回军营","s160",{armyInfluence:4,people:-3,chenqiao:2}]
+]},
+
+s162:{date:"显德三年 · 秋",chapter:"第三章 · 柴荣病重",loc:"行营",title:"柴荣病了，军队却还在前进",text:"消息没有完全压住。\n\n士卒开始私下讨论。\n\n有人说皇帝只是劳累。有人说皇帝已经不能再领兵。\n\n你发现最危险的不是谣言，而是没人知道应该听谁的。\n\n柴荣仍然坚持处理军务。\n\n但他的手已经开始发抖。",tags:["柴荣病重","军心","转折"],choices:[
+["让军队只认皇帝诏令","s166",{trust:5,court:5,armyInfluence:-3,chenqiao:-5,flag:["onlyEdict"]}],
+["让前军只认你的军令","s167",{command:6,armyInfluence:7,suspicion:8,chenqiao:7,flag:["personalCommand"]}],
+["建立双重传令：军令与医令分开","s168",{command:3,court:4,trust:4,chenqiao:-2,flag:["dualOrders"]}]
+]},
+
+s163:{date:"显德三年 · 秋",chapter:"第三章 · 柴荣病重",loc:"退军途中",title:"撤退不是失败，失去秩序才是",text:"你开始安排后撤。\n\n有人认为北伐已经胜利，不该退。\n\n可你看到越来越多的伤兵。\n\n最前面的一名老兵对你说：“将军，城可以以后再打。人没了，就只剩城。”\n\n你第一次听见这句话时，是在高平。现在它又回来了。",tags:["撤军","伤兵","历史回声"],choices:[
+["优先运走重伤者","s166",{people:8,morale:3,grain:-5,flag:["savedWounded"]}],
+["优先保证精锐撤退","s167",{command:5,morale:5,people:-5,armyInfluence:4,chenqiao:4}],
+["让地方军先撤，中央军断后","s168",{command:3,prestige:4,trust:3}]
+]},
+
+s164:{date:"显德三年 · 秋",chapter:"第三章 · 柴荣病重",loc:"宫城",title:"继承的问题，比边境更冷",text:"柴荣终于允许你谈。\n\n可你发现，这不是一句“谁继位”就能解决的问题。\n\n皇族、文官、禁军、地方军，各自都有自己的担忧。\n\n柴荣只说：“朕最怕的不是有人争，而是有人以为自己必须替天下做决定。”\n\n这句话让你沉默了很久。",tags:["继承","朝局","柴荣"],choices:[
+["只谈军队秩序，不谈人选","s166",{court:6,trust:5,chenqiao:-4}],
+["请求建立明确的禁军交接程序","s168",{command:3,court:6,chenqiao:-3,flag:["guardSuccessionProtocol"]}],
+["告诉柴荣你愿意承担任何军令","s167",{trust:2,command:6,armyInfluence:6,chenqiao:6}]
+]},
+
+s165:{date:"显德三年 · 秋",chapter:"第三章 · 柴荣病重",loc:"开封",title:"赵普开始给你看一张不能公开的名单",text:"赵普把几页纸压在最下面。\n\n上面是禁军将领、地方节度使、朝廷重臣之间的关系。\n\n他没有说谁忠、谁奸。\n\n只说：“真正危险的时候，不要猜谁是好人。先看谁控制了什么。”\n\n你知道，从这一刻开始，你面对的已经不是一场战争。",tags:["赵普","禁军","政治结构"],choices:[
+["只看军务，不参与结党","s166",{suspicion:-3,armyInfluence:-2,chenqiao:-4,court:4}],
+["让赵普继续整理","s167",{rel:{pu:8},suspicion:6,armyInfluence:5,chenqiao:6}],
+["把名单交给柴荣","s168",{trust:8,court:6,chenqiao:-5,flag:["gaveListToChai"]}]
+]},
+
+s166:{date:"显德三年 · 秋",chapter:"第三章 · 尾声",loc:"开封",title:"你把兵权还给了制度",text:"你没有让任何一个人把自己的名字写在军令上。\n\n你要求所有调兵、粮运、伤兵转运都留下记录。\n\n有人说你错过了机会。\n\n可你知道，机会和风险有时候长着同一张脸。\n\n这一年，柴荣的病情继续恶化。\n\n而开封已经开始等待一个谁也不愿说出口的明天。",tags:["制度","柴荣","下一章"],choices:[
+["进入第四章：柴荣之死与继承危局","s169",{flag:["chapter4Unlocked"]}],
+["回到第三章开头","s130"]
+]},
+
+s167:{date:"显德三年 · 秋",chapter:"第三章 · 尾声",loc:"开封禁军大营",title:"越来越多人开始听你的名字",text:"你手里的兵越来越多。\n\n你没有宣布任何野心。\n\n可军中已经出现一种危险的习惯：有人遇到问题，第一反应不是找诏令，而是找你。\n\n赵普没有阻止。石守信也没有说话。\n\n只有你自己知道，这条路再往前一步，就不是“将领影响力”四个字能解释的了。",tags:["军中影响","陈桥","风险"],choices:[
+["主动分兵，降低个人依赖","s166",{armyInfluence:-8,chenqiao:-7,suspicion:-3,command:-2}],
+["接受现状，继续掌兵","s169",{armyInfluence:5,chenqiao:8,suspicion:6,flag:["personalArmyCore"]}],
+["把军权的一部分交给柴荣","s168",{trust:8,armyInfluence:-5,chenqiao:-6,court:5}]
+]},
+
+s168:{date:"显德三年 · 秋",chapter:"第三章 · 尾声",loc:"开封宫城",title:"你终于明白，最难守的是边界",text:"你把能交出去的东西交了出去。\n\n这让一些人失望，也让一些人松了一口气。\n\n可你仍然知道：柴荣病重之后，真正的危险不会因为你今天克制，就自动消失。\n\n有些局势一旦形成，任何一个人都只能选择自己站在哪里。",tags:["克制","权力边界","继承"],choices:[
+["进入第四章","s169",{flag:["chapter4Unlocked"]}],
+["回到第三章开头","s130"]
+]},
+
+s169:{date:"显德三年 · 深秋",chapter:"第四章 · 前夜",loc:"开封",title:"你听见了城里最安静的一句话",text:"“陛下病得很重。”\n\n没有人高声说。\n\n但每个人都已经开始准备。\n\n禁军在换防，文官在递折子，将领在互相打听，赵普在整理名单，石守信在等你的命令。\n\n而你站在城楼上，看着开封的灯火。\n\n高平那一年，你只想让更多人活下来。\n\n现在，你必须面对一个更难的问题：当皇帝不再能发号施令时，谁来让这座城不乱？",tags:["第四章预告","柴荣","陈桥前夜"],choices:[
+["进入第四章","s170",{flag:["chapter4Started"]}],
+["回到第三章","s166"]
+]}
+
+s170:{date:"显德三年 · 深秋",chapter:"第四章 · 前夜",loc:"开封禁军大营",title:"皇帝还活着，权力已经开始移动",text:"这一章从这里开始。\n\n柴荣的病情、皇太子、禁军交接、赵普的判断、石守信的选择，以及你在前三章积累的每一分军中影响，都会在接下来的事件里产生后果。\n\n最重要的是：陈桥不是突然发生的。它会从无数次“先听谁的”开始。",tags:["第四章","继承危局","陈桥"],choices:[
+["继续第四章","s171",{flag:["chapter4Started"]}],
+["返回第三章尾声","s166"]
+]},
+
+s171:{date:"显德三年 · 深秋",chapter:"第四章 · 前夜",loc:"禁军大营",title:"第一道没有盖章的命令",text:"夜里，一名禁军校尉来找你。\n\n他带来一句没有印玺的话：“有人说，明日换防听你的。”\n\n你问他是谁说的。\n\n他摇头。\n\n“人人都这么说。”\n\n这比一封诏书更危险。",tags:["禁军","换防","陈桥"],choices:[
+["立即要求出示正式诏令","s172",{court:5,suspicion:-4,chenqiao:-4,flag:["demandEdict"]}],
+["先让换防照常执行","s173",{command:4,armyInfluence:4,chenqiao:5}],
+["让石守信查清是谁传话","s174",{rel:{shi:6},suspicion:3,armyInfluence:2,chenqiao:3}]
+]},
+
+s172:{date:"显德三年 · 深秋",chapter:"第四章 · 前夜",loc:"宫门",title:"真正的权力，首先是一张能验证的纸",text:"你把那句传话挡了回去。\n\n禁军军官有些不满。\n\n你却知道，一旦“听你的”成为习惯，哪怕今天是为了救城，明天也可能成为另一种东西。\n\n赵普站在远处，没有称赞你。\n\n他只说：“至少现在，别人还必须拿出证据。”",tags:["诏令","制度","赵普"],choices:[
+["继续坚持一切调兵须有凭据","s175",{court:6,chenqiao:-5,suspicion:-3}],
+["只在紧急情况下允许口令","s176",{command:3,armyInfluence:3,chenqiao:2}],
+["让柴荣亲自确认禁军换防","s177",{trust:6,court:5,chenqiao:-4}]
+]},
+
+s173:{date:"显德三年 · 深秋",chapter:"第四章 · 前夜",loc:"禁军营门",title:"一次正常换防，也可能改变一个人的位置",text:"换防顺利完成。\n\n士卒发现自己不知不觉已经习惯你的军令。\n\n有人说：“赵将军在，事情就不会乱。”\n\n这句话听起来像信任。\n\n可你已经开始听见另一层意思：如果哪一天皇命与军中习惯发生冲突，他们会听谁？",tags:["军中习惯","个人威望","风险"],choices:[
+["立即纠正这种说法","s175",{armyInfluence:-4,chenqiao:-4,court:4}],
+["不回应","s176",{armyInfluence:5,chenqiao:5,suspicion:4}],
+["让石守信公开强调皇命","s177",{rel:{shi:5},trust:4,chenqiao:-3}]
+]},
+
+s174:{date:"显德三年 · 深秋",chapter:"第四章 · 前夜",loc:"将军府",title:"石守信找到了一张没有名字的名单",text:"名单上写着换防时间、营门位置、值夜将领。\n\n没有名字，也没有印章。\n\n石守信低声说：“有人在提前排兵。”\n\n你看着纸，忽然明白：陈桥真正危险的地方，不是有人喊黄袍，而是有人提前把所有人放到了能喊黄袍的位置。",tags:["石守信","情报","陈桥"],choices:[
+["把名单交给柴荣","s177",{trust:8,court:6,chenqiao:-5,flag:["warnedChai"]}],
+["继续追查幕后之人","s176",{rel:{shi:5},suspicion:5,armyInfluence:5,chenqiao:5}],
+["销毁名单，避免军中恐慌","s175",{suspicion:-2,people:1,chenqiao:2}]
+]},
+
+s175:{date:"显德三年 · 深秋",chapter:"第四章 · 前夜",loc:"开封",title:"你把最危险的一句话说回去了",text:"你开始重新强调：军队属于皇帝，军令来自诏书，个人声望不能代替制度。\n\n这让一些人失望。\n\n却也让另一些人放心。\n\n你不知道这会不会改变未来。\n\n但你知道，至少今晚，禁军没有因为你的名字而改变方向。",tags:["克制","禁军","制度"],choices:[
+["进入下一阶段","s178",{flag:["guardBoundary"]}],
+["返回第四章前夜","s171"]
+]},
+
+s176:{date:"显德三年 · 深秋",chapter:"第四章 · 前夜",loc:"开封禁军大营",title:"没有人要求你夺权，但所有人都在替你铺路",text:"你没有下令夺取任何东西。\n\n可军中关系、换防顺序、将领信任、士卒习惯正在慢慢向你靠拢。\n\n赵普说：“最危险的不是野心。最危险的是，别人先把路铺好了。”\n\n你沉默。因为你知道这条路已经出现。",tags:["陈桥","军权","赵普"],choices:[
+["开始主动拆掉这条路","s178",{armyInfluence:-7,chenqiao:-8,suspicion:-3}],
+["继续观察，不主动改变","s179",{armyInfluence:5,chenqiao:7,suspicion:4}],
+["把一部分军令权交给石守信与韩通","s177",{armyInfluence:-3,chenqiao:-4,rel:{shi:4,han:4}}]
+]},
+
+s177:{date:"显德三年 · 深秋",chapter:"第四章 · 前夜",loc:"宫城",title:"柴荣问你：如果朕不在了，你会怎么做",text:"这一次，他没有说“如果朕病重”。\n\n他直接问：如果朕不在了，你会怎么做？\n\n帐中没有别人。\n\n你忽然意识到，历史真正的转折，从来不是鼓声响起的那一刻。它可能只是一个病中的皇帝，在深夜问了一句未来。",tags:["柴荣","继承","关键选择"],choices:[
+["守住禁军，听新皇帝的诏令","s178",{trust:10,court:6,chenqiao:-7,flag:["swearGuard"]}],
+["先保证开封不乱，再等诏令","s179",{command:4,trust:5,chenqiao:2}],
+["沉默","s180",{suspicion:7,armyInfluence:6,chenqiao:6}]
+]},
+
+s178:{date:"显德三年 · 冬前",chapter:"第四章 · 尾声",loc:"开封城楼",title:"你守住了边界，但边界正在移动",text:"你没有让军队直接听你的名字。\n\n可柴荣的病情继续恶化。\n\n朝廷开始讨论继承，禁军开始重新换防，赵普和石守信各自都在观察。\n\n你回望过去三年：饥荒、高平、北伐。\n\n每一次你都以为自己是在解决眼前的问题。\n\n现在你终于看见，那些选择已经连成了一条路。",tags:["章节结算","继承危局","下一章"],choices:[
+["进入下一章：柴荣之死","s181",{flag:["chapter5Unlocked"]}],
+["回看第三章","s130"]
+]},
+
+s179:{date:"显德三年 · 冬前",chapter:"第四章 · 尾声",loc:"禁军大营",title:"你没有夺走权力，却已经拥有足够多的兵",text:"你没有主动跨过那条线。\n\n可军中影响已经足够大。\n\n这让你第一次感到真正的恐惧：不是怕别人害你，而是怕某一天，别人会以你的名义做一件你没有下令的事。\n\n赵普把最后一页纸烧掉。\n\n“从今天起，真正的选择才开始。”",tags:["陈桥","军权","下一章"],choices:[
+["进入下一章：柴荣之死","s181",{flag:["chapter5Unlocked"]}],
+["主动降低军中影响","s178",{armyInfluence:-8,chenqiao:-8}]
+]},
+
+s180:{date:"显德三年 · 冬前",chapter:"第四章 · 尾声",loc:"开封",title:"沉默本身，也会被别人解释",text:"你没有回答柴荣。\n\n他看了你很久。\n\n“朕知道了。”\n\n你不知道他知道了什么。\n\n第二天，禁军开始传出不同的说法。有人说你忠诚，有人说你在等待。\n\n而你第一次发现：在权力即将真空的时候，一个将领甚至没有解释自己的余地。",tags:["柴荣","沉默","陈桥"],choices:[
+["主动公开表态听皇命","s178",{court:5,chenqiao:-5,suspicion:-2}],
+["保持沉默","s181",{armyInfluence:5,chenqiao:7,suspicion:5}]
+]},
+
+s181:{date:"显德四年 · 开始",chapter:"第五章 · 柴荣之死",loc:"开封",title:"这一夜，宫门没有按时打开",text:"显德三年的冬天过去了。\n\n宫门迟迟没有打开。\n\n街上的人不知道发生了什么。禁军知道一些，却不敢说。\n\n你收到一封极短的军报：\n\n“陛下崩。”\n\n四个字之后，所有人都在等你的下一步。\n\n你忽然想起高平那个问你“我娘怎么办”的年轻人。\n\n三年过去了。你已经站到了一个足以决定很多人生死的位置。",tags:["柴荣之死","继承","重大转折"],choices:[
+["立即确认正式诏令","s182",{court:5,suspicion:-4,chenqiao:-4,flag:["confirmedDeath"]}],
+["先控制禁军营门","s183",{command:6,armyInfluence:6,chenqiao:6,flag:["securedGuards"]}],
+["派石守信保护赵普","s184",{rel:{shi:5,pu:5},people:2,chenqiao:2}]
 ]}
 };
 
@@ -588,7 +883,8 @@ function renderDialogue(sc){
     s44:["柴荣","后周军主帅","柴","托付"],
     s45:["赵普","幕僚","赵","旁观"],
     s46:["石守信","部将","石","认真"],
-    s47:["军医","后周军医","医","疲惫"]
+    s47:["军医","后周军医","医","疲惫"],
+    s130:["柴荣","后周皇帝","柴","沉重"],s131:["柴荣","后周皇帝","柴","审视"],s132:["军需官","北伐军需官","粮","焦急"],s133:["石守信","前军将领","石","犹豫"],s134:["柴荣","后周皇帝","柴","克制"],s137:["民夫","随军民夫","民","疲惫"],s138:["赵匡胤","前军将领","赵","沉思"],s140:["文官","朝廷官员","文","警惕"],s141:["柴荣","后周皇帝","柴","认真"],s144:["军医","前线军医","医","疲惫"],s147:["柴荣","后周皇帝","柴","沉重"],s148:["赵普","幕僚","赵","冷静"],s150:["韩通","后周将领","韩","直率"],s151:["石守信","前军将领","石","沉痛"],s157:["御医","随军御医","医","忧虑"],s158:["柴荣","后周皇帝","柴","试探"],s160:["赵普","幕僚","赵","严肃"],s162:["柴荣","后周皇帝","柴","虚弱"],s164:["柴荣","后周皇帝","柴","疲惫"],s165:["赵普","幕僚","赵","谨慎"],s171:["禁军校尉","禁军军官","校","不安"],s174:["石守信","禁军将领","石","警觉"],s176:["赵普","幕僚","赵","警告"],s177:["柴荣","后周皇帝","柴","虚弱"],s181:["禁军校尉","禁军军官","校","恐惧"]
   };
   const d=generic[st.scene];
   if(!d){box.classList.remove("show");return}
@@ -656,6 +952,25 @@ function renderDialogue(sc){
   if(st.scene==="s47") line=st.stats.people>=70
     ?"“赵都头，药不够。可这些人都知道你来过。”"
     :"“胜仗之后最忙的地方，永远不是庆功帐。”";
+  if(st.scene==="s130") line="“这一仗不是为了地图上的颜色。你先告诉我，准备让多少人回来。”";
+  if(st.scene==="s132") line="“将军，粮车再慢两日，前军就只能吃草根。”";
+  if(st.scene==="s133") line="“我挑的不是最能杀人的，是最可能把人带回来的。”";
+  if(st.scene==="s134") line="“朕要你进，也要你知道什么时候不能再进。”";
+  if(st.scene==="s137") line="“我们修的是路，可倒下的是人。”";
+  if(st.scene==="s141") line="“把死人写进账，不是为了让人害怕，是为了让活人知道代价。”";
+  if(st.scene==="s147") line="“胜利可以写在战报上，伤亡必须写在制度里。”";
+  if(st.scene==="s148") line="“你在记人的死，我在看人怎么把他们送到死的位置。”";
+  if(st.scene==="s150") line="“你到底是在建制度，还是在建自己的军队？”";
+  if(st.scene==="s157") line="“军报说我们赢了。御医说，朕可能撑不了多久。”";
+  if(st.scene==="s158") line="“他们听的是你的军令，还是朕的军令？”";
+  if(st.scene==="s160") line="“最危险的不是有人有野心，而是所有人都替他准备好了野心。”";
+  if(st.scene==="s162") line="“朕还能下令。你们先别替朕安排身后事。”";
+  if(st.scene==="s164") line="“朕最怕的，不是有人争，而是有人以为自己必须替天下做决定。”";
+  if(st.scene==="s171") line="“没有诏令，就没有换防。哪怕所有人都说是我的命令。”";
+  if(st.scene==="s174") line="“名单没有名字，才最让人害怕。”";
+  if(st.scene==="s176") line="“从来没人叫你夺权。可有人已经替你把路铺好了。”";
+  if(st.scene==="s177") line="“如果朕不在了，你会怎么做？”";
+  if(st.scene==="s181") line="“陛下崩了。赵将军，现在所有人都在等。”";
   document.getElementById("speaker").textContent=d[0];
   document.getElementById("speakerRole").textContent=d[1];
   document.getElementById("portrait").textContent=d[2];
@@ -793,6 +1108,8 @@ function choose(c){
   if(next==="DEAD"){st.dead=true;persist();showModal("赵匡胤卒","这条时间线已经终止。你的自动安全检查点仍然保留，可以返回继续。");return}
   if(!SCENES[next])return;
   if(/^s(100|10[1-9]|11[0-9]|12[0-9]|13[0-1])$/.test(next)){st.chapter=2;st.stats.actionPoints=Math.max(0,st.stats.actionPoints-1);if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
+  if(/^s(132|13[3-9]|14[0-9]|15[0-9]|16[0-9])$/.test(next)){st.chapter=3;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
+  if(/^s(17[0-9]|18[0-9]|19[0-9])$/.test(next)){st.chapter=4;if(st.stats.chenqiao>=20)st.flags.chenqiaoDanger=true;}
   next=battleCheck(next,label);
   next=aftermathRoute(next);
   st.scene=next;st.n++;
