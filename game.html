@@ -1366,7 +1366,8 @@ function render(){
   document.getElementById("chapter2Stats").style.display=inCapital?"block":"none";
   document.getElementById("capitalRelation").style.display=inCapital?"block":"none";
   document.getElementById("actionInfo").style.display=inCapital?"inline":"none";
-  document.getElementById("capitalPanel").classList.toggle("show",inCapital);\n  const nation=st.chapter>=7;document.getElementById("nationStats").style.display=nation?"block":"none";clampNation();
+  document.getElementById("capitalPanel").classList.toggle("show",inCapital);
+  const nation=st.chapter>=7;document.getElementById("nationStats").style.display=nation?"block":"none";clampNation();
   if(inCapital){
     document.getElementById("actionInfo").textContent="行动点 "+st.stats.actionPoints+" / 3 · 显德二年第 "+st.stats.month+" 月";
     document.getElementById("capitalMonth").textContent="显德二年 · 第 "+st.stats.month+" 月";
@@ -1374,6 +1375,7 @@ function render(){
     renderCapitalActions();
   }
   renderBattle(sc);
+  renderNationPanel();
   renderDialogue(sc);
   document.getElementById("date").textContent=sc.date;
   document.getElementById("chapter").textContent=sc.chapter;
@@ -1451,6 +1453,8 @@ function clampNation(){
   st.stats.territory=Math.max(0,Math.min(100,Number(st.stats.territory)||0));
   st.stats.casualties=Math.max(0,Number(st.stats.casualties)||0);
   st.stats.reform=Math.max(0,Math.min(100,Number(st.stats.reform)||0));
+  if(!Number.isFinite(st.stats.nationYear)||st.stats.nationYear<1)st.stats.nationYear=1;
+  if(!Number.isFinite(st.stats.nationAP)||st.stats.nationAP<0||st.stats.nationAP>3)st.stats.nationAP=3;
 }
 function resolveChenqiaoEnding(){
   clampNation();
