@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Project Lab</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;background:#0b1020;color:#edf2ff}
+.app{max-width:1180px;margin:auto;padding:32px 20px 60px}
+header{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:26px}
+h1{font-size:34px;margin:0 0 8px}.sub{color:#9aa7c2}
+.badge{padding:8px 12px;border:1px solid #2d3b5d;border-radius:999px;color:#a9d4ff;background:#111a30}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.card{background:#11182a;border:1px solid #25304a;border-radius:16px;padding:18px}
+.num{font-size:28px;font-weight:800}.label{color:#8f9bb5;font-size:13px;margin-top:5px}
+.toolbar{display:flex;gap:10px;margin-bottom:14px}
+input,select,button{font:inherit;border-radius:10px;border:1px solid #2c3853;background:#0e1525;color:#edf2ff;padding:10px 12px}
+input{flex:1}button{cursor:pointer;background:#18233b}button.primary{background:#2a5cff;border-color:#3f6cff}
+.tasks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.col{min-height:300px;background:#0f1626;border:1px solid #222e47;border-radius:16px;padding:14px}
+.col h3{margin:4px 4px 12px;font-size:15px}.task{background:#151e32;border:1px solid #293653;border-radius:12px;padding:13px;margin-bottom:10px}
+.task strong{display:block;margin-bottom:7px}.task small{color:#8997b3}.actions{display:flex;gap:7px;margin-top:10px}.actions button{padding:6px 8px;font-size:12px}
+.empty{color:#687590;text-align:center;padding:30px 5px}
+@media(max-width:800px){.grid,.tasks{grid-template-columns:1fr 1fr}header{align-items:start;flex-direction:column}}
+@media(max-width:520px){.grid,.tasks{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+<div><h1>AI Project Lab</h1><div class="sub">用一个可运行的小实验验证“持续迭代开发”</div></div>
+<div class="badge">实验 V0.1 · 独立模块</div>
+</header>
+
+<section class="grid">
+<div class="card"><div class="num" id="all">0</div><div class="label">全部任务</div></div>
+<div class="card"><div class="num" id="todo">0</div><div class="label">待开发</div></div>
+<div class="card"><div class="num" id="doing">0</div><div class="label">开发中</div></div>
+<div class="card"><div class="num" id="done">0</div><div class="label">已完成</div></div>
+</section>
+
+<div class="toolbar">
+<input id="newTask" placeholder="输入一个开发任务，例如：增加剧情节点保存">
+<select id="newStatus"><option value="todo">待开发</option><option value="doing">开发中</option><option value="done">已完成</option></select>
+<button class="primary" onclick="addTask()">新增任务</button>
+</div>
+
+<section class="tasks">
+<div class="col"><h3>📋 待开发</h3><div id="todoList"></div></div>
+<div class="col"><h3>⚙️ 开发中</h3><div id="doingList"></div></div>
+<div class="col"><h3>✓ 已完成</h3><div id="doneList"></div></div>
+</section>
+</div>
+<script>
+const KEY="ai-project-lab-tasks-v1";
+const seed=[
+ {id:1,title:"建立可持续迭代的项目看板",status:"done"},
+ {id:2,title:"增加浏览器本地持久化",status:"done"},
+ {id:3,title:"接入五代十国游戏剧情状态",status:"doing"},
+ {id:4,title:"设计剧情节点编辑器",status:"todo"},
+ {id:5,title:"增加存档恢复回归测试",status:"todo"}
+];
+let tasks=JSON.parse(localStorage.getItem(KEY)||"null")||seed;
+function save(){localStorage.setItem(KEY,JSON.stringify(tasks))}
+function addTask(){
+ const input=document.getElementById("newTask"), title=input.value.trim();
+ if(!title)return;
+ tasks.unshift({id:Date.now(),title,status:document.getElementById("newStatus").value});
+ input.value="";save();render();
+}
+function move(id,status){const t=tasks.find(x=>x.id===id);if(t){t.status=status;save();render()}}
+function removeTask(id){tasks=tasks.filter(x=>x.id!==id);save();render()}
+function render(){
+ ["todo","doing","done"].forEach(s=>{
+  const box=document.getElementById(s+"List"), list=tasks.filter(t=>t.status===s);
+  box.innerHTML=list.length?list.map(t=>`<div class="task"><strong>${esc(t.title)}</strong><small>任务 #${t.id}</small><div class="actions">
+  ${s!=="todo"?'<button onclick="move('+t.id+',\'todo\')">← 待开发</button>':""}
+  ${s!=="doing"?'<button onclick="move('+t.id+',\'doing\')">开发中</button>':""}
+  ${s!=="done"?'<button onclick="move('+t.id+',\'done\')">完成 →</button>':""}
+  <button onclick="removeTask(${t.id})">删除</button></div></div>`).join(""):'<div class="empty">暂无任务</div>';
+ });
+ document.getElementById("all").textContent=tasks.length;
+ document.getElementById("todo").textContent=tasks.filter(t=>t.status==="todo").length;
+ document.getElementById("doing").textContent=tasks.filter(t=>t.status==="doing").length;
+ document.getElementById("done").textContent=tasks.filter(t=>t.status==="done").length;
+}
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
+render();
+</script>
+</body>
+</html>
